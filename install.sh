@@ -1,8 +1,5 @@
 #!/bin/bash
 
-# Copiar o script udpvpn.sh para o diretório correto
-cp udpvpn.sh /usr/local/bin/
-
 # Conceder permissões adequadas ao script
 chmod +x /usr/local/bin/udpvpn.sh
 

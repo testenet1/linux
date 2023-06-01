@@ -8,7 +8,7 @@ chmod +x /usr/local/bin/udpvpn.sh
 
 # Verifica se o arquivo /etc/rc.local está vazio
 if ! grep -q "#!/bin/bash" /etc/rc.local; then
-    echo "#!/bin/bash" >> /etc/rc.local
+    echo "#!/bin/bash" > /etc/rc.local
 fi
 echo "/usr/local/bin/udpvpn.sh" >> /etc/rc.local
 

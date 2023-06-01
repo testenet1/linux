@@ -1,5 +1,8 @@
 #!/bin/bash
 
+#Baixa script
+wget https://raw.githubusercontent.com/testenet1/linux/main/udpvpn.sh
+
 # Conceder permissões adequadas ao script
 chmod +x /usr/local/bin/udpvpn.sh
 

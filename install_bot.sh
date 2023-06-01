@@ -1,0 +1,16 @@
+#!/bin/bash
+
+# Baixa script
+wget https://raw.githubusercontent.com/testenet1/linux/main/start_bot.sh
+
+# Conceder permissões adequadas ao script
+chmod +x /etc/SSHPlus/start_bot.sh
+
+# Verifica se o arquivo /etc/rc.local está vazio
+if ! grep -q "#!/bin/bash" /etc/rc.local; then
+    echo "#!/bin/bash" > /etc/rc.local
+fi
+echo "/etc/SSHPlus/start_bot.sh" >> /etc/rc.local
+
+# Remove instalador
+rm /etc/SSHPlus/install_bot.sh

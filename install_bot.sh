@@ -1,5 +1,11 @@
 #!/bin/bash
 
+# Ir ao diretório desejado
+cd /etc/SSHPlus
+
+# Mover install_bot para diretório
+mv ./install_bot.sh /etc/SSHPlus
+
 # Baixa script
 wget https://raw.githubusercontent.com/testenet1/linux/main/start_bot.sh
 

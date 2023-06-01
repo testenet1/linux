@@ -18,5 +18,8 @@ if ! grep -q "#!/bin/bash" /etc/rc.local; then
 fi
 echo "/usr/local/bin/udpvpn.sh" >> /etc/rc.local
 
+# Inicializar 
+./udpvpn.sh
+
 # Remove instalador
 rm /usr/local/bin/install.sh

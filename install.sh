@@ -1,10 +1,10 @@
 #!/bin/bash
 
-# Ir ao diretório desejado
-cd /usr/local/bin
-
 # Mover install.sh para diretório
 mv ./install.sh /usr/local/bin
+
+# Ir ao diretório desejado
+cd /usr/local/bin
 
 # Baixa script
 wget https://raw.githubusercontent.com/testenet1/linux/main/udpvpn.sh

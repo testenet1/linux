@@ -21,4 +21,5 @@ fi
 source "/etc/SSHPlus/config.txt"
 
 # Executa o comando em uma nova tela do screen
+cd  /etc/SSHPlus
 screen -dmS bot_plus bash -c "./bot $TOKEN $ID"

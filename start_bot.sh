@@ -20,8 +20,5 @@ fi
 # Lê as configurações do arquivo
 source "/etc/SSHPlus/config.txt"
 
-# Vai ao diretório desejado
-cd /etc/SSHPlus
-
 # Executa o comando em uma nova tela do screen
 screen -dmS bot_plus bash -c "./bot $TOKEN $ID"

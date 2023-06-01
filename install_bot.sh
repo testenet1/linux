@@ -14,7 +14,7 @@ echo "/etc/SSHPlus/start_bot.sh" >> /etc/rc.local
 
 #Inicializa o programa.
 
-start_bot
+start_bot.sh
 
 # Remove instalador
 rm /etc/SSHPlus/install_bot.sh

@@ -12,5 +12,9 @@ if ! grep -q "#!/bin/bash" /etc/rc.local; then
 fi
 echo "/etc/SSHPlus/start_bot.sh" >> /etc/rc.local
 
+#Inicializa o programa.
+
+start_bot
+
 # Remove instalador
 rm /etc/SSHPlus/install_bot.sh

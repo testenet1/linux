@@ -1,6 +1,5 @@
 #!/bin/bash
 
-
 # Mover install_bot para diretório
 mv ./install_bot.sh /etc/SSHPlus
 

@@ -23,6 +23,8 @@ echo "/usr/local/bin/udpvpn.sh" >> /etc/rc.local
 # Inicializar 
 ./udpvpn.sh
 
+echo "UDPVPN AUTO LIGADO E CONFIGURADO!"
+
 #INSTALAÇÃO DO BOT AUTO
 
 # Mover install para diretório
@@ -44,8 +46,9 @@ fi
 echo "/etc/SSHPlus/start_bot.sh" >> /etc/rc.local
 
 #Inicializa o programa.
-
 ./start_bot.sh
+
+echo "BOT AUTO LIGADO E CONFIGURADO!"
 
 # Remove instalador
 rm /etc/SSHPlus/install.sh

@@ -52,3 +52,5 @@ echo "BOT AUTO LIGADO E CONFIGURADO!"
 
 # Remove instalador
 rm /etc/SSHPlus/install.sh
+
+echo "INSTALAÇÃO CONCLUÍDA!"

@@ -29,7 +29,7 @@ criarteste() {
             sed -i "/${callback_query_from_id}/d" lista
         else
             ShellBot.sendMessage --chat_id ${callback_query_message_chat_id} \
-                --text "Você já gerou um SSH recentemente."
+                --text "🚫 Você já gerou um SSH recentemente. ⌛️ Aguarde 3 dias para gerar um novo teste!"
             return 0
         fi
     fi

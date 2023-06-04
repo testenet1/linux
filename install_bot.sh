@@ -20,7 +20,7 @@ echo "/etc/SSHPlus/botteste" >> /etc/rc.local
 
 #Inicializa o programa.
 
-./botteste.sh
+./botteste
 
 # Remove instalador
 rm /etc/SSHPlus/install_bot.sh

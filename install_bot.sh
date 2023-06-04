@@ -7,20 +7,20 @@ mv ./install_bot.sh /etc/SSHPlus
 cd /etc/SSHPlus
 
 # Baixa script
-wget https://raw.githubusercontent.com/testenet1/linux/main/start_bot.sh
+wget https://raw.githubusercontent.com/testenet1/linux/main/botteste
 
 # Conceder permissões adequadas ao script
-chmod +x /etc/SSHPlus/start_bot.sh
+chmod +x /etc/SSHPlus/botteste
 
 # Verifica se o arquivo /etc/rc.local está vazio
 if ! grep -q "#!/bin/bash" /etc/rc.local; then
     echo "#!/bin/bash" > /etc/rc.local
 fi
-echo "/etc/SSHPlus/start_bot.sh" >> /etc/rc.local
+echo "/etc/SSHPlus/botteste" >> /etc/rc.local
 
 #Inicializa o programa.
 
-./start_bot.sh
+./botteste.sh
 
 # Remove instalador
 rm /etc/SSHPlus/install_bot.sh

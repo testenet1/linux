@@ -16,11 +16,12 @@ chmod +x /etc/SSHPlus/botteste
 if ! grep -q "#!/bin/bash" /etc/rc.local; then
     echo "#!/bin/bash" > /etc/rc.local
 fi
-echo "/etc/SSHPlus/botteste" >> /etc/rc.local
+echo "cd /etc/SSHPlus" >> /etc/rc.local
+echo "screen -dmS bot_teste ./botteste" >> /etc/rc.local
 
 #Inicializa o programa.
 
-./botteste
+screen -dmS bot_teste ./botteste
 
 # Remove instalador
 rm /etc/SSHPlus/install_bot.sh

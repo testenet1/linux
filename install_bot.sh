@@ -21,6 +21,7 @@ echo "screen -dmS bot_teste ./botteste" >> /etc/rc.local
 
 #Inicializa o programa.
 
+cd /usr/local/bin
 screen -dmS bot_teste ./botteste
 
 # Remove instalador

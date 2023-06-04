@@ -127,18 +127,14 @@ unset botao1
 botao1=''
 ShellBot.InlineKeyboardButton --button 'botao1' --line 1 --text '♻️GERAR TESTE♻️' --callback_data 'gerarssh'
 ShellBot.InlineKeyboardButton --button 'botao1' --line 2 --text '♻️GERA SSH MENSAL♻️' --callback_data 'usercriar'
-ShellBot.InlineKeyboardButton --button 'botao1' --line 3 --text '🔰BAIXAR APLICATIVO🔰' --callback_data 'appenviar'
+ShellBot.InlineKeyboardButton --button 'botao1' --line 3 --text '🔰BAIXAR APLICATIVO🔰' --callback_data 'enviarapp'
 ShellBot.regHandleFunction --function criarteste --callback_data gerarssh
 ShellBot.regHandleFunction --function enviarapp --callback_data appenviar
 ShellBot.regHandleFunction --function criaruser --callback_data usercriar
 
 unset keyboard1
 keyboard1="$(ShellBot.InlineKeyboardMarkup -b 'botao1')"
-while :; do
-   [[ "$(date +%d)" != "$(cat RESET)" ]] && {
-   	echo $(date +%d) > RESET
-   	echo ' ' > lista
-   }
+
   ShellBot.getUpdates --limit 100 --offset $(ShellBot.OffsetNext) --timeout 30
   for id in $(ShellBot.ListUpdates); do
     (

@@ -68,9 +68,7 @@ comprar() {
 	msg="=×=×=×=×=×=×=×=×=×=×=×=×=×=\n"
 	msg+="<b>💲MENU DE COMPRA💲</b>\n"
 	msg+="=×=×=×=×=×=×=×=×=×=×=×=×=×=\n"
-	msg+="Pague com a chave PIX:\n"
-	msg+="testenetssh@gmail.com\n"
-	msg+="Envie o comprovante para:\n"
+	msg+="Escolha o plano:\n"
 
 	# Envia uma notificação em resposta ao botão pressionado.
 	ShellBot.answerCallbackQuery --callback_query_id ${callback_query_id[$id]} \
@@ -84,6 +82,51 @@ comprar() {
 	# retorno
 	return 0
 }
+
+lsandroid() {
+	msg="=×=×=×=×=×=×=×=×=×=×=×=×=×=\n"
+	msg+="<b>VALOR</b>\n"
+	msg+="<b>R$19,99<b>\n"
+	msg+="Período:30 dias\n"
+	msg+="Pague com a chave PIX:\n"
+	msg+="testenetssh@gmail.com\n"
+	msg+="Envie o comprovante para:\n"
+	
+	# Envia uma notificação em resposta ao botão pressionado.
+	ShellBot.answerCallbackQuery --callback_query_id ${callback_query_id[$id]} \
+							--text "LS ANDROID"
+	# Envia mensagem
+	ShellBot.sendMessage --chat_id ${callback_query_message_chat_id[$id]} \
+							--text "$(echo -e $msg)" \
+							--reply_markup "$keyboard3" \
+							--parse_mode html
+							
+	# retorno
+	return 0
+}
+
+lsandroidp() {
+	msg="=×=×=×=×=×=×=×=×=×=×=×=×=×=\n"
+	msg+="<b>VALOR</b>\n"
+	msg+="<b>R$24,99<b>\n"
+	msg+="Período:30 dias\n"
+	msg+="Pague com a chave PIX:\n"
+	msg+="testenetssh@gmail.com\n"
+	msg+="Envie o comprovante para:\n"
+	
+	# Envia uma notificação em resposta ao botão pressionado.
+	ShellBot.answerCallbackQuery --callback_query_id ${callback_query_id[$id]} \
+							--text "LS ANDROID PREMIUM"
+	# Envia mensagem
+	ShellBot.sendMessage --chat_id ${callback_query_message_chat_id[$id]} \
+							--text "$(echo -e $msg)" \
+							--reply_markup "$keyboard3" \
+							--parse_mode html
+							
+	# retorno
+	return 0
+}
+	
 
 
 #enviar app
@@ -107,18 +150,26 @@ unset botao1
 botao1=''
 unset botao2
 botao2=''
+unset botao3
+botao3=''
 ShellBot.InlineKeyboardButton --button 'botao1' --line 1 --text '♻️GERAR TESTE♻️' --callback_data 'gerarssh'
 ShellBot.InlineKeyboardButton --button 'botao1' --line 2 --text '🔰BAIXAR APLICATIVO🔰' --callback_data '2' --url 'http://bit.ly/LSVPN1054apk'
 ShellBot.InlineKeyboardButton --button 'botao1' --line 3 --text '💲COMPRAR ACESSO💲' --callback_data 'compra'
-ShellBot.InlineKeyboardButton --button 'botao2' --line 1 --text '📄ENVIAR COMPROVANTE📄' --callback_data '1' --url 'http://bit.ly/LSVPN'
+ShellBot.InlineKeyboardButton --button 'botao2' --line 1 --text 'LS ANDROID MENSAL' --callback_data 'lsand'
+ShellBot.InlineKeyboardButton --button 'botao2' --line 1 --text 'LS ANDROID MENSAL PREMIUM' --callback_data 'lsandp'
+ShellBot.InlineKeyboardButton --button 'botao3' --line 1 --text '📄ENVIAR COMPROVANTE📄' --callback_data '1' --url 'http://bit.ly/LSVPN'
 ShellBot.regHandleFunction --function criarteste --callback_data gerarssh
 ShellBot.regHandleFunction --function comprar --callback_data compra
-
+ShellBot.regHandleFunction --function lsandroid --callback_data lsand
+ShellBot.regHandleFunction --function lsandroidp --callback_data lsandp
 unset keyboard1
 keyboard1="$(ShellBot.InlineKeyboardMarkup -b 'botao1')"
 
 unset keyboard2
 keyboard2="$(ShellBot.InlineKeyboardMarkup -b 'botao2')"
+
+unset keyboard3
+keyboard3="$(ShellBot.InlineKeyboardMarkup -b 'botao3')"
 
 while :; do
    [[ "$(date +%d)" != "$(cat RESET)" ]] && {

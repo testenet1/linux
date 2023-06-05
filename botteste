@@ -206,10 +206,6 @@ unset keyboard3
 keyboard3="$(ShellBot.InlineKeyboardMarkup -b 'botao3')"
 
 while :; do
-   [[ "$(date +%d)" != "$(cat RESET)" ]] && {
-   	echo $(date +%d) > RESET
-   	echo ' ' > lista2
-   }
   ShellBot.getUpdates --limit 100 --offset $(ShellBot.OffsetNext) --timeout 30
   for id in $(ShellBot.ListUpdates); do
     (

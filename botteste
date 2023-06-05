@@ -86,8 +86,8 @@ comprar() {
 lsandroid() {
 	msg="</b>🟠LS ANDROID MENSAL</b>\n"
 	msg+="<b>VALOR 19,99 BRL</b>\n"
-	msg+="Período: 30 dias\n"
-	msg+="Pague com a chave PIX: testenetssh@gmail.com\n"
+	msg+="30 dias\n"
+	msg+="Chave PIX: testenetssh@gmail.com\n"
 	msg+="Envie o comprovante para:\n\n"
 	
 	# Envia uma notificação em resposta ao botão pressionado.
@@ -106,8 +106,8 @@ lsandroid() {
 lsandroidp() {
 	msg="</b>🟣LS ANDROID MENSAL PREMIUM</b>\n"
 	msg+="<b>VALOR 24,99 BRL </b>\n"
-	msg+="Período: 30 dias\n"
-	msg+="Pague com a chave PIX: testenetssh@gmail.com\n"
+	msg+="30 dias\n"
+	msg+="Chave PIX: testenetssh@gmail.com\n"
 	msg+="Envie o comprovante para:\n\n"
 	
 	# Envia uma notificação em resposta ao botão pressionado.

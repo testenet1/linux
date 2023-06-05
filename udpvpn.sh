@@ -6,8 +6,9 @@ end_port=7900
 step=100
 
 current_port=$start_port
+cd /bin
 
 while [ $current_port -le $end_port ]; do
-        screen -dmS udpvpn /bin/udp $current_port
+        screen -dmS udpvpn ./udp $current_port
         current_port=$((current_port + step))
 done

@@ -67,6 +67,7 @@ rm -rf /etc/SSHPlus/userteste/$usuario.sh" > /etc/SSHPlus/userteste/$usuario.sh
 }
 
 compraracesso() {
+	local msg
 	msg="=×=×=×=×=×=×=×=×=×=×=×=×=×=\n"
 	msg+="<b> 💲 OLA SEJA BEM VINDO AO MENU DE COMPRA!(a)💲 </b>\n"
 	msg+="=×=×=×=×=×=×=×=×=×=×=×=×=×=\n"
@@ -85,6 +86,9 @@ compraracesso() {
 	msg+="Pague com a chave PIX:\n"
 	msg+="testenetssh@gmail.com\n"
 	msg+="Envie o comprOvante para"
+	
+	local keyboard1
+    	keyboard1="$(ShellBot.InlineKeyboardMarkup -b 'botao1')"
 	
 	# Envia mensagem
 	ShellBot.sendMessage --chat_id ${callback_query_message_chat_id[$id]} \

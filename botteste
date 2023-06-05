@@ -123,12 +123,6 @@ lsandroidp() {
 	return 0
 }
 
-back(){
-	menu()
-}
-	
-
-
 #enviar app
 enviarapp() {
     ShellBot.answerCallbackQuery --callback_query_id ${callback_query_id[$id]} \
@@ -163,7 +157,7 @@ ShellBot.regHandleFunction --function criarteste --callback_data gerarssh
 ShellBot.regHandleFunction --function comprar --callback_data compra
 ShellBot.regHandleFunction --function lsandroid --callback_data lsand
 ShellBot.regHandleFunction --function lsandroidp --callback_data lsandp
-ShellBot.regHandleFunction --function back --callback_data voltar
+ShellBot.regHandleFunction --function menu --callback_data voltar
 unset keyboard1
 keyboard1="$(ShellBot.InlineKeyboardMarkup -b 'botao1')"
 

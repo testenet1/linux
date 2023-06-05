@@ -65,9 +65,9 @@ rm -rf /etc/SSHPlus/userteste/$usuario.sh" > /etc/SSHPlus/userteste/$usuario.sh
 }
 
 comprar() {
-	msg="=×=×=×=×=×=×=×=×=×=×=×=×=×=\n"
+	msg="=×=×=×=×=×=×=×=×=×=×=\n"
 	msg+="<b>💲MENU DE COMPRA💲</b>\n"
-	msg+="=×=×=×=×=×=×=×=×=×=×=×=×=×=\n"
+	msg+="=×=×=×=×=×=×=×=×=×=×=\n"
 	msg+="Escolha o plano:\n"
 
 	# Envia uma notificação em resposta ao botão pressionado.

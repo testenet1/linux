@@ -89,9 +89,6 @@ lsandroid() {
 	msg+="Chave PIX: testenetssh@gmail.com\n"
 	msg+="Envie o comprovante:"
 	
-	# Envia uma notificação em resposta ao botão pressionado.
-	ShellBot.answerCallbackQuery --callback_query_id ${callback_query_id[$id]} \
-							--text "LS ANDROID"
 	# Envia mensagem
 	ShellBot.sendMessage --chat_id ${callback_query_message_chat_id[$id]} \
 							--text "$(echo -e $msg)" \
@@ -103,14 +100,13 @@ lsandroid() {
 }
 #teste
 lsandroidp() {
-	msg="</b>LS ANDROID MENSAL PREMIUM</b>\n"
-	msg+="VALOR 19,99 BRL 30 dias\n"
-	msg+="Chave PIX: testenetssh@gmail.com\n"
+	msg="LS ANDROID MENSAL P\n"
+	msg+="VALOR 19,99 BRL\n"
+	msg+="30 dias\n"
+	msg+="Chave PIX:\n"
+	msg+="testenetssh@gmail.com\n"
 	msg+="Envie o comprovante:"
 	
-	# Envia uma notificação em resposta ao botão pressionado.
-	ShellBot.answerCallbackQuery --callback_query_id ${callback_query_id[$id]} \
-							--text "LS ANDROID PREMIUM"
 	# Envia mensagem
 	ShellBot.sendMessage --chat_id ${callback_query_message_chat_id[$id]} \
 							--text "$(echo -e $msg)" \

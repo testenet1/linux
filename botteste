@@ -82,7 +82,7 @@ comprar() {
 	msg+="=×=×=×=×=×=×=×=×=×=×=×=×=×=\n"
 	msg+="Pague com a chave PIX:\n"
 	msg+="testenetssh@gmail.com\n"
-	msg+="Envie o comprOvante para/n"
+	msg+="Envie o comprOvante para\n"
 
 	# Envia uma notificação em resposta ao botão pressionado.
 	ShellBot.answerCallbackQuery --callback_query_id ${callback_query_id[$id]} \
@@ -91,7 +91,7 @@ comprar() {
 	ShellBot.sendMessage --chat_id ${callback_query_message_chat_id[$id]} \
 							--text "$(echo -e $msg)" \
 							--parse_mode html
-		
+							--url "http://bit.ly/LSVPN" \
 							
 	# retorno
 	return 0

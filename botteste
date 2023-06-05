@@ -98,7 +98,8 @@ lsandroid() {
 							--parse_mode html
 	# Envia foto
 	ShellBot.sendPhoto --chat_id ${callback_query_message_chat_id[$id]} \
-							--photo "@/etc/pics/lsandroid.png" \
+							--photo "@/root/etc/pics/lsandroid.png" \
+							--parse_mode html
 							
 	# retorno
 	return 0

@@ -122,6 +122,10 @@ lsandroidp() {
 	# retorno
 	return 0
 }
+
+back(){
+	menu()
+}
 	
 
 
@@ -153,11 +157,13 @@ ShellBot.InlineKeyboardButton --button 'botao1' --line 2 --text '🔰BAIXAR APLI
 ShellBot.InlineKeyboardButton --button 'botao1' --line 3 --text '💲COMPRAR ACESSO💲' --callback_data 'compra'
 ShellBot.InlineKeyboardButton --button 'botao2' --line 1 --text '🟠LS ANDROID MENSAL' --callback_data 'lsand'
 ShellBot.InlineKeyboardButton --button 'botao2' --line 1 --text '🟣LS ANDROID MENSAL P' --callback_data 'lsandp'
+ShellBot.InlineKeyboardButton --button 'botao2' --line 2 --text 'VOLTAR' --callback_data 'voltar'
 ShellBot.InlineKeyboardButton --button 'botao3' --line 1 --text '📄ENVIAR COMPROVANTE📄' --callback_data '1' --url 'http://bit.ly/LSVPN'
 ShellBot.regHandleFunction --function criarteste --callback_data gerarssh
 ShellBot.regHandleFunction --function comprar --callback_data compra
 ShellBot.regHandleFunction --function lsandroid --callback_data lsand
 ShellBot.regHandleFunction --function lsandroidp --callback_data lsandp
+ShellBot.regHandleFunction --function back --callback_data voltar
 unset keyboard1
 keyboard1="$(ShellBot.InlineKeyboardMarkup -b 'botao1')"
 

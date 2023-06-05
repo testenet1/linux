@@ -65,21 +65,37 @@ rm -rf /etc/SSHPlus/userteste/$usuario.sh" > /etc/SSHPlus/userteste/$usuario.sh
 }
 
 compraracesso() {
+	msg="=×=×=×=×=×=×=×=×=×=×=×=×=×=\n"
+	msg+="<b> 💲 OLA SEJA BEM VINDO AO MENU DE COMPRA!(a)💲 </b>\n"
+	msg="=×=×=×=×=×=×=×=×=×=×=×=×=×=\n"
+	msg+="Olá *${callback_query_from_username[$id]}* , seja bem vindo ao menu de pagamento!\n"
+	msg+="Escolha seu Plano:\n"
+	msg+="<b>PLANOS ANDROID<b>\n"
+	msg+="LS ANDROID MENSAL = R$19.99\n"
+	msg+="LS ANDROID MENSAL PREMIUM = R$24.99\n"
+	msg+="LS ANDROID MENSAL PLUS = R$34.99\n"
+	msg+="LS ANDROID MENSAL PLUS PREMIUM = R$39.99\n"
+	msg="=×=×=×=×=×=×=×=×=×=×=×=×=×=\n"
+	msg+="<b>PLANOS IOS<b>\n
+	msg+="LS IOS MENSAL = R$19.99\n"
+	msg+="LS IOS MENSAL PREMIUM = R$24.99\n"
+	msg="=×=×=×=×=×=×=×=×=×=×=×=×=×=\n"
+	msg="Pague com a chave PIX:\n"
+	msg="testenetssh@gmail.com\n"
+	msg="Envie o compravante para --url 'http://bit.ly/LSVPN\n"
+	# Envia uma notificação em resposta ao botão pressionado.
 	ShellBot.answerCallbackQuery --callback_query_id ${callback_query_id[$id]} \
-	local msg
-        msg="=×=×=×=×=×=×=×=×=×=×=×=×=×=\n"
-        msg+="<b>BEM VINDO AO MENU DE COMPRA(a)</b>\n"
-        msg+="=×=×=×=×=×=×=×=×=×=×=×=×=×=\n\n"
-        msg+="Envie o pagamento para a chave pix!"
-	msg+="testenetssh@outlook.com"
-	msg+="Envie o comprovante para:"
-	--url 'http://w.me/5521965555448'
-        ShellBot.sendMessage --chat_id ${message_chat_id[$id]} \
-        --text "$(echo -e $msg)" \
-        --reply_markup "$keyboard1" \
-        --parse_mode html
-        return 0 
+									--text "Comprar Acesso"
+	# Envia mensagem
+	ShellBot.sendMessage --chat_id ${callback_query_message_chat_id[$id]} \
+							--text "$(echo -e $msg)" \
+							--parse_mode markdown
+		
+							
+	# retorno
+	return 0
 }
+
 
 #enviar app
 enviarapp() {

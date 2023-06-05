@@ -85,11 +85,9 @@ comprar() {
 
 lsandroid() {
 	msg="=×=×=×=×=×=×=×=×=×=×=×=×=×=\n"
-	msg+="<b>VALOR</b>\n"
-	msg+="<b>R$19,99<b>\n"
+	msg+="<b>VALOR R$19,99</b>\n"
 	msg+="Período:30 dias\n"
-	msg+="Pague com a chave PIX:\n"
-	msg+="testenetssh@gmail.com\n"
+	msg+="Pague com a chave PIX: testenetssh@gmail.com\n"
 	msg+="Envie o comprovante para:\n"
 	
 	# Envia uma notificação em resposta ao botão pressionado.
@@ -107,11 +105,9 @@ lsandroid() {
 
 lsandroidp() {
 	msg="=×=×=×=×=×=×=×=×=×=×=×=×=×=\n"
-	msg+="<b>VALOR</b>\n"
-	msg+="<b>R$24,99<b>\n"
+	msg+="<b>VALOR R$24,99</b>\n"
 	msg+="Período:30 dias\n"
-	msg+="Pague com a chave PIX:\n"
-	msg+="testenetssh@gmail.com\n"
+	msg+="Pague com a chave PIX: testenetssh@gmail.com\n"
 	msg+="Envie o comprovante para:\n"
 	
 	# Envia uma notificação em resposta ao botão pressionado.
@@ -156,7 +152,7 @@ ShellBot.InlineKeyboardButton --button 'botao1' --line 1 --text '♻️GERAR TES
 ShellBot.InlineKeyboardButton --button 'botao1' --line 2 --text '🔰BAIXAR APLICATIVO🔰' --callback_data '2' --url 'http://bit.ly/LSVPN1054apk'
 ShellBot.InlineKeyboardButton --button 'botao1' --line 3 --text '💲COMPRAR ACESSO💲' --callback_data 'compra'
 ShellBot.InlineKeyboardButton --button 'botao2' --line 1 --text 'LS ANDROID MENSAL' --callback_data 'lsand'
-ShellBot.InlineKeyboardButton --button 'botao2' --line 1 --text 'LS ANDROID MENSAL PREMIUM' --callback_data 'lsandp'
+ShellBot.InlineKeyboardButton --button 'botao2' --line 1 --text 'LS ANDROID MENSAL P' --callback_data 'lsandp'
 ShellBot.InlineKeyboardButton --button 'botao3' --line 1 --text '📄ENVIAR COMPROVANTE📄' --callback_data '1' --url 'http://bit.ly/LSVPN'
 ShellBot.regHandleFunction --function criarteste --callback_data gerarssh
 ShellBot.regHandleFunction --function comprar --callback_data compra

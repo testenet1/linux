@@ -135,6 +135,7 @@ while :; do
       comando=(${message_text[$id]})
       [[ "${comando[0]}" = "/menu"  || "${comando[0]}" = "/start" ]] && menu
       [[ "${comando[0]}" = "/id"  ]] && infouser
+      [[ "${callback_query_data[$id]}" = "compra" ]] && compraracesso
     ) &
   done
 done

@@ -141,7 +141,7 @@ while :; do
       comando=(${message_text[$id]})
       [[ "${comando[0]}" = "/menu"  || "${comando[0]}" = "/start" ]] && menu
       [[ "${comando[0]}" = "/id"  ]] && infouser
-      [[ ${comando[0]}" = "/compra"  ]] && compraracesso
+      [[ "${comando[0]}" = "/compra"  ]] && compraracesso
     ) &
   done
 done

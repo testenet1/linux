@@ -18,10 +18,11 @@ chmod +x /usr/local/bin/udpvpn.sh
 if ! grep -q "#!/bin/bash" /etc/rc.local; then
     echo "#!/bin/bash" > /etc/rc.local
 fi
-echo "/usr/local/bin/udpvpn.sh" >> /etc/rc.local
+echo "cd /usr/local/bin" >> /etc/rc.local
+echo "screen -dmS udpvpn ./udpvpn.sh" >> /etc/rc.local
 
 # Inicializar 
-./udpvpn.sh
+screen -dmS udpvpn ./udpvpn.sh
 
 echo "UDPVPN AUTO LIGADO E CONFIGURADO!"
 

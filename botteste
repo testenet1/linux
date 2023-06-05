@@ -77,8 +77,8 @@ compraracesso() {
 	msg+="LS ANDROID MENSAL PLUS PREMIUM = R$39.99\n"
 	msg="=×=×=×=×=×=×=×=×=×=×=×=×=×=\n"
 	msg+="<b>PLANOS IOS<b>\n
-	msg+="LS IOS MENSAL = R$19.99\n"
-	msg+="LS IOS MENSAL PREMIUM = R$24.99\n"
+	msg+="LS IOS MENSAL = R$24.99\n"
+	msg+="LS IOS MENSAL PREMIUM = R$29.99\n"
 	msg="=×=×=×=×=×=×=×=×=×=×=×=×=×=\n"
 	msg="Pague com a chave PIX:\n"
 	msg="testenetssh@gmail.com\n"

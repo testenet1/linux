@@ -91,7 +91,6 @@ compraracesso() {
 							--text "$(echo -e $msg)" \
 							--parse_mode markdown
 							--parse_mode html
-							--url "http://bit.ly/LSVPN" \
 		
 							
 	# retorno

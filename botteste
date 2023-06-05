@@ -67,7 +67,7 @@ rm -rf /etc/SSHPlus/userteste/$usuario.sh" > /etc/SSHPlus/userteste/$usuario.sh
 compraracesso() {
 	msg="=×=×=×=×=×=×=×=×=×=×=×=×=×=\n"
 	msg+="<b> 💲 OLA SEJA BEM VINDO AO MENU DE COMPRA!(a)💲 </b>\n"
-	msg="=×=×=×=×=×=×=×=×=×=×=×=×=×=\n"
+	msg+="=×=×=×=×=×=×=×=×=×=×=×=×=×=\n"
 	msg+="Olá *${callback_query_from_username[$id]}* , seja bem vindo ao menu de pagamento!\n"
 	msg+="Escolha seu Plano:\n"
 	msg+="<b>PLANOS ANDROID<b>\n"

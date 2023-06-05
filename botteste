@@ -65,6 +65,7 @@ rm -rf /etc/SSHPlus/userteste/$usuario.sh" > /etc/SSHPlus/userteste/$usuario.sh
 }
 
 comprar() {
+	local msg
 	msg="=×=×=×=×=×=×=×=×=×=×=\n"
 	msg+="<b>💲MENU DE COMPRA💲</b>\n"
 	msg+="=×=×=×=×=×=×=×=×=×=×=\n"
@@ -84,28 +85,33 @@ comprar() {
 }
 
 lsandroid() {
-	msg="LS ANDROID MENSAL\n"
+	local msg
+	msg="=×=×=×=×=×=×=×=×=×=×=\n"
+	msg+="<b>💲PAGAMENTO💲</b>\n"
+	msg+="=×=×=×=×=×=×=×=×=×=×=\n"
 	msg+="VALOR 19,99 BRL\n"
 	msg+="30 dias\n"
 	msg+="Chave PIX:\n"
 	msg+="testenetssh@gmail.com\n"
 	msg+="Envie o comprovante:"
 	
+	# Envia foto
+	ShellBot.sendPhoto --chat_id ${callback_query_message_chat_id[$id]} \
+							--photo @/etc/pics/lsandroid.png \
+							--parse_mode html
+	
 	# Envia mensagem
 	ShellBot.sendMessage --chat_id ${callback_query_message_chat_id[$id]} \
 							--text "$(echo -e $msg)" \
 							--reply_markup "$keyboard3" \
 							--parse_mode html
-	# Envia foto
-	ShellBot.sendPhoto --chat_id ${callback_query_message_chat_id[$id]} \
-							--photo @/etc/pics/lsandroid.png \
-							--parse_mode html
-							
+						
 	# retorno
 	return 0
 }
 
 lsandroidp() {
+	local msg
 	msg="LS ANDROID PREMIUM\n"
 	msg+="VALOR 24,99 BRL\n"
 	msg+="30 dias\n"
@@ -124,6 +130,7 @@ lsandroidp() {
 }
 
 lsandroidplus() {
+	local msg
 	msg="LS ANDROID PLUS\n"
 	msg+="VALOR 34,99 BRL\n"
 	msg+="30 dias\n"
@@ -142,6 +149,7 @@ lsandroidplus() {
 }
 
 lsandroidplusp() {
+	local msg
 	msg="LS ANDROID PLUS PREMIUM\n"
 	msg+="VALOR 39,99 BRL\n"
 	msg+="30 dias\n"

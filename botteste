@@ -96,6 +96,7 @@ lsandroid() {
 							--text "$(echo -e $msg)" \
 							--reply_markup "$keyboard3" \
 							--parse_mode html
+	# Envia foto
 	ShellBot.sendPhoto --chat_id ${callback_query_message_chat_id[$id]} \
 							--photo "@/etc/pics/lsandroid.png" \
 							

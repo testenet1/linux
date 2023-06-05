@@ -88,7 +88,7 @@ lsandroid() {
 	msg+="VALOR 19,99 BRL\n"
 	msg+="30 dias\n"
 	msg+="Chave PIX: testenetssh@gmail.com\n"
-	msg+="Envie o comprovante para:\n"
+	msg+="Envie o comprovante:"
 	
 	# Envia uma notificação em resposta ao botão pressionado.
 	ShellBot.answerCallbackQuery --callback_query_id ${callback_query_id[$id]} \
@@ -102,13 +102,13 @@ lsandroid() {
 	# retorno
 	return 0
 }
-
+#teste
 lsandroidp() {
 	msg="</b>LS ANDROID MENSAL PREMIUM</b>\n"
 	msg+="VALOR 24,99 BRL\n"
 	msg+="30 dias\n"
 	msg+="Chave PIX: testenetssh@gmail.com\n"
-	msg+="Envie o comprovante para:\n"
+	msg+="Envie o comprovante:"
 	
 	# Envia uma notificação em resposta ao botão pressionado.
 	ShellBot.answerCallbackQuery --callback_query_id ${callback_query_id[$id]} \

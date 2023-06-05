@@ -65,6 +65,7 @@ rm -rf /etc/SSHPlus/userteste/$usuario.sh" > /etc/SSHPlus/userteste/$usuario.sh
 }
 
 compraracesso() {
+	ShellBot.answerCallbackQuery --callback_query_id ${callback_query_id[$id]} \
 	local msg
         msg="=×=×=×=×=×=×=×=×=×=×=×=×=×=\n"
         msg+="<b>BEM VINDO AO MENU DE COMPRA(a)</b>\n"

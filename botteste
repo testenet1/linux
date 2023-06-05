@@ -100,10 +100,46 @@ lsandroid() {
 	# retorno
 	return 0
 }
-#teste
+
 lsandroidp() {
-	msg="LS ANDROID MENSAL P\n"
+	msg="LS ANDROID PREMIUM\n"
 	msg+="VALOR 24,99 BRL\n"
+	msg+="30 dias\n"
+	msg+="Chave PIX:\n"
+	msg+="testenetssh@gmail.com\n"
+	msg+="Envie o comprovante:"
+	
+	# Envia mensagem
+	ShellBot.sendMessage --chat_id ${callback_query_message_chat_id[$id]} \
+							--text "$(echo -e $msg)" \
+							--reply_markup "$keyboard3" \
+							--parse_mode html
+							
+	# retorno
+	return 0
+}
+
+lsandroidplus() {
+	msg="LS ANDROID PLUS\n"
+	msg+="VALOR 34,99 BRL\n"
+	msg+="30 dias\n"
+	msg+="Chave PIX:\n"
+	msg+="testenetssh@gmail.com\n"
+	msg+="Envie o comprovante:"
+	
+	# Envia mensagem
+	ShellBot.sendMessage --chat_id ${callback_query_message_chat_id[$id]} \
+							--text "$(echo -e $msg)" \
+							--reply_markup "$keyboard3" \
+							--parse_mode html
+							
+	# retorno
+	return 0
+}
+
+lsandroidplusp() {
+	msg="LS ANDROID PLUS PREMIUM\n"
+	msg+="VALOR 39,99 BRL\n"
 	msg+="30 dias\n"
 	msg+="Chave PIX:\n"
 	msg+="testenetssh@gmail.com\n"
@@ -142,18 +178,20 @@ unset botao2
 botao2=''
 unset botao3
 botao3=''
-ShellBot.InlineKeyboardButton --button 'botao1' --line 1 --text '♻️GERAR TESTE♻️' --callback_data 'gerarssh'
-ShellBot.InlineKeyboardButton --button 'botao1' --line 2 --text '🔰BAIXAR APLICATIVO🔰' --callback_data '2' --url 'http://bit.ly/LSVPN1054apk'
-ShellBot.InlineKeyboardButton --button 'botao1' --line 3 --text '💲COMPRAR ACESSO💲' --callback_data 'compra'
-ShellBot.InlineKeyboardButton --button 'botao2' --line 1 --text 'LS ANDROID MENSAL' --callback_data 'lsand'
-ShellBot.InlineKeyboardButton --button 'botao2' --line 1 --text 'LS ANDROID MENSAL P' --callback_data 'lsandp'
-ShellBot.InlineKeyboardButton --button 'botao2' --line 2 --text 'VOLTAR' --callback_data 'voltar'
-ShellBot.InlineKeyboardButton --button 'botao3' --line 1 --text '📄ENVIAR COMPROVANTE📄' --callback_data '1' --url 'http://bit.ly/LSVPN'
+ShellBot.InlineKeyboardButton --button 'botao1' --line 1 --text '♻️ GERAR TESTE ♻️' --callback_data 'gerarssh'
+ShellBot.InlineKeyboardButton --button 'botao1' --line 2 --text '🔰 BAIXAR APLICATIVO 🔰' --callback_data '2' --url 'http://bit.ly/LSVPN1054apk'
+ShellBot.InlineKeyboardButton --button 'botao1' --line 3 --text '💲 COMPRAR ACESSO 💲' --callback_data 'compra'
+ShellBot.InlineKeyboardButton --button 'botao2' --line 1 --text 'LS ANDROID' --callback_data 'lsand'
+ShellBot.InlineKeyboardButton --button 'botao2' --line 1 --text 'LS ANDROID PREMIUM' --callback_data 'lsandp'
+ShellBot.InlineKeyboardButton --button 'botao2' --line 2 --text 'LS ANDROID PLUS' --callback_data 'lsandplus'
+ShellBot.InlineKeyboardButton --button 'botao2' --line 2 --text 'LS ANDROID PLUS PREMIUM' --callback_data 'lsandplusp'
+ShellBot.InlineKeyboardButton --button 'botao3' --line 1 --text '📄 ENVIAR COMPROVANTE 📄' --callback_data '1' --url 'http://bit.ly/LSVPN'
 ShellBot.regHandleFunction --function criarteste --callback_data gerarssh
 ShellBot.regHandleFunction --function comprar --callback_data compra
 ShellBot.regHandleFunction --function lsandroid --callback_data lsand
 ShellBot.regHandleFunction --function lsandroidp --callback_data lsandp
-ShellBot.regHandleFunction --function menu --callback_data voltar
+ShellBot.regHandleFunction --function lsandroidplus --callback_data lsandplus
+ShellBot.regHandleFunction --function lsandroidplusp --callback_data lsandplusp
 unset keyboard1
 keyboard1="$(ShellBot.InlineKeyboardMarkup -b 'botao1')"
 

@@ -84,11 +84,11 @@ comprar() {
 }
 
 lsandroid() {
-	msg="</b>🟠LS ANDROID MENSAL</b>\n"
+	msg="</b>LS ANDROID MENSAL</b>\n"
 	msg+="<b>VALOR 19,99 BRL</b>\n"
 	msg+="30 dias\n"
 	msg+="Chave PIX: testenetssh@gmail.com\n"
-	msg+="Envie o comprovante para:\n\n"
+	msg+="Envie o comprovante para:\n"
 	
 	# Envia uma notificação em resposta ao botão pressionado.
 	ShellBot.answerCallbackQuery --callback_query_id ${callback_query_id[$id]} \
@@ -104,11 +104,11 @@ lsandroid() {
 }
 
 lsandroidp() {
-	msg="</b>🟣LS ANDROID MENSAL PREMIUM</b>\n"
-	msg+="<b>VALOR 24,99 BRL </b>\n"
+	msg="</b>LS ANDROID MENSAL PREMIUM</b>\n"
+	msg+="<b>VALOR 24,99 BRL</b>\n"
 	msg+="30 dias\n"
 	msg+="Chave PIX: testenetssh@gmail.com\n"
-	msg+="Envie o comprovante para:\n\n"
+	msg+="Envie o comprovante para:\n"
 	
 	# Envia uma notificação em resposta ao botão pressionado.
 	ShellBot.answerCallbackQuery --callback_query_id ${callback_query_id[$id]} \

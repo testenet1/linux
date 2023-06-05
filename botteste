@@ -13,8 +13,6 @@ menu() {
         msg+="<b>🤖 OLA SEJA BEM VINDO(a) 🤖</b>\n"
         msg+="=×=×=×=×=×=×=×=×=×=×=×=×=×=\n\n"
         msg+="Gere seu teste agora mesmo!"
-	local keyboard1
-    	keyboard1="$(ShellBot.InlineKeyboardMarkup -b 'botao1')"
         ShellBot.sendMessage --chat_id ${message_chat_id[$id]} \
         --text "$(echo -e $msg)" \
         --reply_markup "$keyboard1" \
@@ -66,34 +64,16 @@ rm -rf /etc/SSHPlus/userteste/$usuario.sh" > /etc/SSHPlus/userteste/$usuario.sh
     fi
 }
 
-compraracesso() {
-	local msg
-	msg="=×=×=×=×=×=×=×=×=×=×=×=×=×=\n"
-	msg+="<b> 💲 OLA SEJA BEM VINDO AO MENU DE COMPRA!(a)💲 </b>\n"
-	msg+="=×=×=×=×=×=×=×=×=×=×=×=×=×=\n"
-	msg+="Olá *${callback_query_from_username[$id]}* , seja bem vindo ao menu de pagamento!\n"
-	msg+="Escolha seu Plano:\n"
-	msg+="<b>PLANOS ANDROID<b>\n"
-	msg+="LS ANDROID MENSAL = R$19.99\n"
-	msg+="LS ANDROID MENSAL PREMIUM = R$24.99\n"
-	msg+="LS ANDROID MENSAL PLUS = R$34.99\n"
-	msg+="LS ANDROID MENSAL PLUS PREMIUM = R$39.99\n"
-	msg+="=×=×=×=×=×=×=×=×=×=×=×=×=×=\n"
-	msg+="<b>PLANOS IOS<b>\n"
-	msg+="LS IOS MENSAL = R$24.99\n"
-	msg+="LS IOS MENSAL PREMIUM = R$29.99\n"
-	msg+="=×=×=×=×=×=×=×=×=×=×=×=×=×=\n"
-	msg+="Pague com a chave PIX:\n"
-	msg+="testenetssh@gmail.com\n"
-	msg+="Envie o comprOvante para"
-	
-	local keyboard1
-    	keyboard1="$(ShellBot.InlineKeyboardMarkup -b 'botao1')"
-	
+comprar() {
+	msg="Olá *${callback_query_from_username[$id]}* , em que posso ajudar?\n"
+	msg+="No momento minhas opções são limitadas, mas farei o possível."
+
+	# Envia uma notificação em resposta ao botão pressionado.
+	ShellBot.answerCallbackQuery --callback_query_id ${callback_query_id[$id]} \
+									--text "Comprar Acesso"
 	# Envia mensagem
 	ShellBot.sendMessage --chat_id ${callback_query_message_chat_id[$id]} \
 							--text "$(echo -e $msg)" \
-							--reply_markup "$keyboard1" \
 							--parse_mode html
 		
 							
@@ -125,7 +105,7 @@ ShellBot.InlineKeyboardButton --button 'botao1' --line 1 --text '♻️GERAR TES
 ShellBot.InlineKeyboardButton --button 'botao1' --line 2 --text '🔰BAIXAR APLICATIVO🔰' --callback_data '2' --url 'http://bit.ly/LSVPN1054apk'
 ShellBot.InlineKeyboardButton --button 'botao1' --line 3 --text '💲COMPRAR ACESSO💲' --callback_data 'compra'
 ShellBot.regHandleFunction --function criarteste --callback_data gerarssh
-ShellBot.regHandleFunction --function compraracesso --callback_data compra
+ShellBot.regHandleFunction --function comprar --callback_data compra
 
 unset keyboard1
 keyboard1="$(ShellBot.InlineKeyboardMarkup -b 'botao1')"
@@ -141,7 +121,6 @@ while :; do
       comando=(${message_text[$id]})
       [[ "${comando[0]}" = "/menu"  || "${comando[0]}" = "/start" ]] && menu
       [[ "${comando[0]}" = "/id"  ]] && infouser
-      [[ "${comando[0]}" = "/compra"  ]] && compraracesso
     ) &
   done
 done

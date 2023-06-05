@@ -85,7 +85,7 @@ comprar() {
 
 lsandroid() {
 	msg="</b>LS ANDROID MENSAL</b>\n"
-	msg+="<b>VALOR 19,99 BRL</b>\n"
+	msg+="VALOR 19,99 BRL\n"
 	msg+="30 dias\n"
 	msg+="Chave PIX: testenetssh@gmail.com\n"
 	msg+="Envie o comprovante para:\n"
@@ -105,7 +105,7 @@ lsandroid() {
 
 lsandroidp() {
 	msg="</b>LS ANDROID MENSAL PREMIUM</b>\n"
-	msg+="<b>VALOR 24,99 BRL</b>\n"
+	msg+="VALOR 24,99 BRL\n"
 	msg+="30 dias\n"
 	msg+="Chave PIX: testenetssh@gmail.com\n"
 	msg+="Envie o comprovante para:\n"
@@ -177,7 +177,7 @@ while :; do
     (
       ShellBot.watchHandle --callback_data ${callback_query_data[$id]}
       comando=(${message_text[$id]})
-      [[ "${comando[0]}" = "/menu"  || "${comando[0]}" = "/start" ]] && menu
+      [[ "${comando[0]}" = "/menu"  || "${comando[0]}" = "/start"|| "${comando[0]}" = "menu" ]] && menu
       [[ "${comando[0]}" = "/id"  ]] && infouser
     ) &
   done

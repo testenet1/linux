@@ -103,7 +103,7 @@ lsandroid() {
 	# Envia mensagem
 	ShellBot.sendMessage --chat_id ${callback_query_message_chat_id[$id]} \
 							--text "$(echo -e $msg)" \
-							--reply_markup "$keyboard3" \
+							--reply_markup "$keyboard2" \
 							--parse_mode html
 						
 	# retorno
@@ -122,6 +122,14 @@ lsandroidp() {
 	msg+="testenetssh@gmail.com\n"
 	msg+="Envie o comprovante:\n"
 	
+	
+	
+	# Envia mensagem
+	ShellBot.sendMessage --chat_id ${callback_query_message_chat_id[$id]} \
+							--text "🟣 LS ANDROID MENSAL PREMIUM 🟣\n" \
+							--reply_markup "$keyboard2" \
+							--parse_mode html
+	
 	# Envia foto
 	ShellBot.sendPhoto --chat_id ${callback_query_message_chat_id[$id]} \
 							--photo @/etc/pics/lsandroidpremium.png \
@@ -130,7 +138,7 @@ lsandroidp() {
 	# Envia mensagem
 	ShellBot.sendMessage --chat_id ${callback_query_message_chat_id[$id]} \
 							--text "$(echo -e $msg)" \
-							--reply_markup "$keyboard3" \
+							--reply_markup "$keyboard2" \
 							--parse_mode html
 						
 	# retorno
@@ -150,7 +158,7 @@ lsandroidplus() {
 	# Envia mensagem
 	ShellBot.sendMessage --chat_id ${callback_query_message_chat_id[$id]} \
 							--text "$(echo -e $msg)" \
-							--reply_markup "$keyboard3" \
+							--reply_markup "$keyboard2" \
 							--parse_mode html
 							
 	# retorno

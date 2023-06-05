@@ -29,7 +29,7 @@ criarteste() {
             sed -i "/${callback_query_from_id}/d" lista
         else
             ShellBot.sendMessage --chat_id ${callback_query_message_chat_id} \
-                --text "🚫 Você já gerou um SSH recentemente. ⌛️ Aguarde 3 dias para gerar um novo teste!"
+                --text "🚫 Você já gerou um SSH recentemente. 📞 Entre em contato com o administrador."
             return 0
         fi
     fi
@@ -89,21 +89,27 @@ lsandroid() {
 	msg="=×=×=×=×=×=×=×=×=×=×=\n"
 	msg+="<b>💲PAGAMENTO💲</b>\n"
 	msg+="=×=×=×=×=×=×=×=×=×=×=\n"
-	msg+="VALOR: 19,99 BRL\n"
+	msg+="<b>LS ANDROID PREMIUM</b>\n"
+	msg+="VALOR: 24,99 BRL\n"
 	msg+="Período: 30 dias\n"
 	msg+="Chave PIX:\n"
 	msg+="testenetssh@gmail.com\n"
 	msg+="Envie o comprovante:\n"
 	
+	# Envia mensagem
+	ShellBot.sendMessage --chat_id ${callback_query_message_chat_id[$id]} \
+							--text "🟠 LS ANDROID MENSAL 🟠\n" \
+							--parse_mode html
+	
 	# Envia foto
 	ShellBot.sendPhoto --chat_id ${callback_query_message_chat_id[$id]} \
-							--photo @/etc/pics/lsandroid.png \
+							--photo @/etc/pics/lsandroidpremium.png \
 							--parse_mode html
 	
 	# Envia mensagem
 	ShellBot.sendMessage --chat_id ${callback_query_message_chat_id[$id]} \
 							--text "$(echo -e $msg)" \
-							--reply_markup "$keyboard2" \
+							--reply_markup "$keyboard3" \
 							--parse_mode html
 						
 	# retorno
@@ -122,12 +128,9 @@ lsandroidp() {
 	msg+="testenetssh@gmail.com\n"
 	msg+="Envie o comprovante:\n"
 	
-	
-	
 	# Envia mensagem
 	ShellBot.sendMessage --chat_id ${callback_query_message_chat_id[$id]} \
 							--text "🟣 LS ANDROID MENSAL PREMIUM 🟣\n" \
-							--reply_markup "$keyboard2" \
 							--parse_mode html
 	
 	# Envia foto
@@ -138,7 +141,7 @@ lsandroidp() {
 	# Envia mensagem
 	ShellBot.sendMessage --chat_id ${callback_query_message_chat_id[$id]} \
 							--text "$(echo -e $msg)" \
-							--reply_markup "$keyboard2" \
+							--reply_markup "$keyboard3" \
 							--parse_mode html
 						
 	# retorno
@@ -148,41 +151,71 @@ lsandroidp() {
 
 lsandroidplus() {
 	local msg
-	msg="LS ANDROID PLUS\n"
-	msg+="VALOR: 34,99 BRL\n"
-	msg+="30 dias\n"
+	msg="=×=×=×=×=×=×=×=×=×=×=\n"
+	msg+="<b>💲PAGAMENTO💲</b>\n"
+	msg+="=×=×=×=×=×=×=×=×=×=×=\n"
+	msg+="<b>LS ANDROID PREMIUM</b>\n"
+	msg+="VALOR: 24,99 BRL\n"
+	msg+="Período: 30 dias\n"
 	msg+="Chave PIX:\n"
 	msg+="testenetssh@gmail.com\n"
-	msg+="Envie o comprovante:"
+	msg+="Envie o comprovante:\n"
 	
 	# Envia mensagem
 	ShellBot.sendMessage --chat_id ${callback_query_message_chat_id[$id]} \
-							--text "$(echo -e $msg)" \
-							--reply_markup "$keyboard2" \
+							--text "🟣 LS ANDROID MENSAL PREMIUM 🟣\n" \
 							--parse_mode html
-							
-	# retorno
-	return 0
-}
-
-lsandroidplusp() {
-	local msg
-	msg="LS ANDROID PLUS PREMIUM\n"
-	msg+="VALOR 39,99 BRL\n"
-	msg+="30 dias\n"
-	msg+="Chave PIX:\n"
-	msg+="testenetssh@gmail.com\n"
-	msg+="Envie o comprovante:"
+	
+	# Envia foto
+	ShellBot.sendPhoto --chat_id ${callback_query_message_chat_id[$id]} \
+							--photo @/etc/pics/lsandroidpremium.png \
+							--parse_mode html
 	
 	# Envia mensagem
 	ShellBot.sendMessage --chat_id ${callback_query_message_chat_id[$id]} \
 							--text "$(echo -e $msg)" \
 							--reply_markup "$keyboard3" \
 							--parse_mode html
-							
+						
 	# retorno
 	return 0
 }
+
+
+
+lsandroidplusp() {
+	local msg
+	msg="=×=×=×=×=×=×=×=×=×=×=\n"
+	msg+="<b>💲PAGAMENTO💲</b>\n"
+	msg+="=×=×=×=×=×=×=×=×=×=×=\n"
+	msg+="<b>LS ANDROID PREMIUM</b>\n"
+	msg+="VALOR: 24,99 BRL\n"
+	msg+="Período: 30 dias\n"
+	msg+="Chave PIX:\n"
+	msg+="testenetssh@gmail.com\n"
+	msg+="Envie o comprovante:\n"
+	
+	# Envia mensagem
+	ShellBot.sendMessage --chat_id ${callback_query_message_chat_id[$id]} \
+							--text "🟣 LS ANDROID MENSAL PREMIUM 🟣\n" \
+							--parse_mode html
+	
+	# Envia foto
+	ShellBot.sendPhoto --chat_id ${callback_query_message_chat_id[$id]} \
+							--photo @/etc/pics/lsandroidpremium.png \
+							--parse_mode html
+	
+	# Envia mensagem
+	ShellBot.sendMessage --chat_id ${callback_query_message_chat_id[$id]} \
+							--text "$(echo -e $msg)" \
+							--reply_markup "$keyboard3" \
+							--parse_mode html
+						
+	# retorno
+	return 0
+}
+
+
 
 #enviar app
 enviarapp() {

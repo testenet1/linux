@@ -65,8 +65,24 @@ rm -rf /etc/SSHPlus/userteste/$usuario.sh" > /etc/SSHPlus/userteste/$usuario.sh
 }
 
 comprar() {
-	msg="Olá *${callback_query_from_username[$id]}* , em que posso ajudar?\n"
-	msg+="No momento minhas opções são limitadas, mas farei o possível."
+	msg="=×=×=×=×=×=×=×=×=×=×=×=×=×=\n"
+	msg+="<b>💲OLA SEJA BEM VINDO AO MENU DE COMPRA!(a)💲</b>\n"
+	msg+="=×=×=×=×=×=×=×=×=×=×=×=×=×=\n"
+	msg+="Olá *${callback_query_from_username[$id]}* , seja bem vindo ao menu de pagamento!\n"
+	msg+="Escolha seu Plano:\n"
+	msg+="<b>PLANOS ANDROID<b>\n"
+	msg+="LS ANDROID MENSAL = R$19.99\n"
+	msg+="LS ANDROID MENSAL PREMIUM = R$24.99\n"
+	msg+="LS ANDROID MENSAL PLUS = R$34.99\n"
+	msg+="LS ANDROID MENSAL PLUS PREMIUM = R$39.99\n"
+	msg+="=×=×=×=×=×=×=×=×=×=×=×=×=×=\n"
+	msg+="<b>PLANOS IOS<b>\n"
+	msg+="LS IOS MENSAL = R$24.99\n"
+	msg+="LS IOS MENSAL PREMIUM = R$29.99\n"
+	msg+="=×=×=×=×=×=×=×=×=×=×=×=×=×=\n"
+	msg+="Pague com a chave PIX:\n"
+	msg+="testenetssh@gmail.com\n"
+	msg+="Envie o comprOvante para/n"
 
 	# Envia uma notificação em resposta ao botão pressionado.
 	ShellBot.answerCallbackQuery --callback_query_id ${callback_query_id[$id]} \

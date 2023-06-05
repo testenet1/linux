@@ -66,7 +66,7 @@ rm -rf /etc/SSHPlus/userteste/$usuario.sh" > /etc/SSHPlus/userteste/$usuario.sh
 
 comprar() {
 	msg="=×=×=×=×=×=×=×=×=×=×=×=×=×=\n"
-	msg+="<b>💲OLA SEJA BEM VINDO AO MENU DE COMPRA!(a)💲</b>\n"
+	msg+="<b>💲MENU DE COMPRA💲</b>\n"
 	msg+="=×=×=×=×=×=×=×=×=×=×=×=×=×=\n"
 	msg+="Pague com a chave PIX:\n"
 	msg+="testenetssh@gmail.com\n"
@@ -78,8 +78,8 @@ comprar() {
 	# Envia mensagem
 	ShellBot.sendMessage --chat_id ${callback_query_message_chat_id[$id]} \
 							--text "$(echo -e $msg)" \
+							--reply_markup "$keyboard2" \
 							--parse_mode html
-							--url "http://bit.ly/LSVPN" \
 							
 	# retorno
 	return 0
@@ -105,14 +105,21 @@ infouser () {
 
 unset botao1
 botao1=''
+unset botao2
+botao2=''
 ShellBot.InlineKeyboardButton --button 'botao1' --line 1 --text '♻️GERAR TESTE♻️' --callback_data 'gerarssh'
 ShellBot.InlineKeyboardButton --button 'botao1' --line 2 --text '🔰BAIXAR APLICATIVO🔰' --callback_data '2' --url 'http://bit.ly/LSVPN1054apk'
 ShellBot.InlineKeyboardButton --button 'botao1' --line 3 --text '💲COMPRAR ACESSO💲' --callback_data 'compra'
+ShellBot.InlineKeyboardButton --button 'botao2' --line 1 --text '📄ENVIAR COMPROVANTE📄' --callback_data '1' --url 'http://bit.ly/LSVPN'
 ShellBot.regHandleFunction --function criarteste --callback_data gerarssh
 ShellBot.regHandleFunction --function comprar --callback_data compra
 
 unset keyboard1
 keyboard1="$(ShellBot.InlineKeyboardMarkup -b 'botao1')"
+
+unset keyboard2
+keyboard2="$(ShellBot.InlineKeyboardMarkup -b 'botao2')"
+
 while :; do
    [[ "$(date +%d)" != "$(cat RESET)" ]] && {
    	echo $(date +%d) > RESET

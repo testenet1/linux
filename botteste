@@ -100,17 +100,18 @@ comprar() {
 
 lsandroid() {
 	local msg
-	msg="=×=×=×=×=×=×=×=×=×=×=×=×=×=×=×=×=×=×=\n"
-	msg+="       *💳 PAGAMENTO* 💳\n"
-	msg+="=×=×=×=×=×=×=×=×=×=×=×=×=×=×=×=×=×=×=\n\n"
-	msg+="*LS ANDROID MENSAL*\n"
-	msg+="*VALOR*: 19,99 BRL\n"
-	msg+="*Período*: 30 dias\n"
+	msg="=×=×=×=×=×=×=×=×=×=×=×=×=×=×=×=×=×=×\n"
+	msg+="       <b>💳 PAGAMENTO 💳</b>\n"
+	msg+="=×=×=×=×=×=×=×=×=×=×=×=×=×=×=×=×=×=×\n\n"
+	msg+="       <b>LS ANDROID MENSAL</b>\n"
+	msg+="       VALOR: 24,99 BRL\n"
+	msg+="       Período: 30 dias\n"
 	msg+="\n"
-	msg+="`Chave PIX:`\n"
-	msg+="`testenetssh@gmail.com`\n"
+	msg+="       <b>Chave PIX EMAIL:</b>\n"
 	msg+="\n"
-	msg+="Envie o comprovante:\n"
+	msg+="<pre>       <b>testenetssh@gmail.com</b></pre>\n"
+	msg+="\n"
+	msg+="<pre>       Envie o comprovante:</pre>\n"
 
 	
 	# Envia uma notificação em resposta ao botão pressionado.
@@ -136,7 +137,7 @@ lsandroid() {
 	ShellBot.sendMessage --chat_id ${callback_query_message_chat_id[$id]} \
 							--text "$(echo -e $msg)" \
 							--reply_markup "$keyboard3" \
-							--parse_mode markdown
+							--parse_mode html
 						
 	# retorno
 	return 0

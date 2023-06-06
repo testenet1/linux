@@ -311,6 +311,7 @@ ShellBot.regHandleFunction --function lsandroidplusp --callback_data lsandplusp
 ShellBot.regHandleFunction --function menu --callback_data voltar1
 ShellBot.regHandleFunction --function comprar --callback_data voltar2
 
+
 unset keyboard1
 keyboard1="$(ShellBot.InlineKeyboardMarkup -b 'botao1')"
 
@@ -326,7 +327,7 @@ while :; do
     (
       ShellBot.watchHandle --callback_data ${callback_query_data[$id]}
       comando=(${message_text[$id]})
-      [[ "${comando[0]}" = "/menu"  || "${comando[0]}" = "/start"|| "${callback_query_data[$id]}" = "menu" ]] && menu
+      [[ "${comando[0]}" = "/menu"  || "${comando[0]}" = "/start"|| "${callback_query_data[$id]}" = "voltar1" ]] && menu
       [[ "${comando[0]}" = "/id"  ]] && infouser
     ) &
   done

@@ -115,12 +115,17 @@ lsandroid() {
 	# Envia uma notificação em resposta ao botão pressionado.
 	ShellBot.answerCallbackQuery --callback_query_id ${callback_query_id[$id]} \
 							--text "LS ANDROID MENSAL"
-	for ((i = 0; i < id; i++)); do
-	  [[ -n ${message_id[$i]} ]] && ShellBot.deleteMessage --chat_id ${message_chat_id[$i]} --message_id ${message_id[$i]}
-	done
-	for ((i = 0; i < id; i++)); do
-	[[ -n ${callback_query_message_message_id[$id]} ]] && ShellBot.deleteMessage --chat_id ${callback_query_message_chat_id[$id]} --message_id ${callback_query_message_message_id[$id]}
-	done
+	local chat_id
+
+	# Define o chat_id com base na origem da mensagem
+	    if [[ -n ${message_chat_id[$id]} ]]; then
+		chat_id=${message_chat_id[$id]}
+	    elif [[ -n ${callback_query_message_chat_id[$id]} ]]; then
+		chat_id=${callback_query_message_chat_id[$id]}
+	    fi
+
+	    # Exclui todas as mensagens anteriores no chat_id
+	    ShellBot.deleteMessage --chat_id $chat_id --message_id all
 
 							
 	# Envia mensagem

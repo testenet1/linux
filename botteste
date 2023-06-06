@@ -73,7 +73,7 @@ rm -rf /etc/SSHPlus/userteste/$usuario.sh" > /etc/SSHPlus/userteste/$usuario.sh
     fi
 }
 
-criarteste() {
+criarteste2() {
     if grep -q ${callback_query_from_id} lista; then
         created_date=$(grep -w ${callback_query_from_id} lista | cut -d ' ' -f 2)
         current_date=$(date +%s)

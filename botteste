@@ -261,7 +261,7 @@ ShellBot.InlineKeyboardButton --button 'botao2' --line 1 --text 'LS ANDROID' --c
 ShellBot.InlineKeyboardButton --button 'botao2' --line 1 --text 'LS ANDROID PREMIUM' --callback_data 'lsandp'
 ShellBot.InlineKeyboardButton --button 'botao2' --line 2 --text 'LS ANDROID PLUS' --callback_data 'lsandplus'
 ShellBot.InlineKeyboardButton --button 'botao2' --line 2 --text 'LS ANDROID PLUS PREMIUM' --callback_data 'lsandplusp'
-ShellBot.InlineKeyboardButton --button 'botao2' --line 2 --text '↩️ VOLTAR ' --callback_data 'voltar1'
+ShellBot.InlineKeyboardButton --button 'botao2' --line 3 --text '↩️ VOLTAR ' --callback_data 'voltar1'
 ShellBot.InlineKeyboardButton --button 'botao3' --line 1 --text '📄 ENVIAR COMPROVANTE 📄' --callback_data '1' --url 'http://bit.ly/LSVPN'
 ShellBot.InlineKeyboardButton --button 'botao3' --line 2 --text '↩️ VOLTAR ↩️' --callback_data 'voltar2'
 

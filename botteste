@@ -100,32 +100,26 @@ comprar() {
 
 lsandroid() {
 	local msg
-	msg="=×=×=×=×=×=×=×=×=×=×=×=×=×=×=×=×=×=×\n"
-	msg+="<pre>       <b>💳 PAGAMENTO 💳</b></pre>\n"
-	msg+="=×=×=×=×=×=×=×=×=×=×=×=×=×=×=×=×=×=×\n\n"
-	msg+="<pre>       <b>LS ANDROID MENSAL</b>\n"
-	msg+="       VALOR: 19,99 BRL\n"
-	msg+="       Período: 30 dias\n"
+	msg="=×=×=×=×=×=×=×=×=×=×=×=×=×=×=×=×=×=×=\n"
+	msg+="       *💳 PAGAMENTO* 💳\n"
+	msg+="=×=×=×=×=×=×=×=×=×=×=×=×=×=×=×=×=×=×=\n\n"
+	msg+="*LS ANDROID MENSAL*\n"
+	msg+="*VALOR*: 19,99 BRL\n"
+	msg+="*Período*: 30 dias\n"
 	msg+="\n"
-	msg+="       <b>Chave PIX:</b></pre>\n"
-	msg+="<pre>       <b>testenetssh@gmail.com</b></pre>\n"
-	msg+="<pre>       Envie o comprovante:</pre>\n"
+	msg+="`Chave PIX:`\n"
+	msg+="`testenetssh@gmail.com`\n"
+	msg+="\n"
+	msg+="Envie o comprovante:\n"
 
 	
 	# Envia uma notificação em resposta ao botão pressionado.
 	ShellBot.answerCallbackQuery --callback_query_id ${callback_query_id[$id]} \
 							--text "LS ANDROID MENSAL"
-	local chat_id
+							
+	[[ -n ${message_id[$id]} ]] && ShellBot.deleteMessage --chat_id ${callback_query_message_chat_id[$id]} --message_id ${message_id[$id]}
+	[[ -n ${callback_query_message_message_id[$id]} ]] && ShellBot.deleteMessage --chat_id ${callback_query_message_chat_id[$id]} --message_id ${callback_query_message_message_id[$id]}
 
-	# Define o chat_id com base na origem da mensagem
-	    if [[ -n ${message_chat_id[$id]} ]]; then
-		chat_id=${message_chat_id[$id]}
-	    elif [[ -n ${callback_query_message_chat_id[$id]} ]]; then
-		chat_id=${callback_query_message_chat_id[$id]}
-	    fi
-
-	    # Exclui todas as mensagens anteriores no chat_id
-	    ShellBot.deleteMessage --chat_id $chat_id --message_id all
 
 							
 	# Envia mensagem
@@ -142,7 +136,7 @@ lsandroid() {
 	ShellBot.sendMessage --chat_id ${callback_query_message_chat_id[$id]} \
 							--text "$(echo -e $msg)" \
 							--reply_markup "$keyboard3" \
-							--parse_mode html
+							--parse_mode markdown
 						
 	# retorno
 	return 0

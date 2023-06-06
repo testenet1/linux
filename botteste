@@ -75,12 +75,11 @@ rm -rf /etc/SSHPlus/userteste/$usuario.sh" > /etc/SSHPlus/userteste/$usuario.sh
 
 comprar() {
 	local msg
-	msg="=×=×=×=×=×=×=×=×=×=×=×=×=×=×=×=×=×=×\n"
-	msg+="       <b>💲MENU DE COMPRA💲</b>\n"
-	msg+="=×=×=×=×=×=×=×=×=×=×=×=×=×=×=×=×=×=×\n\n"
+	msg="<pre>=======================</pre>\n"
+	msg+="<pre>   <b>💲 MENU DE COMPRA 💲</b>   </pre>\n"
+	msg+="<pre>=======================</pre>\n\n"
 	msg+="Escolha o plano:\n"
-	
-	
+
 	# Envia uma notificação em resposta ao botão pressionado.
 	ShellBot.answerCallbackQuery --callback_query_id ${callback_query_id[$id]} \
 							--text "Comprar Acesso"
@@ -100,16 +99,15 @@ comprar() {
 }
 
 lsandroid() {
-	local msg
 	msg="=×=×=×=×=×=×=×=×=×=×=×=×=×=×=×=×=×=×\n"
-	msg+="       <b>💳 PAGAMENTO 💳</b>\n"
+	msg+="<pre>       <b>💳 PAGAMENTO 💳</b>\n</pre>"
 	msg+="=×=×=×=×=×=×=×=×=×=×=×=×=×=×=×=×=×=×\n\n"
-	msg+="<b>LS ANDROID MENSAL</b>\n"
+	msg+="<pre><b>LS ANDROID MENSAL</b>\n"
 	msg+="VALOR: 19,99 BRL\n"
 	msg+="Período: 30 dias\n"
 	msg+="Chave PIX:\n"
-	msg+="<b>testenetssh@gmail.com</b>\n"
-	msg+="Envie o comprovante:\n"
+	msg+="testenetssh@gmail.com</pre>\n"
+	msg+="<pre>Envie o comprovante:</pre>\n"
 	
 	# Envia uma notificação em resposta ao botão pressionado.
 	ShellBot.answerCallbackQuery --callback_query_id ${callback_query_id[$id]} \

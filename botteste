@@ -8,7 +8,7 @@ ShellBot.username
 
 # - Funcao menu
 menu() {
-    local msg
+        local msg
         msg="=×=×=×=×=×=×=×=×=×=×=×=×=×=\n"
         msg+="<b>🤖 OLA SEJA BEM VINDO(a) 🤖</b>\n"
         msg+="=×=×=×=×=×=×=×=×=×=×=×=×=×=\n\n"
@@ -257,11 +257,13 @@ botao3=''
 ShellBot.InlineKeyboardButton --button 'botao1' --line 1 --text '♻️ GERAR TESTE ♻️' --callback_data 'gerarssh'
 ShellBot.InlineKeyboardButton --button 'botao1' --line 2 --text '📥 BAIXAR APLICATIVO 📥' --callback_data '2' --url 'http://bit.ly/LSVPN1054apk'
 ShellBot.InlineKeyboardButton --button 'botao1' --line 3 --text '💲 COMPRAR ACESSO 💲' --callback_data 'compra'
+
 ShellBot.InlineKeyboardButton --button 'botao2' --line 1 --text 'LS ANDROID' --callback_data 'lsand'
 ShellBot.InlineKeyboardButton --button 'botao2' --line 1 --text 'LS ANDROID PREMIUM' --callback_data 'lsandp'
 ShellBot.InlineKeyboardButton --button 'botao2' --line 2 --text 'LS ANDROID PLUS' --callback_data 'lsandplus'
 ShellBot.InlineKeyboardButton --button 'botao2' --line 2 --text 'LS ANDROID PLUS PREMIUM' --callback_data 'lsandplusp'
 ShellBot.InlineKeyboardButton --button 'botao2' --line 3 --text '↩️ VOLTAR ' --callback_data 'voltar1'
+
 ShellBot.InlineKeyboardButton --button 'botao3' --line 1 --text '📄 ENVIAR COMPROVANTE 📄' --callback_data '1' --url 'http://bit.ly/LSVPN'
 ShellBot.InlineKeyboardButton --button 'botao3' --line 2 --text '↩️ VOLTAR ↩️' --callback_data 'voltar2'
 
@@ -289,8 +291,8 @@ while :; do
     (
       ShellBot.watchHandle --callback_data ${callback_query_data[$id]}
       comando=(${message_text[$id]})
-      [[ "${comando[0]}" = "/menu"  || "${comando[0]}" = "/start"|| "${callback_query_data[$id]}" = "menu" ]] && menu
-      [[ "${comando[0]}" = "/id"  ]] && infouser
+      if[[ "${comando[0]}" = "/menu"  || "${comando[0]}" = "/start"|| "${callback_query_data[$id]}" = "menu" ]]; then menu
+      if[[ "${comando[0]}" = "/id"  ]]; then infouser
     ) &
   done
 done

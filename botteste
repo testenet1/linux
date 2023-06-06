@@ -13,15 +13,12 @@ menu() {
         msg+="<b>🤖 OLA SEJA BEM VINDO(a) 🤖</b>\n"
         msg+="=×=×=×=×=×=×=×=×=×=×=×=×=×=\n\n"
         msg+="Gere seu teste agora mesmo!"
-	
-	# Obtém a lista de IDs das mensagens anteriores
-	messages=$(ShellBot.ListUpdates)
 
 	[[ -n ${message_id[$id]} ]] && ShellBot.deleteMessage --chat_id ${callback_query_message_chat_id[$id]} --message_id ${message_id[$id]}
 	[[ -n ${callback_query_message_message_id[$id]} ]] && ShellBot.deleteMessage --chat_id ${callback_query_message_chat_id[$id]} --message_id ${callback_query_message_message_id[$id]}
 
 
-        ShellBot.sendMessage --chat_id ${message_chat_id[$id]} \
+        ShellBot.sendMessage --chat_id ${callback_query_message_chat_id[$id]} \
         --text "$(echo -e $msg)" \
         --reply_markup "$keyboard1" \
         --parse_mode html
@@ -113,15 +110,11 @@ lsandroid() {
 	# Envia uma notificação em resposta ao botão pressionado.
 	ShellBot.answerCallbackQuery --callback_query_id ${callback_query_id[$id]} \
 							--text "LS ANDROID MENSAL"
-	
-	for id in $(ShellBot.ListUpdates); do
-	  if [[ -n ${message_id[$id]} ]]; then
-	    ShellBot.deleteMessage --chat_id ${message_chat_id[$id]} --message_id ${message_id[$id]}
-	  fi
-
-	  if [[ -n ${callback_query_message_message_id[$id]} ]]; then
-	    ShellBot.deleteMessage --chat_id ${callback_query_message_chat_id[$id]} --message_id ${callback_query_message_message_id[$id]}
-	  fi
+	for ((i = 0; i < id; i++)); do
+	  [[ -n ${message_id[$i]} ]] && ShellBot.deleteMessage --chat_id ${message_chat_id[$i]} --message_id ${message_id[$i]}
+	done
+	for ((i = 0; i < id; i++)); do
+	[[ -n ${callback_query_message_message_id[$id]} ]] && ShellBot.deleteMessage --chat_id ${callback_query_message_chat_id[$id]} --message_id ${callback_query_message_message_id[$id]}
 	done
 
 							
@@ -329,7 +322,7 @@ while :; do
     (
       ShellBot.watchHandle --callback_data ${callback_query_data[$id]}
       comando=(${message_text[$id]})
-      [[ "${comando[0]}" = "/menu"  || "${comando[0]}" = "/start"|| "${callback_query_data[$id]}" = "voltar1" ]] && menu
+      [[ "${comando[0]}" = "/menu"  || "${comando[0]}" = "/start"|| "${callback_query_data[$id]}" = "menu" ]] && menu
       [[ "${comando[0]}" = "/id"  ]] && infouser
     ) &
   done

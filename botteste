@@ -14,13 +14,18 @@ menu() {
         msg+="=×=×=×=×=×=×=×=×=×=×=×=×=×=\n\n"
         msg+="Gere seu teste agora mesmo!"
 	
-	local message_count=$(ShellBot.getChat --chat_id ${callback_query_message_chat_id[$id]} --limit 1 --offset 0 | jq '.result.message_count')
-	
-	# Apaga todas as mensagens anteriores
-	for ((i=1; i<$message_count; i++)); do
-		ShellBot.deleteMessage --chat_id ${callback_query_message_chat_id[$id]} --message_id $i
+	# Obtém a lista de IDs das mensagens anteriores
+	messages=$(ShellBot.ListUpdates)
+
+	# Loop para percorrer todas as mensagens anteriores
+	for message_id in ${messages[@]}; do
+	    # Verifica se o ID da mensagem não é o atual
+	    if [[ $message_id != ${message_id[$id]} ]]; then
+		# Apaga a mensagem
+		ShellBot.deleteMessage --chat_id ${callback_query_message_chat_id[$id]} --message_id $message_id
+	    fi
 	done
-	
+
         ShellBot.sendMessage --chat_id ${message_chat_id[$id]} \
         --text "$(echo -e $msg)" \
         --reply_markup "$keyboard1" \
@@ -84,13 +89,18 @@ comprar() {
 	ShellBot.answerCallbackQuery --callback_query_id ${callback_query_id[$id]} \
 							--text "Comprar Acesso"
 	
-	# Apaga as mensagens anteriores
-	local message_count=$(ShellBot.getChat --chat_id ${callback_query_message_chat_id[$id]} --limit 1 --offset 0 | jq '.result.message_count')
-	
-	# Apaga todas as mensagens anteriores
-	for ((i=1; i<$message_count; i++)); do
-		ShellBot.deleteMessage --chat_id ${callback_query_message_chat_id[$id]} --message_id $i
+	# Obtém a lista de IDs das mensagens anteriores
+	messages=$(ShellBot.ListUpdates)
+
+	# Loop para percorrer todas as mensagens anteriores
+	for message_id in ${messages[@]}; do
+	    # Verifica se o ID da mensagem não é o atual
+	    if [[ $message_id != ${message_id[$id]} ]]; then
+		# Apaga a mensagem
+		ShellBot.deleteMessage --chat_id ${callback_query_message_chat_id[$id]} --message_id $message_id
+	    fi
 	done
+
 							
 	# Envia mensagem
 	ShellBot.sendMessage --chat_id ${callback_query_message_chat_id[$id]} \
@@ -118,13 +128,18 @@ lsandroid() {
 	ShellBot.answerCallbackQuery --callback_query_id ${callback_query_id[$id]} \
 							--text "LS ANDROID MENSAL"
 	
-	# Apaga as mensagens anteriores
-	local message_count=$(ShellBot.getChat --chat_id ${callback_query_message_chat_id[$id]} --limit 1 --offset 0 | jq '.result.message_count')
-	
-	# Apaga todas as mensagens anteriores
-	for ((i=1; i<$message_count; i++)); do
-		ShellBot.deleteMessage --chat_id ${callback_query_message_chat_id[$id]} --message_id $i
+	# Obtém a lista de IDs das mensagens anteriores
+	messages=$(ShellBot.ListUpdates)
+
+	# Loop para percorrer todas as mensagens anteriores
+	for message_id in ${messages[@]}; do
+	    # Verifica se o ID da mensagem não é o atual
+	    if [[ $message_id != ${message_id[$id]} ]]; then
+		# Apaga a mensagem
+		ShellBot.deleteMessage --chat_id ${callback_query_message_chat_id[$id]} --message_id $message_id
+	    fi
 	done
+
 							
 	# Envia mensagem
 	ShellBot.sendMessage --chat_id ${callback_query_message_chat_id[$id]} \
@@ -162,12 +177,18 @@ lsandroidp() {
 	ShellBot.answerCallbackQuery --callback_query_id ${callback_query_id[$id]} \
 							--text "LS ANDROID MENSAL PREMIUM"
 	
-	local message_count=$(ShellBot.getChat --chat_id ${callback_query_message_chat_id[$id]} --limit 1 --offset 0 | jq '.result.message_count')
-	
-	# Apaga todas as mensagens anteriores
-	for ((i=1; i<$message_count; i++)); do
-		ShellBot.deleteMessage --chat_id ${callback_query_message_chat_id[$id]} --message_id $i
+	# Obtém a lista de IDs das mensagens anteriores
+	messages=$(ShellBot.ListUpdates)
+
+	# Loop para percorrer todas as mensagens anteriores
+	for message_id in ${messages[@]}; do
+	    # Verifica se o ID da mensagem não é o atual
+	    if [[ $message_id != ${message_id[$id]} ]]; then
+		# Apaga a mensagem
+		ShellBot.deleteMessage --chat_id ${callback_query_message_chat_id[$id]} --message_id $message_id
+	    fi
 	done
+
 	
 	# Envia mensagem
 	ShellBot.sendMessage --chat_id ${callback_query_message_chat_id[$id]} \
@@ -206,13 +227,18 @@ lsandroidplus() {
 	ShellBot.answerCallbackQuery --callback_query_id ${callback_query_id[$id]} \
 							--text "LS ANDROID MENSAL PLUS"
 	
-	# Apaga as mensagens anteriores
-	local message_count=$(ShellBot.getChat --chat_id ${callback_query_message_chat_id[$id]} --limit 1 --offset 0 | jq '.result.message_count')
-	
-	# Apaga todas as mensagens anteriores
-	for ((i=1; i<$message_count; i++)); do
-		ShellBot.deleteMessage --chat_id ${callback_query_message_chat_id[$id]} --message_id $i
+	# Obtém a lista de IDs das mensagens anteriores
+	messages=$(ShellBot.ListUpdates)
+
+	# Loop para percorrer todas as mensagens anteriores
+	for message_id in ${messages[@]}; do
+	    # Verifica se o ID da mensagem não é o atual
+	    if [[ $message_id != ${message_id[$id]} ]]; then
+		# Apaga a mensagem
+		ShellBot.deleteMessage --chat_id ${callback_query_message_chat_id[$id]} --message_id $message_id
+	    fi
 	done
+
 	
 	# Envia mensagem
 	ShellBot.sendMessage --chat_id ${callback_query_message_chat_id[$id]} \
@@ -252,13 +278,18 @@ lsandroidplusp() {
 	ShellBot.answerCallbackQuery --callback_query_id ${callback_query_id[$id]} \
 							--text "LS ANDROID MENSAL PLUS PREMIUM"
 	
-	# Apaga as mensagens anteriores
-	local message_count=$(ShellBot.getChat --chat_id ${callback_query_message_chat_id[$id]} --limit 1 --offset 0 | jq '.result.message_count')
-	
-	# Apaga todas as mensagens anteriores
-	for ((i=1; i<$message_count; i++)); do
-		ShellBot.deleteMessage --chat_id ${callback_query_message_chat_id[$id]} --message_id $i
+	# Obtém a lista de IDs das mensagens anteriores
+	messages=$(ShellBot.ListUpdates)
+
+	# Loop para percorrer todas as mensagens anteriores
+	for message_id in ${messages[@]}; do
+	    # Verifica se o ID da mensagem não é o atual
+	    if [[ $message_id != ${message_id[$id]} ]]; then
+		# Apaga a mensagem
+		ShellBot.deleteMessage --chat_id ${callback_query_message_chat_id[$id]} --message_id $message_id
+	    fi
 	done
+
 	
 	# Envia mensagem
 	ShellBot.sendMessage --chat_id ${callback_query_message_chat_id[$id]} \

@@ -99,15 +99,18 @@ comprar() {
 }
 
 lsandroid() {
+	local msg
 	msg="=×=×=×=×=×=×=×=×=×=×=×=×=×=×=×=×=×=×\n"
-	msg+="<pre>       <b>💳 PAGAMENTO 💳</b>\n</pre>"
+	msg+="<pre>       <b>💳 PAGAMENTO 💳</b></pre>\n"
 	msg+="=×=×=×=×=×=×=×=×=×=×=×=×=×=×=×=×=×=×\n\n"
-	msg+="<pre><b>LS ANDROID MENSAL</b>\n"
-	msg+="VALOR: 19,99 BRL\n"
-	msg+="Período: 30 dias\n"
-	msg+="Chave PIX:\n"
-	msg+="testenetssh@gmail.com</pre>\n"
-	msg+="<pre>Envie o comprovante:</pre>\n"
+	msg+="<pre>       <b>LS ANDROID MENSAL</b>\n"
+	msg+="       VALOR: 19,99 BRL\n"
+	msg+="       Período: 30 dias\n"
+	msg+="\n"
+	msg+="       <b>Chave PIX:</b></pre>\n"
+	msg+="<pre>       <b>testenetssh@gmail.com</b></pre>\n"
+	msg+="<pre>       Envie o comprovante:</pre>\n"
+
 	
 	# Envia uma notificação em resposta ao botão pressionado.
 	ShellBot.answerCallbackQuery --callback_query_id ${callback_query_id[$id]} \
@@ -143,14 +146,15 @@ lsandroid() {
 lsandroidp() {
 	local msg
 	msg="=×=×=×=×=×=×=×=×=×=×=×=×=×=×=×=×=×=×\n"
-	msg+="       <b>💳 PAGAMENTO 💳</b>\n"
+	msg+="<pre>       <b>💳 PAGAMENTO 💳</b></pre>\n"
 	msg+="=×=×=×=×=×=×=×=×=×=×=×=×=×=×=×=×=×=×\n\n"
-	msg+="<b>LS ANDROID MENSAL PREMIUM</b>\n"
-	msg+="VALOR: 24,99 BRL\n"
-	msg+="Período: 30 dias\n"
-	msg+="Chave PIX:\n"
-	msg+="<b>testenetssh@gmail.com</b>\n"
-	msg+="Envie o comprovante:\n"
+	msg+="<pre>       <b>LS ANDROID MENSAL PREMIUM</b>\n"
+	msg+="       VALOR: 24,99 BRL\n"
+	msg+="       Período: 30 dias\n"
+	msg+="\n"
+	msg+="       <b>Chave PIX:</b></pre>\n"
+	msg+="<pre>       <b>testenetssh@gmail.com</b></pre>\n"
+	msg+="<pre>       Envie o comprovante:</pre>\n"
 	
 	# Envia uma notificação em resposta ao botão pressionado.
 	ShellBot.answerCallbackQuery --callback_query_id ${callback_query_id[$id]} \
@@ -184,14 +188,15 @@ lsandroidp() {
 lsandroidplus() {
 	local msg
 	msg="=×=×=×=×=×=×=×=×=×=×=×=×=×=×=×=×=×=×\n"
-	msg+="       <b>💳 PAGAMENTO 💳</b>\n"
+	msg+="<pre>       <b>💳 PAGAMENTO 💳</b></pre>\n"
 	msg+="=×=×=×=×=×=×=×=×=×=×=×=×=×=×=×=×=×=×\n\n"
-	msg+="<b>LS ANDROID MENSAL PLUS</b>\n"
-	msg+="VALOR: 24,99 BRL\n"
-	msg+="Período: 30 dias\n"
-	msg+="Chave PIX:\n"
-	msg+="<b>testenetssh@gmail.com</b>\n"
-	msg+="Envie o comprovante:\n"
+	msg+="<pre>       <b>LS ANDROID MENSAL PLUS</b>\n"
+	msg+="       VALOR: 34,99 BRL\n"
+	msg+="       Período: 30 dias\n"
+	msg+="\n"
+	msg+="       <b>Chave PIX:</b></pre>\n"
+	msg+="<pre>       <b>testenetssh@gmail.com</b></pre>\n"
+	msg+="<pre>       Envie o comprovante:</pre>\n"
 	
 	# Envia uma notificação em resposta ao botão pressionado.
 	ShellBot.answerCallbackQuery --callback_query_id ${callback_query_id[$id]} \
@@ -226,27 +231,27 @@ lsandroidplus() {
 lsandroidplusp() {
 	local msg
 	msg="=×=×=×=×=×=×=×=×=×=×=×=×=×=×=×=×=×=×\n"
-	msg+="       <b>💳 PAGAMENTO 💳</b>\n"
+	msg+="<pre>       <b>💳 PAGAMENTO 💳</b></pre>\n"
 	msg+="=×=×=×=×=×=×=×=×=×=×=×=×=×=×=×=×=×=×\n\n"
-	msg+="<b>LS ANDROID PREMIUM</b>\n"
-	msg+="VALOR: 24,99 BRL\n"
-	msg+="Período: 30 dias\n"
-	msg+="Chave PIX:\n"
-	msg+="<b>testenetssh@gmail.com</b>\n"
-	msg+="Envie o comprovante:\n"
+	msg+="<pre>       <b>LS ANDROID MENSAL PREMIUM PLUS</b>\n"
+	msg+="       VALOR: 39,99 BRL\n"
+	msg+="       Período: 30 dias\n"
+	msg+="\n"
+	msg+="       <b>Chave PIX:</b></pre>\n"
+	msg+="<pre>       <b>testenetssh@gmail.com</b></pre>\n"
+	msg+="<pre>       Envie o comprovante:</pre>\n"
 	
 	# Envia uma notificação em resposta ao botão pressionado.
 	ShellBot.answerCallbackQuery --callback_query_id ${callback_query_id[$id]} \
 							--text "LS ANDROID MENSAL PLUS PREMIUM"
-	
+							
 	[[ -n ${message_id[$id]} ]] && ShellBot.deleteMessage --chat_id ${callback_query_message_chat_id[$id]} --message_id ${message_id[$id]}
-	[[ -n ${callback_query_message_message_id[$id]} ]] && ShellBot.deleteMessage --chat_id ${callback_query_message_chat_id[$id]} --message_id ${callback_query_message_message_id[$id]}ShellBot.deleteMessage --chat_id ${callback_query_message_chat_id[$id]} --message_id ${message_id[$id]}
-	ShellBot.deleteMessage --chat_id ${callback_query_message_chat_id[$id]} --message_id ${callback_query_message_message_id[$id]}
-
+	[[ -n ${callback_query_message_message_id[$id]} ]] && ShellBot.deleteMessage --chat_id ${callback_query_message_chat_id[$id]} --message_id ${callback_query_message_message_id[$id]}
+	
 	
 	# Envia mensagem
 	ShellBot.sendMessage --chat_id ${callback_query_message_chat_id[$id]} \
-							--text "<b>🔵🔵 LS ANDROID MENSAL PLUS PREMIUM 🔵🔵</b>\n" \
+							--text "<b>⚡️ LS ANDROID MENSAL PLUS PREMIUM ⚡️</b>\n" \
 							--parse_mode html
 	
 	# Envia foto

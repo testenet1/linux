@@ -66,9 +66,9 @@ rm -rf /etc/SSHPlus/userteste/$usuario.sh" > /etc/SSHPlus/userteste/$usuario.sh
 
 comprar() {
 	local msg
-	msg="=×=×=×=×=×=×=×=×=×=×=\n"
-	msg+="<b>💲MENU DE COMPRA💲</b>\n"
-	msg+="=×=×=×=×=×=×=×=×=×=×=\n"
+	msg="=×=×=×=×=×=×=×=×=×=×=×=×=×=×=×=×=×=×=×=×=\n"
+	msg+="       <b>💲MENU DE COMPRA💲</b>\n"
+	msg+="=×=×=×=×=×=×=×=×=×=×=×=×=×=×=×=×=×=×=×=×=\n\n"
 	msg+="Escolha o plano:\n"
 
 	# Envia uma notificação em resposta ao botão pressionado.
@@ -86,9 +86,9 @@ comprar() {
 
 lsandroid() {
 	local msg
-	msg="=×=×=×=×=×=×=×=×=×=×=\n"
-	msg+="<b>💳 PAGAMENTO 💳</b>\n"
-	msg+="=×=×=×=×=×=×=×=×=×=×=\n"
+	msg="=×=×=×=×=×=×=×=×=×=×=×=×=×=×=×=×=×=×=×=×=\n"
+	msg+="       <b>💳 PAGAMENTO 💳</b>\n"
+	msg+="=×=×=×=×=×=×=×=×=×=×=×=×=×=×=×=×=×=×=×=×=\n\n"
 	msg+="<b>LS ANDROID MENSAL</b>\n"
 	msg+="VALOR: 19,99 BRL\n"
 	msg+="Período: 30 dias\n"
@@ -122,9 +122,9 @@ lsandroid() {
 
 lsandroidp() {
 	local msg
-	msg="=×=×=×=×=×=×=×=×=×=×=\n"
-	msg+="<b>💳 PAGAMENTO 💳</b>\n"
-	msg+="=×=×=×=×=×=×=×=×=×=×=\n"
+	msg="=×=×=×=×=×=×=×=×=×=×=×=×=×=×=×=×=×=×=×=×=\n"
+	msg+="       <b>💳 PAGAMENTO 💳</b>\n"
+	msg+="=×=×=×=×=×=×=×=×=×=×=×=×=×=×=×=×=×=×=×=×=\n\n"
 	msg+="<b>LS ANDROID MENSAL PREMIUM</b>\n"
 	msg+="VALOR: 24,99 BRL\n"
 	msg+="Período: 30 dias\n"
@@ -159,9 +159,9 @@ lsandroidp() {
 
 lsandroidplus() {
 	local msg
-	msg="=×=×=×=×=×=×=×=×=×=×=\n"
-	msg+="<b>💳 PAGAMENTO 💳</b>\n"
-	msg+="=×=×=×=×=×=×=×=×=×=×=\n"
+	msg="=×=×=×=×=×=×=×=×=×=×=×=×=×=×=×=×=×=×=×=×=\n"
+	msg+="       <b>💳 PAGAMENTO 💳</b>\n"
+	msg+="=×=×=×=×=×=×=×=×=×=×=×=×=×=×=×=×=×=×=×=×=\n\n"
 	msg+="<b>LS ANDROID MENSAL PLUS</b>\n"
 	msg+="VALOR: 24,99 BRL\n"
 	msg+="Período: 30 dias\n"
@@ -197,9 +197,9 @@ lsandroidplus() {
 
 lsandroidplusp() {
 	local msg
-	msg="=×=×=×=×=×=×=×=×=×=×=\n"
-	msg+="<b>💳 PAGAMENTO 💳</b>\n"
-	msg+="=×=×=×=×=×=×=×=×=×=×=\n"
+	msg="=×=×=×=×=×=×=×=×=×=×=×=×=×=×=×=×=×=×=×=×=\n"
+	msg+="       <b>💳 PAGAMENTO 💳</b>\n"
+	msg+="=×=×=×=×=×=×=×=×=×=×=×=×=×=×=×=×=×=×=×=×=\n\n"
 	msg+="<b>LS ANDROID PREMIUM</b>\n"
 	msg+="VALOR: 24,99 BRL\n"
 	msg+="Período: 30 dias\n"
@@ -261,8 +261,9 @@ ShellBot.InlineKeyboardButton --button 'botao2' --line 1 --text 'LS ANDROID' --c
 ShellBot.InlineKeyboardButton --button 'botao2' --line 1 --text 'LS ANDROID PREMIUM' --callback_data 'lsandp'
 ShellBot.InlineKeyboardButton --button 'botao2' --line 2 --text 'LS ANDROID PLUS' --callback_data 'lsandplus'
 ShellBot.InlineKeyboardButton --button 'botao2' --line 2 --text 'LS ANDROID PLUS PREMIUM' --callback_data 'lsandplusp'
+ShellBot.InlineKeyboardButton --button 'botao2' --line 2 --text '↩️ VOLTAR ' --callback_data 'voltar1'
 ShellBot.InlineKeyboardButton --button 'botao3' --line 1 --text '📄 ENVIAR COMPROVANTE 📄' --callback_data '1' --url 'http://bit.ly/LSVPN'
-ShellBot.InlineKeyboardButton --button 'botao3' --line 2 --text '↩️ VOLTAR ↩️' --callback_data 'voltar'
+ShellBot.InlineKeyboardButton --button 'botao3' --line 2 --text '↩️ VOLTAR ↩️' --callback_data 'voltar2'
 
 ShellBot.regHandleFunction --function criarteste --callback_data gerarssh
 ShellBot.regHandleFunction --function comprar --callback_data compra
@@ -270,7 +271,8 @@ ShellBot.regHandleFunction --function lsandroid --callback_data lsand
 ShellBot.regHandleFunction --function lsandroidp --callback_data lsandp
 ShellBot.regHandleFunction --function lsandroidplus --callback_data lsandplus
 ShellBot.regHandleFunction --function lsandroidplusp --callback_data lsandplusp
-ShellBot.regHandleFunction --function comprar --callback_data voltar
+ShellBot.regHandleFunction --function menu --callback_data voltar1
+ShellBot.regHandleFunction --function comprar --callback_data voltar2
 
 unset keyboard1
 keyboard1="$(ShellBot.InlineKeyboardMarkup -b 'botao1')"

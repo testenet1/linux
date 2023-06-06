@@ -114,12 +114,16 @@ lsandroid() {
 	ShellBot.answerCallbackQuery --callback_query_id ${callback_query_id[$id]} \
 							--text "LS ANDROID MENSAL"
 	
-	for ((i = 0; i < id; i++)); do
-  		[[ -n ${message_id[$i]} ]] && ShellBot.deleteMessage --chat_id ${message_chat_id[$i]} --message_id ${message_id[$i]}
+	for id in $(ShellBot.ListUpdates); do
+	  if [[ -n ${message_id[$id]} ]]; then
+	    ShellBot.deleteMessage --chat_id ${message_chat_id[$id]} --message_id ${message_id[$id]}
+	  fi
+
+	  if [[ -n ${callback_query_message_message_id[$id]} ]]; then
+	    ShellBot.deleteMessage --chat_id ${callback_query_message_chat_id[$id]} --message_id ${callback_query_message_message_id[$id]}
+	  fi
 	done
-	for ((i = 0; i < id; i++)); do
-		[[ -n ${callback_query_message_message_id[$id]} ]] && ShellBot.deleteMessage --chat_id ${callback_query_message_chat_id[$id]} --message_id ${callback_query_message_message_id[$id]}
-	done
+
 							
 	# Envia mensagem
 	ShellBot.sendMessage --chat_id ${callback_query_message_chat_id[$id]} \

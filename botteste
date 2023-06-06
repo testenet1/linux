@@ -70,10 +70,16 @@ comprar() {
 	msg+="       <b>💲MENU DE COMPRA💲</b>\n"
 	msg+="=×=×=×=×=×=×=×=×=×=×=×=×=×=×=×=×=×=×\n\n"
 	msg+="Escolha o plano:\n"
-
+	
+	
 	# Envia uma notificação em resposta ao botão pressionado.
 	ShellBot.answerCallbackQuery --callback_query_id ${callback_query_id[$id]} \
 							--text "Comprar Acesso"
+	
+	# Apaga as mensagens anteriores
+	[[ -n ${message_id[$id]} ]] && ShellBot.deleteMessage --chat_id ${callback_query_message_chat_id[$id]} --message_id ${message_id[$id]}
+	[[ -n ${callback_query_message_message_id[$id]} ]] && ShellBot.deleteMessage --chat_id ${callback_query_message_chat_id[$id]} --message_id ${callback_query_message_message_id[$id]}
+							
 	# Envia mensagem
 	ShellBot.sendMessage --chat_id ${callback_query_message_chat_id[$id]} \
 							--text "$(echo -e $msg)" \
@@ -99,6 +105,10 @@ lsandroid() {
 	# Envia uma notificação em resposta ao botão pressionado.
 	ShellBot.answerCallbackQuery --callback_query_id ${callback_query_id[$id]} \
 							--text "LS ANDROID MENSAL"
+	
+	# Apaga as mensagens anteriores
+	[[ -n ${message_id[$id]} ]] && ShellBot.deleteMessage --chat_id ${callback_query_message_chat_id[$id]} --message_id ${message_id[$id]}
+	[[ -n ${callback_query_message_message_id[$id]} ]] && ShellBot.deleteMessage --chat_id ${callback_query_message_chat_id[$id]} --message_id ${callback_query_message_message_id[$id]}
 							
 	# Envia mensagem
 	ShellBot.sendMessage --chat_id ${callback_query_message_chat_id[$id]} \
@@ -135,6 +145,10 @@ lsandroidp() {
 	# Envia uma notificação em resposta ao botão pressionado.
 	ShellBot.answerCallbackQuery --callback_query_id ${callback_query_id[$id]} \
 							--text "LS ANDROID MENSAL PREMIUM"
+	
+	# Apaga as mensagens anteriores
+	[[ -n ${message_id[$id]} ]] && ShellBot.deleteMessage --chat_id ${callback_query_message_chat_id[$id]} --message_id ${message_id[$id]}
+	[[ -n ${callback_query_message_message_id[$id]} ]] && ShellBot.deleteMessage --chat_id ${callback_query_message_chat_id[$id]} --message_id ${callback_query_message_message_id[$id]}
 	
 	# Envia mensagem
 	ShellBot.sendMessage --chat_id ${callback_query_message_chat_id[$id]} \
@@ -173,6 +187,10 @@ lsandroidplus() {
 	ShellBot.answerCallbackQuery --callback_query_id ${callback_query_id[$id]} \
 							--text "LS ANDROID MENSAL PLUS"
 	
+	# Apaga as mensagens anteriores
+	[[ -n ${message_id[$id]} ]] && ShellBot.deleteMessage --chat_id ${callback_query_message_chat_id[$id]} --message_id ${message_id[$id]}
+	[[ -n ${callback_query_message_message_id[$id]} ]] && ShellBot.deleteMessage --chat_id ${callback_query_message_chat_id[$id]} --message_id ${callback_query_message_message_id[$id]}
+	
 	# Envia mensagem
 	ShellBot.sendMessage --chat_id ${callback_query_message_chat_id[$id]} \
 							--text "<b>🔵 LS ANDROID MENSAL PLUS 🔵</b>\n" \
@@ -210,6 +228,10 @@ lsandroidplusp() {
 	# Envia uma notificação em resposta ao botão pressionado.
 	ShellBot.answerCallbackQuery --callback_query_id ${callback_query_id[$id]} \
 							--text "LS ANDROID MENSAL PLUS PREMIUM"
+	
+	# Apaga as mensagens anteriores
+	[[ -n ${message_id[$id]} ]] && ShellBot.deleteMessage --chat_id ${callback_query_message_chat_id[$id]} --message_id ${message_id[$id]}
+	[[ -n ${callback_query_message_message_id[$id]} ]] && ShellBot.deleteMessage --chat_id ${callback_query_message_chat_id[$id]} --message_id ${callback_query_message_message_id[$id]}
 	
 	# Envia mensagem
 	ShellBot.sendMessage --chat_id ${callback_query_message_chat_id[$id]} \

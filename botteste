@@ -121,10 +121,9 @@ EOF
     fi
 }
 
-
-
-
-
+#funcaocriada
+criarteste3() {
+}
 
 comprar() {
 	local msg

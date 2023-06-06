@@ -291,8 +291,8 @@ while :; do
     (
       ShellBot.watchHandle --callback_data ${callback_query_data[$id]}
       comando=(${message_text[$id]})
-      if[[ "${comando[0]}" = "/menu"  || "${comando[0]}" = "/start"|| "${callback_query_data[$id]}" = "menu" ]]; then menu
-      if[[ "${comando[0]}" = "/id"  ]]; then infouser
+      [[ "${comando[0]}" = "/menu"  || "${comando[0]}" = "/start"|| "${callback_query_data[$id]}" = "menu" ]] && menu
+      [[ "${comando[0]}" = "/id"  ]] && infouser
     ) &
   done
 done

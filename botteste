@@ -119,8 +119,6 @@ EOF
             --parse_mode html
         return 0
     fi
-
-    fi
 }
 
 

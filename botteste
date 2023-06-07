@@ -474,6 +474,7 @@ ShellBot.regHandleFunction --function lsandroidplus --callback_data lsandplus
 ShellBot.regHandleFunction --function lsandroidplusp --callback_data lsandplusp
 ShellBot.regHandleFunction --function menu --callback_data voltar1
 ShellBot.regHandleFunction --function comprar --callback_data voltar2
+ShellBot.regHandleFunction --function start --callback_data inicio
 
 
 unset keyboard1

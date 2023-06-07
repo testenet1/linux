@@ -61,13 +61,13 @@ teste() {
         	# Envia mensagem utilizando o callback_query_message_chat_id
 		ShellBot.sendMessage --chat_id ${callback_query_message_chat_id[$id]} \
 		    --text "$(echo -e $msg)" \
-		    --reply_markup "$keyboard2" \
+		    --reply_markup "$keyboard1" \
 		    --parse_mode html
 	else
 		# Envia mensagem utilizando o chat_id
 		ShellBot.sendMessage --chat_id ${message_chat_id[$id]} \
 		    --text "$(echo -e $msg)" \
-		    --reply_markup "$keyboard2" \
+		    --reply_markup "$keyboard1" \
 		    --parse_mode html
     	fi
 }

@@ -52,7 +52,7 @@ teste() {
         msg+="▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬\n"
 	msg+="<b>🤖 SEJA BEM VINDO AO LSVPNBOT! 🤖</b>\n"
 	msg+="▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬\n\n"
-        msg+="<b>Gere seu teste agora mesmo!</b>\n"
+        msg+="Gere seu teste agora mesmo!\n"
 
 	if [[ -n ${callback_query_id[$id]} ]]; then
 		[[ -n ${message_id[$id]} ]] && ShellBot.deleteMessage --chat_id ${callback_query_message_chat_id[$id]} --message_id ${message_id[$id]}

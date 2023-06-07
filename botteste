@@ -54,15 +54,22 @@ teste() {
 	msg+="=×=×=×=×=×=×=×=×=×=×=×=×=×=×=×=×=×=×\n\n"
         msg+="Gere seu teste agora mesmo!"
 
-	ShellBot.sendMessage --chat_id ${message_chat_id[$id]} \
-							--text "$(echo -e $msg)" \
-							--reply_markup "$keyboard1" \
-							--parse_mode html
-	
-	ShellBot.sendMessage --chat_id ${callback_query_message_chat_id[$id]} \
-							--text "$(echo -e $msg)" \
-							--reply_markup "$keyboard1" \
-							--parse_mode html
+	if [[ -n ${callback_query_id[$id]} ]]; then
+		[[ -n ${message_id[$id]} ]] && ShellBot.deleteMessage --chat_id ${callback_query_message_chat_id[$id]} --message_id ${message_id[$id]}
+		[[ -n ${callback_query_message_message_id[$id]} ]] && ShellBot.deleteMessage --chat_id ${callback_query_message_chat_id[$id]} --message_id ${callback_query_message_message_id[$id]}
+        
+        	# Envia mensagem utilizando o callback_query_message_chat_id
+		ShellBot.sendMessage --chat_id ${callback_query_message_chat_id[$id]} \
+		    --text "$(echo -e $msg)" \
+		    --reply_markup "$keyboard2" \
+		    --parse_mode html
+	    else
+		# Envia mensagem utilizando o chat_id
+		ShellBot.sendMessage --chat_id ${message_chat_id[$id]} \
+		    --text "$(echo -e $msg)" \
+		    --reply_markup "$keyboard2" \
+		    --parse_mode html
+    	fi
 }
 
 

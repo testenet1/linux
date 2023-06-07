@@ -54,13 +54,15 @@ teste() {
 	msg+="=×=×=×=×=×=×=×=×=×=×=×=×=×=×=×=×=×=×\n\n"
         msg+="Gere seu teste agora mesmo!"
 
-	if [[ -n ${message_id[$id]} ]]; then
-		ShellBot.deleteMessage --chat_id ${callback_query_message_chat_id[$id]} --message_id ${message_id[$id]}
-		ShellBot.sendMessage --chat_id ${message_chat_id[$id]} --text "$(echo -e $msg)" --parse_mode html
-    	elif [[ -n ${callback_query_message_message_id[$id]} ]]; then
-		ShellBot.deleteMessage --chat_id ${callback_query_message_chat_id[$id]} --message_id ${callback_query_message_message_id[$id]}
-		ShellBot.sendMessage --chat_id ${callback_query_message_chat_id[$id]} --text "$(echo -e $msg)" --reply_markup "$keyboard1" --parse_mode html
-    	fi
+	ShellBot.sendMessage --chat_id ${message_chat_id[$id]} \
+							--text "$(echo -e $msg)" \
+							--reply_markup "$keyboard1" \
+							--parse_mode html
+	
+	ShellBot.sendMessage --chat_id ${callback_query_message_chat_id[$id]} \
+							--text "$(echo -e $msg)" \
+							--reply_markup "$keyboard1" \
+							--parse_mode html
 }
 
 
@@ -494,7 +496,7 @@ while :; do
       comando=(${message_text[$id]})
       [[ "${comando[0]}" = "/start" ]] && menu
       [[ "${comando[0]}" = "/id" ]] && infouser
-      [[ "${comando[0]}" = "/teste" || "${callback_query_data[$id]}" = "voltar1"|| "${comando[0]}" = "/menu" ]] && teste
+      [[ "${comando[0]}" = "/teste" || "${comando[0]}" = "/menu" ]] && teste
       
     ) &
   done

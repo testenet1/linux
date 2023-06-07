@@ -151,8 +151,10 @@ criartesteadmin() {
 		ShellBot.sendMessage --chat_id ${callback_query_message_chat_id} \
 		--text "😞 ERRO ao criar usuário, tente novamente mais tarde" \
 		--parse_mode html
+		return 0
 	fi 
     fi
+    return 0
 }
 
 criarteste2() {

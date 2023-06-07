@@ -170,7 +170,7 @@ criarteste2() {
         fi
     fi
 
-    if ! grep -q ${callback_query_from_id} lista; then
+    if ! grep -q ${callback_query_from_id} lista && ! grep -q ${callback_query_from_id} admin; then
 
         usuario=$(echo teste$(( RANDOM % 9999 )))
         senha=$(( RANDOM % 9999 ))

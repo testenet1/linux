@@ -245,7 +245,7 @@ lsandroid() {
 	msg+="       Período: 30 dias\n"
 	msg+="       <b>Chave PIX EMAIL:</b>\n"
 	msg+="\n"
-	msg+="<pre>       <b>testenetssh@outlook.com</b></pre>\n"
+	msg+="<pre>       testenetssh@outlook.com</pre>\n"
 	msg+="\n"
 	msg+="Envie o comprovante:\n"
 
@@ -289,7 +289,7 @@ lsandroidp() {
 	msg+="       Período: 30 dias\n"
 	msg+="       <b>Chave PIX EMAIL:</b>\n"
 	msg+="\n"
-	msg+="<pre>       <b>testenetssh@outlook.com</b></pre>\n"
+	msg+="<pre>       testenetssh@outlook.com</pre>\n"
 	msg+="\n"
 	msg+="Envie o comprovante:\n"
 	
@@ -332,7 +332,7 @@ lsandroidplus() {
 	msg+="       Período: 30 dias\n"
 	msg+="       <b>Chave PIX EMAIL:</b>\n"
 	msg+="\n"
-	msg+="<pre>       <b>testenetssh@outlook.com</b></pre>\n"
+	msg+="<pre>       testenetssh@outlook.com</pre>\n"
 	msg+="\n"
 	msg+="Envie o comprovante:\n"
 	
@@ -376,7 +376,7 @@ lsandroidplusp() {
 	msg+="       Período: 30 dias\n"
 	msg+="       <b>Chave PIX EMAIL:</b>\n"
 	msg+="\n"
-	msg+="<pre>       <b>testenetssh@outlook.com</b></pre>\n"
+	msg+="<pre>       testenetssh@outlook.com</pre>\n"
 	msg+="\n"
 	msg+="Envie o comprovante:\n"
 	

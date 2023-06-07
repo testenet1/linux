@@ -501,14 +501,18 @@ unset keyboard3
 keyboard3="$(ShellBot.InlineKeyboardMarkup -b 'botao3')"
 
 while :; do
+   [[ "$(date +%d)" != "$(cat RESET)" ]] && {
+   	echo $(date +%d) > RESET
+   	echo ' ' > lista
+   }
   ShellBot.getUpdates --limit 100 --offset $(ShellBot.OffsetNext) --timeout 30
   for id in $(ShellBot.ListUpdates); do
     (
       ShellBot.watchHandle --callback_data ${callback_query_data[$id]}
       comando=(${message_text[$id]})
-      [[ "${comando[0]}" = "/start" ]] && menu
-      [[ "${comando[0]}" = "/teste"]] && teste
-      [[ "${comando[0]}" = "/id" ]] && infouser
+      [[ "${comando[0]}" = "/menu"  || "${comando[0]}" = "/start" ]] && menu
+      [[ "${comando[0]}" = "/teste" ]] && teste
+      [[ "${comando[0]}" = "/id"  ]] && infouser
     ) &
   done
 done

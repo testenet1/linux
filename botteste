@@ -17,6 +17,36 @@ ShellBot.init --token "5361713081:AAHt7V0qVDso6Yf0-wCgJK76ZqQ7DvJJ9x8" --monitor
 ShellBot.username
 
 # - Funcao menu
+start() {
+        local msg
+	msg+="✌️😃 Olá <b>${message_from_first_name[$id]}</b>, bem vindo(a)!\n"
+	msg+="=×=×=×=×=×=×=×=×=×=×=×=×=×=×=×=×=×=×\n\n"
+        msg+="Gere seu teste agora mesmo!\n\n"
+	msg+="Comando Principal: /menu\n\n"
+	msg+="<b>👤 CREA SU USUARIO VPS GRÁTIS 👤</b>\n"
+        msg+="▬▬▬▬⭐ <b>BENEFICIOS</b> ⭐▬▬▬▬▬\n"
+        msg+="✅ TESTE SEM COMPROMISSO \n"
+        msg+="✅ ECONOMIZE \n"
+        msg+="✅ NAVEGUE ANONIMAMENTE \n"
+        msg+="✅ SEM MULTA \n"
+        msg+="✅ SEM FIDELIDADE \n"
+	msg+="✅ SUPORTE 24H ESPECIALIZADO \n"
+        msg+="✅ FUNCIONA COM APP PRÓPRIO \n"
+        msg+="✅ SERVIDORES DE ALTA VELOCIDADE\n"
+        msg+="✅ <b>TRÁFEGO ILIMITADO</b>\n"
+        msg+="▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬\n"
+        msg+="<b>🟣VIVO 🔵TIM</b>\n"
+	msg+="Comando Principal: /menu\n\n"
+
+	[[ -n ${message_id[$id]} ]] && ShellBot.deleteMessage --chat_id ${callback_query_message_chat_id[$id]} --message_id ${message_id[$id]}
+	[[ -n ${callback_query_message_message_id[$id]} ]] && ShellBot.deleteMessage --chat_id ${callback_query_message_chat_id[$id]} --message_id ${callback_query_message_message_id[$id]}
+	
+	ShellBot.sendMessage --chat_id ${message_chat_id[$id]} \
+        --text "$(echo -e $msg)" \
+        --parse_mode html
+	
+        return 0
+}
 menu() {
         local msg
         msg="=×=×=×=×=×=×=×=×=×=×=×=×=×=×=×=×=×=×\n"
@@ -38,6 +68,8 @@ menu() {
         --parse_mode html
         return 0
 }
+
+
 
 # - funcao criar ssh
 criarteste() {
@@ -459,8 +491,9 @@ while :; do
     (
       ShellBot.watchHandle --callback_data ${callback_query_data[$id]}
       comando=(${message_text[$id]})
-      [[ "${comando[0]}" = "/menu"  || "${comando[0]}" = "/start" || "${callback_query_data[$id]}" = voltar1 ]] && menu
+      [[ "${comando[0]}" = "/start"  || "${comando[0]}" = "/inicio"]] && start
       [[ "${comando[0]}" = "/id"  ]] && infouser
+      [[ "${comando[0]}" = "/menu"|| "${comando[0]}" = "menu"|| "${callback_query_data[$id]}" = "voltar1"  ]] && menu
     ) &
   done
 done

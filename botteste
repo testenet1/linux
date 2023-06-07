@@ -19,7 +19,7 @@ ShellBot.username
 # - Funcao menu
 menu() {
         local msg
-	msg+="✌️😃 Olá <b>${message_from_first_name[$id]}</b>, bem vindo(a)!\n"
+	msg="✌️😃 Olá <b>${message_from_first_name[$id]}</b>, bem vindo(a)!\n"
 	msg+="▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬\n\n"
         msg+="Gere seu teste agora mesmo!\n\n"
 	msg+="<b>Comando Principal:</b> /teste\n\n"
@@ -508,7 +508,7 @@ while :; do
       comando=(${message_text[$id]})
       [[ "${comando[0]}" = "/start" ]] && menu
       [[ "${comando[0]}" = "/id" ]] && infouser
-      [[ "${comando[0]}" = "/teste" || "${comando[0]}" = "/menu" ]] && teste
+      [[ "${comando[0]}" = "/teste"]] && teste
     ) &
   done
 done

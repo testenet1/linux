@@ -88,35 +88,41 @@ criarteste2() {
             sed -i "/${callback_query_from_id}/d" lista
         else
             ShellBot.sendMessage --chat_id ${callback_query_message_chat_id} \
-                --text "🚫 Você já gerou um SSH recentemente. 📞 Entre em contato com o administrador."
+                --text "🚫 Você já gerou um SSH recentemente no servidor LS BR.\n📞 Entre em contato com o administrador ou adquira seu plano agora!"
             return 0
         fi
     fi
 
     if ! grep -q ${callback_query_from_id} lista; then
-        echo "${callback_query_from_id} $(date +%s)" >> lista
 
-        usuario=$(echo teste$(( RANDOM % 99999 )))
-        senha=$(( RANDOM % 99999 ))
+        usuario=$(echo teste$(( RANDOM % 9999 )))
+        senha=$(( RANDOM % 9999 ))
         limite='1'
         tempo='1'
         tuserdate=$(date '+%C%y/%m/%d' -d " +1 days")
 
         # Comandos executados no servidor remoto via SSH
-        sshpass -p "$senha_server" ssh -o ConnectTimeout=2 -o StrictHostKeyChecking=no root@$ip_server "useradd -M -N -s /bin/false $usuario -e $tuserdate > /dev/null 2>&1; (echo '$senha'; echo '$senha') | passwd $usuario > /dev/null 2>&1; echo '$senha' > /etc/SSHPlus/senha/$usuario; echo '$usuario $limite' >> /root/usuarios.db; echo '#!/bin/bash
-pkill -f $usuario
-userdel --force $usuario
-grep -v ^$usuario[[:space:]] /root/usuarios.db > /tmp/ph ; cat /tmp/ph > /root/usuarios.db
-rm /etc/SSHPlus/senha/$usuario > /dev/null 2>&1
-rm -rf /etc/SSHPlus/userteste/$usuario.sh' > /etc/SSHPlus/userteste/$usuario.sh; chmod +x /etc/SSHPlus/userteste/$usuario.sh; at -f /etc/SSHPlus/userteste/$usuario.sh now + $tempo hour > /dev/null 2>&1"
+	if sshpass -p "$senha_server" ssh -o ConnectTimeout=2 -o StrictHostKeyChecking=no root@$ip_server true; then
+		echo "Conexão bem-sucedida"
+		sshpass -p "$senha_server" ssh -o ConnectTimeout=2 -o StrictHostKeyChecking=no root@$ip_server "useradd -M -N -s /bin/false $usuario -e $tuserdate > /dev/null 2>&1; (echo '$senha'; echo '$senha') | passwd $usuario > /dev/null 2>&1; echo '$senha' > /etc/SSHPlus/senha/$usuario; echo '$usuario $limite' >> /root/usuarios.db; echo '#!/bin/bash
+	pkill -f $usuario
+	userdel --force $usuario
+	grep -v ^$usuario[[:space:]] /root/usuarios.db > /tmp/ph ; cat /tmp/ph > /root/usuarios.db
+	rm /etc/SSHPlus/senha/$usuario > /dev/null 2>&1
+	rm -rf /etc/SSHPlus/userteste/$usuario.sh' > /etc/SSHPlus/userteste/$usuario.sh; chmod +x /etc/SSHPlus/userteste/$usuario.sh; at -f /etc/SSHPlus/userteste/$usuario.sh now + $tempo hour > /dev/null 2>&1"
 
-        echo ${callback_query_from_id} >> lista
+		echo "${callback_query_from_id} $(date +%s)" >> lista
 
-        # - ENVIA O SSH
-        ShellBot.sendMessage --chat_id ${callback_query_message_chat_id} \
-            --text "$(echo -e "✅ <b>Criado com sucesso</b> ✅\n\nSERVIDOR: TESTE\nUSUARIO: <code>$usuario</code>\nSENHA: <code>$senha</code>\n\n⏳ Expira em: $tempo Horas")" \
-            --parse_mode html
-        return 0
+		# - ENVIA O SSH
+		ShellBot.sendMessage --chat_id ${callback_query_message_chat_id} \
+		    --text "$(echo -e "✅ <b>Criado com sucesso</b> ✅\n\nSERVIDOR LS BR\nUSUARIO: <code>$usuario</code>\nSENHA: <code>$senha</code>\n\n⏳ Expira em: $tempo Horas")" \
+		    --parse_mode html
+		return 0
+	else
+		ShellBot.sendMessage --chat_id ${callback_query_message_chat_id} \
+		--text "😞 ERRO ao criar usuário, tente novamente mais tarde" \
+		--parse_mode html
+	fi 
     fi
 }
 
@@ -128,41 +134,43 @@ criarteste3() {
             sed -i "/${callback_query_from_id}/d" lista2
         else
             ShellBot.sendMessage --chat_id ${callback_query_message_chat_id} \
-                --text "🚫 Você já gerou um SSH recentemente. 📞 Entre em contato com o administrador."
+                --text "🚫 Você já gerou um SSH recentemente no servidor LS BR 2 PREMIUM.\n📞 Entre em contato com o administrador ou adquira seu plano agora!"
             return 0
         fi
     fi
 
     if ! grep -q ${callback_query_from_id} lista2; then
-        echo "${callback_query_from_id} $(date +%s)" >> lista2
 
-        usuario=$(echo teste$(( RANDOM % 99999 )))
-        senha=$(( RANDOM % 99999 ))
+        usuario=$(echo teste$(( RANDOM % 9999 )))
+        senha=$(( RANDOM % 9999 ))
         limite='1'
         tempo='1'
         tuserdate=$(date '+%C%y/%m/%d' -d " +1 days")
 
         # Comandos executados no servidor remoto via SSH
-        sshpass -p "$senha_server2" ssh -o ConnectTimeout=2 -o StrictHostKeyChecking=no root@$ip_server2 "useradd -M -N -s /bin/false $usuario -e $tuserdate > /dev/null 2>&1; (echo '$senha'; echo '$senha') | passwd $usuario > /dev/null 2>&1; echo '$senha' > /etc/SSHPlus/senha/$usuario; echo '$usuario $limite' >> /root/usuarios.db; echo '#!/bin/bash
-pkill -f $usuario
-userdel --force $usuario
-grep -v ^$usuario[[:space:]] /root/usuarios.db > /tmp/ph ; cat /tmp/ph > /root/usuarios.db
-rm /etc/SSHPlus/senha/$usuario > /dev/null 2>&1
-rm -rf /etc/SSHPlus/userteste/$usuario.sh' > /etc/SSHPlus/userteste/$usuario.sh; chmod +x /etc/SSHPlus/userteste/$usuario.sh; at -f /etc/SSHPlus/userteste/$usuario.sh now + $tempo hour > /dev/null 2>&1"
+	if sshpass -p "$senha_server2" ssh -o ConnectTimeout=2 -o StrictHostKeyChecking=no root@$ip_server2 true; then
+		echo "Conexão bem-sucedida"
+		sshpass -p "$senha_server2" ssh -o ConnectTimeout=2 -o StrictHostKeyChecking=no root@$ip_server2 "useradd -M -N -s /bin/false $usuario -e $tuserdate > /dev/null 2>&1; (echo '$senha'; echo '$senha') | passwd $usuario > /dev/null 2>&1; echo '$senha' > /etc/SSHPlus/senha/$usuario; echo '$usuario $limite' >> /root/usuarios.db; echo '#!/bin/bash
+	pkill -f $usuario
+	userdel --force $usuario
+	grep -v ^$usuario[[:space:]] /root/usuarios.db > /tmp/ph ; cat /tmp/ph > /root/usuarios.db
+	rm /etc/SSHPlus/senha/$usuario > /dev/null 2>&1
+	rm -rf /etc/SSHPlus/userteste/$usuario.sh' > /etc/SSHPlus/userteste/$usuario.sh; chmod +x /etc/SSHPlus/userteste/$usuario.sh; at -f /etc/SSHPlus/userteste/$usuario.sh now + $tempo hour > /dev/null 2>&1"
 
-        echo ${callback_query_from_id} >> lista2
+		echo "${callback_query_from_id} $(date +%s)" >> lista2
 
-        # - ENVIA O SSH
-        ShellBot.sendMessage --chat_id ${callback_query_message_chat_id} \
-            --text "$(echo -e "✅ <b>Criado com sucesso</b> ✅\n\nSERVIDOR: TESTE\nUSUARIO: <code>$usuario</code>\nSENHA: <code>$senha</code>\n\n⏳ Expira em: $tempo Horas")" \
-            --parse_mode html
-        return 0
+		# - ENVIA O SSH
+		ShellBot.sendMessage --chat_id ${callback_query_message_chat_id} \
+		    --text "$(echo -e "✅ <b>Criado com sucesso</b> ✅\n\nSERVIDOR LS BR 2 PREMIUM\nUSUARIO: <code>$usuario</code>\nSENHA: <code>$senha</code>\n\n⏳ Expira em: $tempo Horas")" \
+		    --parse_mode html
+		return 0
+	else
+		ShellBot.sendMessage --chat_id ${callback_query_message_chat_id} \
+		--text "😞 ERRO ao criar usuário, tente novamente mais tarde!" \
+		--parse_mode html
+	fi 
     fi
 }
-
-
-
-
 
 comprar() {
 	local msg
@@ -406,7 +414,7 @@ ShellBot.InlineKeyboardButton --button 'botao3' --line 2 --text '↩️ VOLTAR �
 
 ShellBot.regHandleFunction --function criarteste --callback_data gerarssh
 ShellBot.regHandleFunction --function criarteste2 --callback_data gerarssh2
-ShellBot.regHandleFunction --function criarteste2 --callback_data gerarssh3
+ShellBot.regHandleFunction --function criarteste3 --callback_data gerarssh3
 ShellBot.regHandleFunction --function comprar --callback_data compra
 ShellBot.regHandleFunction --function lsandroid --callback_data lsand
 ShellBot.regHandleFunction --function lsandroidp --callback_data lsandp

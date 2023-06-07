@@ -243,12 +243,11 @@ lsandroid() {
 	msg+="       <b>LS ANDROID MENSAL</b>\n"
 	msg+="       VALOR: 24,99 BRL\n"
 	msg+="       Período: 30 dias\n"
-	msg+="\n"
 	msg+="       <b>Chave PIX EMAIL:</b>\n"
 	msg+="\n"
-	msg+="<b><pre>       <b>testenetssh@outlook.com.com</b></pre><b>\n"
+	msg+="<pre>       <b>testenetssh@outlook.com.com</b></pre>\n"
 	msg+="\n"
-	msg+="       Envie o comprovante:\n"
+	msg+="Envie o comprovante:\n"
 
 	
 	# Envia uma notificação em resposta ao botão pressionado.
@@ -288,10 +287,9 @@ lsandroidp() {
 	msg+="       <b>LS ANDROID MENSAL PREMIUM</b>\n"
 	msg+="       VALOR: 24,99 BRL\n"
 	msg+="       Período: 30 dias\n"
-	msg+="\n"
 	msg+="       <b>Chave PIX EMAIL:</b>\n"
 	msg+="\n"
-	msg+="<b><pre>       <b>testenetssh@outlook.com.com</b></pre><b>\n"
+	msg+="<pre>       <b>testenetssh@outlook.com.com</b></pre>\n"
 	msg+="\n"
 	msg+="       Envie o comprovante:\n"
 	
@@ -338,12 +336,11 @@ lsandroidplus() {
 	msg+="       <b>LS ANDROID MENSAL PLUS</b>\n"
 	msg+="       VALOR: 34,99 BRL\n"
 	msg+="       Período: 30 dias\n"
-	msg+="\n"
 	msg+="       <b>Chave PIX EMAIL:</b>\n"
 	msg+="\n"
-	msg+="<b><pre>       <b>testenetssh@outlook.com.com</b></pre><b>\n"
+	msg+="<b><pre>       testenetssh@outlook.com.com</b></pre>\n"
 	msg+="\n"
-	msg+="       Envie o comprovante:\n"
+	msg+="Envie o comprovante:\n"
 	
 	# Envia uma notificação em resposta ao botão pressionado.
 	ShellBot.answerCallbackQuery --callback_query_id ${callback_query_id[$id]} \
@@ -383,12 +380,11 @@ lsandroidplusp() {
 	msg+="       <b>LS ANDROID MENSAL PLUS PREMIUM</b>\n"
 	msg+="       VALOR: 39,99 BRL\n"
 	msg+="       Período: 30 dias\n"
-	msg+="\n"
 	msg+="       <b>Chave PIX EMAIL:</b>\n"
 	msg+="\n"
-	msg+="<b><pre>       <b>testenetssh@outlook.com.com</b></pre><b>\n"
+	msg+="<pre>       testenetssh@outlook.com.com</pre>\n"
 	msg+="\n"
-	msg+="       Envie o comprovante:\n"
+	msg+="Envie o comprovante:\n"
 	
 	# Envia uma notificação em resposta ao botão pressionado.
 	ShellBot.answerCallbackQuery --callback_query_id ${callback_query_id[$id]} \

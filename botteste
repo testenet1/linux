@@ -89,7 +89,7 @@ criarteste() {
         fi
     fi
 
-    if ! grep -q ${callback_query_from_id} lista || grep -q ${callback_query_from_id} admin ; then
+    if ! grep -q ${callback_query_from_id} lista; then
         echo "${callback_query_from_id} $(date +%s)" >> lista
 
         usuario=$(echo teste$(( RANDOM % 99999 )))

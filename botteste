@@ -70,6 +70,7 @@ teste() {
 		    --reply_markup "$keyboard1" \
 		    --parse_mode html
     	fi
+	return 0
 }
 
 
@@ -204,8 +205,9 @@ criarteste3() {
 		return 0
 	else
 		ShellBot.sendMessage --chat_id ${callback_query_message_chat_id} \
-		--text "😞 ERRO ao criar usuário, tente novamente mais tarde!" \
-		--parse_mode html
+			--text "😞 ERRO ao criar usuário, tente novamente mais tarde!" \
+			--parse_mode html
+		return 0
 	fi 
     fi
 }
@@ -448,7 +450,9 @@ comand () {
 		ShellBot.sendMessage --chat_id ${message_chat_id[$id]} \
 		    --text "$(echo -e $msg)" \
 		    --parse_mode html
+		    return 0
     	fi
+	return 0
 }
 
 unset botao1
@@ -505,7 +509,6 @@ while :; do
       [[ "${comando[0]}" = "/start" ]] && menu
       [[ "${comando[0]}" = "/id" ]] && infouser
       [[ "${comando[0]}" = "/teste" || "${comando[0]}" = "/menu" ]] && teste
-      
     ) &
   done
 done

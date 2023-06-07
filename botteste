@@ -17,12 +17,12 @@ ShellBot.init --token "5361713081:AAHt7V0qVDso6Yf0-wCgJK76ZqQ7DvJJ9x8" --monitor
 ShellBot.username
 
 # - Funcao menu
-start() {
+menu() {
         local msg
 	msg+="✌️😃 Olá <b>${message_from_first_name[$id]}</b>, bem vindo(a)!\n"
 	msg+="=×=×=×=×=×=×=×=×=×=×=×=×=×=×=×=×=×=×\n\n"
         msg+="Gere seu teste agora mesmo!\n\n"
-	msg+="Comando Principal: /menu\n\n"
+	msg+="Comando Principal: /teste\n\n"
 	msg+="<b>👤 CREA SU USUARIO VPS GRÁTIS 👤</b>\n"
         msg+="▬▬▬▬⭐ <b>BENEFICIOS</b> ⭐▬▬▬▬▬\n"
         msg+="✅ TESTE SEM COMPROMISSO \n"
@@ -36,7 +36,7 @@ start() {
         msg+="✅ <b>TRÁFEGO ILIMITADO</b>\n"
         msg+="▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬\n"
         msg+="<b>🟣VIVO 🔵TIM</b>\n"
-	msg+="Comando Principal: /menu\n\n"
+	msg+="Comando Principal: /teste\n\n"
 
 	[[ -n ${message_id[$id]} ]] && ShellBot.deleteMessage --chat_id ${callback_query_message_chat_id[$id]} --message_id ${message_id[$id]}
 	[[ -n ${callback_query_message_message_id[$id]} ]] && ShellBot.deleteMessage --chat_id ${callback_query_message_chat_id[$id]} --message_id ${callback_query_message_message_id[$id]}
@@ -47,7 +47,7 @@ start() {
 	
         return 0
 }
-menu() {
+teste() {
         local msg
         msg="=×=×=×=×=×=×=×=×=×=×=×=×=×=×=×=×=×=×\n"
 	msg+="<b>🤖 SEJA BEM VINDO AO LSVPNBOT! 🤖</b>\n"
@@ -472,9 +472,9 @@ ShellBot.regHandleFunction --function lsandroid --callback_data lsand
 ShellBot.regHandleFunction --function lsandroidp --callback_data lsandp
 ShellBot.regHandleFunction --function lsandroidplus --callback_data lsandplus
 ShellBot.regHandleFunction --function lsandroidplusp --callback_data lsandplusp
-ShellBot.regHandleFunction --function menu --callback_data voltar1
+ShellBot.regHandleFunction --function teste --callback_data voltar1
 ShellBot.regHandleFunction --function comprar --callback_data voltar2
-ShellBot.regHandleFunction --function start --callback_data inicio
+
 
 
 unset keyboard1
@@ -492,9 +492,10 @@ while :; do
     (
       ShellBot.watchHandle --callback_data ${callback_query_data[$id]}
       comando=(${message_text[$id]})
-      [[ "${comando[0]}" = "/start"  || "${comando[0]}" = "/inicio"]] && start
-      [[ "${comando[0]}" = "/id"  ]] && infouser
-      [[ "${comando[0]}" = "/menu"|| "${comando[0]}" = "menu"|| "${callback_query_data[$id]}" = "voltar1"  ]] && menu
+      [[ "${comando[0]}" = "/start"|| "${comando[0]}" = "/menu" ]] && menu
+      [[ "${comando[0]}" = "/id" ]] && infouser
+      [[ "${comando[0]}" = "/teste" ]] && teste
+      
     ) &
   done
 done

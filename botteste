@@ -214,7 +214,7 @@ criarteste3() {
 
 comprar() {
 	local msg
-	msg="▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬\n""
+	msg="▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬\n"
 	msg+="   <b>💲💳 MENU DE COMPRA 💳💲</b>\n"
 	msg+="▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬\n\n"
 	msg+="<b>Escolha o plano:</b>\n"

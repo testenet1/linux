@@ -4,6 +4,9 @@ clear
 #--------@LSVPN-----------#
 source ShellBot2.sh
 
+# Admin
+id="SEU-ID"
+echo "$id" >> admin
 # Informações Server 
 ip_server="SEU-IP-AQUI"
 senha_server="SUA-SENHA-AQUI"
@@ -16,9 +19,9 @@ ShellBot.username
 # - Funcao menu
 menu() {
         local msg
-        msg="=×=×=×=×=×=×=×=×=×=×=×=×=×=\n"
-        msg+="<b>🤖 OLA SEJA BEM VINDO(a) 🤖</b>\n"
-        msg+="=×=×=×=×=×=×=×=×=×=×=×=×=×=\n\n"
+        msg="=×=×=×=×=×=×=×=×=×=×=×=×=×=×=×=×=×=×\n"
+	msg+="<b>🤖 SEJA BEM VINDO AO LSVPNBOT! 🤖</b>\n"
+	msg+="=×=×=×=×=×=×=×=×=×=×=×=×=×=×=×=×=×=×\n\n"
         msg+="Gere seu teste agora mesmo!"
 
 	[[ -n ${message_id[$id]} ]] && ShellBot.deleteMessage --chat_id ${callback_query_message_chat_id[$id]} --message_id ${message_id[$id]}
@@ -50,7 +53,7 @@ criarteste() {
         fi
     fi
 
-    if ! grep -q ${callback_query_from_id} lista; then
+    if ! grep -q ${callback_query_from_id} lista || grep -q ${callback_query_from_id} admin ; then
         echo "${callback_query_from_id} $(date +%s)" >> lista
 
         usuario=$(echo teste$(( RANDOM % 99999 )))
@@ -88,12 +91,12 @@ criarteste2() {
             sed -i "/${callback_query_from_id}/d" lista
         else
             ShellBot.sendMessage --chat_id ${callback_query_message_chat_id} \
-                --text "🚫 Você já gerou um SSH recentemente no servidor LS BR.\n📞 Entre em contato com o administrador ou adquira seu plano agora!"
+                --text "🚫 Você já gerou um teste recentemente no servidor LS BR.📞 Entre em contato com o administrador ou adquira seu plano agora!"
             return 0
         fi
     fi
 
-    if ! grep -q ${callback_query_from_id} lista; then
+    if ! grep -q ${callback_query_from_id} lista || grep -q ${callback_query_from_id} admin ; then
 
         usuario=$(echo teste$(( RANDOM % 9999 )))
         senha=$(( RANDOM % 9999 ))
@@ -139,7 +142,7 @@ criarteste3() {
         fi
     fi
 
-    if ! grep -q ${callback_query_from_id} lista2; then
+    if ! grep -q ${callback_query_from_id} lista2 || grep -q ${callback_query_from_id} admin; then
 
         usuario=$(echo teste$(( RANDOM % 9999 )))
         senha=$(( RANDOM % 9999 ))
@@ -397,11 +400,12 @@ unset botao2
 botao2=''
 unset botao3
 botao3=''
-ShellBot.InlineKeyboardButton --button 'botao1' --line 1 --text '♻️ TESTE ♻️' --callback_data 'gerarssh'
-ShellBot.InlineKeyboardButton --button 'botao1' --line 2 --text '🟠 TESTE SERVIDOR BR 🟠' --callback_data 'gerarssh2'
+ShellBot.InlineKeyboardButton --button 'botao1' --line 1 --text '🟠 TESTE SERVIDOR BR 🟠' --callback_data 'gerarssh2'
 ShellBot.InlineKeyboardButton --button 'botao1' --line 2 --text '🟣 TESTE SERVIDOR BR 2 PREMIUM 🟣' --callback_data 'gerarssh3'
-ShellBot.InlineKeyboardButton --button 'botao1' --line 4 --text '📥 BAIXAR APLICATIVO 📥' --callback_data '2' --url 'http://bit.ly/LSVPN1054apk'
-ShellBot.InlineKeyboardButton --button 'botao1' --line 5 --text '💲 COMPRAR ACESSO 💲' --callback_data 'compra'
+ShellBot.InlineKeyboardButton --button 'botao1' --line 3 --text '📥 BAIXAR APLICATIVO 📥' --callback_data '3' --url 'http://bit.ly/LSVPN1054apk'
+ShellBot.InlineKeyboardButton --button 'botao1' --line 4 --text '💲 COMPRAR ACESSO 💲' --callback_data 'compra'
+ShellBot.InlineKeyboardButton --button 'botao1' --line 5 --text '🔦 COMANDOS 🔦' --callback_data 'gerarssh'
+ShellBot.InlineKeyboardButton --button 'botao1' --line 5 --text '🙋 SUPORTE 🙋' --callback_data '3' --url 'http://bit.ly/LSVPN'
 
 ShellBot.InlineKeyboardButton --button 'botao2' --line 1 --text 'LS ANDROID' --callback_data 'lsand'
 ShellBot.InlineKeyboardButton --button 'botao2' --line 1 --text 'LS ANDROID PREMIUM' --callback_data 'lsandp'
@@ -439,7 +443,7 @@ while :; do
     (
       ShellBot.watchHandle --callback_data ${callback_query_data[$id]}
       comando=(${message_text[$id]})
-      [[ "${comando[0]}" = "/menu"  || "${comando[0]}" = "/start"|| "${callback_query_data[$id]}" = voltar1 ]] && menu
+      [[ "${comando[0]}" = "/menu"  || "${comando[0]}" = "/start" || "${callback_query_data[$id]}" = voltar1 ]] && menu
       [[ "${comando[0]}" = "/id"  ]] && infouser
     ) &
   done

@@ -422,7 +422,7 @@ enviarapp() {
 #informacoes usuario
 infouser () {
 	ShellBot.sendMessage --chat_id ${message_chat_id[$id]} \
-	--text "$(echo -e "Nome:  ${message_from_first_name[$(ShellBot.ListUpdates)]}\nUser: @${message_from_username[$(ShellBot.ListUpdates)]:-null}")\nID:<pre> ${message_from_id[$(ShellBot.ListUpdates)]}</pre>" \
+	--text "$(echo -e "Nome:  ${message_from_first_name[$(ShellBot.ListUpdates)]}\nUser: @${message_from_username[$(ShellBot.ListUpdates)]:-null}")\nID: <pre>${message_from_id[$(ShellBot.ListUpdates)]}<\pre> " \
 	--parse_mode html
 	return 0
 }

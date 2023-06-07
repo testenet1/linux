@@ -49,7 +49,7 @@ menu() {
 }
 teste() {
         local msg
-        msg+="▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬\n"
+        msg="▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬\n"
 	msg+="<b>🤖 SEJA BEM VINDO AO LSVPNBOT! 🤖</b>\n"
 	msg+="▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬\n\n"
         msg+="Gere seu teste agora mesmo!\n"
@@ -214,7 +214,7 @@ criarteste3() {
 
 comprar() {
 	local msg
-	msg+="▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬\n""
+	msg="▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬\n""
 	msg+="   <b>💲💳 MENU DE COMPRA 💳💲</b>\n"
 	msg+="▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬\n\n"
 	msg+="<b>Escolha o plano:</b>\n"
@@ -239,7 +239,7 @@ comprar() {
 
 lsandroid() {
 	local msg
-	msg+="▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬\n"
+	msg="▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬\n"
 	msg+="       <b>💳 PAGAMENTO 💳</b>\n"
 	msg+="▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬\n\n"
 	msg+="       <b>LS ANDROID MENSAL</b>\n"
@@ -283,7 +283,7 @@ lsandroid() {
 
 lsandroidp() {
 	local msg
-	msg+="▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬\n"
+	msg="▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬\n"
 	msg+="       <b>💳 PAGAMENTO 💳</b>\n"
 	msg+="▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬\n\n"
 	msg+="       <b>LS ANDROID MENSAL PREMIUM</b>\n"
@@ -326,7 +326,7 @@ lsandroidp() {
 
 lsandroidplus() {
 	local msg
-	msg+="▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬\n"
+	msg="▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬\n"
 	msg+="       <b>💳 PAGAMENTO 💳</b>\n"
 	msg+="▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬\n\n"
 	msg+="       <b>LS ANDROID MENSAL PLUS</b>\n"
@@ -370,7 +370,7 @@ lsandroidplus() {
 
 lsandroidplusp() {
 	local msg
-	msg+="▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬\n"
+	msg="▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬\n"
 	msg+="       <b>💳 PAGAMENTO 💳</b>\n"
 	msg+="▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬\n\n"
 	msg+="       <b>LS ANDROID MENSAL PLUS PREMIUM</b>\n"
@@ -430,7 +430,7 @@ infouser () {
 #comandos
 comand () {
 	local msg
-	msg+="▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬\n"
+	msg="▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬\n"
 	msg+="       <b>🔦 COMANDOS 🔦</b>\n"
 	msg+="▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬\n\n"
 	msg+="/start - Boas Vindas!\n"

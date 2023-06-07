@@ -23,17 +23,17 @@ menu() {
 	msg+="=×=×=×=×=×=×=×=×=×=×=×=×=×=×=×=×=×=×\n\n"
         msg+="Gere seu teste agora mesmo!\n\n"
 	msg+="Comando Principal: /teste\n\n"
-	msg+="<b>👤 CREA SU USUARIO VPS GRÁTIS 👤</b>\n"
+	msg+="<b>🚀 LSVPN 🚀</b>\n"
         msg+="▬▬▬▬⭐ <b>BENEFICIOS</b> ⭐▬▬▬▬▬\n"
         msg+="✅ TESTE SEM COMPROMISSO \n"
-        msg+="✅ ECONOMIZE \n"
-        msg+="✅ NAVEGUE ANONIMAMENTE \n"
-        msg+="✅ SEM MULTA \n"
-        msg+="✅ SEM FIDELIDADE \n"
-	msg+="✅ SUPORTE 24H ESPECIALIZADO \n"
-        msg+="✅ FUNCIONA COM APP PRÓPRIO \n"
-        msg+="✅ SERVIDORES DE ALTA VELOCIDADE\n"
-        msg+="✅ <b>TRÁFEGO ILIMITADO</b>\n"
+        msg+="💸 ECONOMIZE \n"
+        msg+="🥷 NAVEGUE ANONIMAMENTE \n"
+        msg+="❌ SEM MULTA \n"
+        msg+="❌ SEM FIDELIDADE \n"
+	msg+="👨‍💻 SUPORTE 24H ESPECIALIZADO \n"
+        msg+="📲 FUNCIONA COM APP PRÓPRIO \n"
+        msg+="🚀 SERVIDORES DE ALTA VELOCIDADE\n"
+        msg+="♾️ <b>TRÁFEGO ILIMITADO</b>\n"
         msg+="▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬\n"
         msg+="<b>🟣VIVO 🔵TIM</b>\n"
 	msg+="Comando Principal: /teste\n\n"
@@ -492,9 +492,9 @@ while :; do
     (
       ShellBot.watchHandle --callback_data ${callback_query_data[$id]}
       comando=(${message_text[$id]})
-      [[ "${comando[0]}" = "/start"|| "${comando[0]}" = "/menu" ]] && menu
+      [[ "${comando[0]}" = "/start"]] && menu
       [[ "${comando[0]}" = "/id" ]] && infouser
-      [[ "${comando[0]}" = "/teste" ]] && teste
+      [[ "${comando[0]}" = "/teste"|| "${callback_query_data[$id]}" = "voltar1"|| "${comando[0]}" = "/menu" ]] ]] && teste
       
     ) &
   done

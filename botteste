@@ -389,7 +389,22 @@ enviarapp() {
 #informacoes usuario
 infouser () {
 	ShellBot.sendMessage --chat_id ${message_chat_id[$id]} \
-	--text "$(echo -e "Nome:  ${message_from_first_name[$(ShellBot.ListUpdates)]}\nUser: @${message_from_username[$(ShellBot.ListUpdates)]:-null}")\nID: ${message_from_id[$(ShellBot.ListUpdates)]} " \
+	--text "$(echo -e "Nome:  ${message_from_first_name[$(ShellBot.ListUpdates)]}\nUser: @${message_from_username[$(ShellBot.ListUpdates)]:-null}")\nID:<pre> ${message_from_id[$(ShellBot.ListUpdates)]}</pre>" \
+	--parse_mode html
+	return 0
+}
+
+#comandos
+comand () {
+	local msg
+	msg="=×=×=×=×=×=×=×=×=×=×=×=×=×=×=×=×=×=×\n"
+	msg+="<pre>       <b>🔦 COMANDOS 🔦</b></pre>\n"
+	msg+="=×=×=×=×=×=×=×=×=×=×=×=×=×=×=×=×=×=×\n\n"
+	msg+="<pre>/menu</pre> - Menu Principal\n"
+	msg+="<pre>/info</pre> - Seu ID\n"
+	
+	ShellBot.sendMessage --chat_id ${message_chat_id[$id]} \
+	--text "$(echo -e $msg)" \
 	--parse_mode html
 	return 0
 }
@@ -404,7 +419,7 @@ ShellBot.InlineKeyboardButton --button 'botao1' --line 1 --text '🟠 TESTE SERV
 ShellBot.InlineKeyboardButton --button 'botao1' --line 2 --text '🟣 TESTE SERVIDOR BR 2 PREMIUM 🟣' --callback_data 'gerarssh3'
 ShellBot.InlineKeyboardButton --button 'botao1' --line 3 --text '📥 BAIXAR APLICATIVO 📥' --callback_data '3' --url 'http://bit.ly/LSVPN1054apk'
 ShellBot.InlineKeyboardButton --button 'botao1' --line 4 --text '💲 COMPRAR ACESSO 💲' --callback_data 'compra'
-ShellBot.InlineKeyboardButton --button 'botao1' --line 5 --text '🔦 COMANDOS 🔦' --callback_data 'gerarssh'
+ShellBot.InlineKeyboardButton --button 'botao1' --line 5 --text '🔦 COMANDOS 🔦' --callback_data 'comandos'
 ShellBot.InlineKeyboardButton --button 'botao1' --line 5 --text '🙋 SUPORTE 🙋' --callback_data '3' --url 'http://bit.ly/LSVPN'
 
 ShellBot.InlineKeyboardButton --button 'botao2' --line 1 --text 'LS ANDROID' --callback_data 'lsand'
@@ -419,6 +434,7 @@ ShellBot.InlineKeyboardButton --button 'botao3' --line 2 --text '↩️ VOLTAR �
 ShellBot.regHandleFunction --function criarteste --callback_data gerarssh
 ShellBot.regHandleFunction --function criarteste2 --callback_data gerarssh2
 ShellBot.regHandleFunction --function criarteste3 --callback_data gerarssh3
+ShellBot.regHandleFunction --function comand --callback_data comandos
 ShellBot.regHandleFunction --function comprar --callback_data compra
 ShellBot.regHandleFunction --function lsandroid --callback_data lsand
 ShellBot.regHandleFunction --function lsandroidp --callback_data lsandp

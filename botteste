@@ -96,7 +96,7 @@ criarteste2() {
         tuserdate=$(date '+%C%y/%m/%d' -d " +1 days")
 
         # Comandos executados no servidor remoto via SSH
-        sshpass -p "v8u7z2m2" ssh -o ConnectTimeout=2 -o StrictHostKeyChecking=no root@209.14.69.143 "useradd -M -N -s /bin/false $usuario -e $tuserdate > /dev/null 2>&1; (echo '$senha'; echo '$senha') | passwd $usuario > /dev/null 2>&1; echo '$senha' > /etc/SSHPlus/senha/$usuario; echo '$usuario $limite' >> /root/usuarios.db; echo '#!/bin/bash
+        sshpass -p "$senha_server" ssh -o ConnectTimeout=2 -o StrictHostKeyChecking=no root@$senha_server "useradd -M -N -s /bin/false $usuario -e $tuserdate > /dev/null 2>&1; (echo '$senha'; echo '$senha') | passwd $usuario > /dev/null 2>&1; echo '$senha' > /etc/SSHPlus/senha/$usuario; echo '$usuario $limite' >> /root/usuarios.db; echo '#!/bin/bash
 pkill -f $usuario
 userdel --force $usuario
 grep -v ^$usuario[[:space:]] /root/usuarios.db > /tmp/ph ; cat /tmp/ph > /root/usuarios.db

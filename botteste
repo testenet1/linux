@@ -23,8 +23,8 @@ menu() {
 	msg+="▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬\n\n"
         msg+="Gere seu teste agora mesmo!\n\n"
 	msg+="<b>Comando Principal:</b>/teste\n\n"
-	msg+="🚀<b>LSVPN</b>🚀\n\n"
-        msg+="▬▬▬▬▬⭐ <b>BENEFICIOS</b> ⭐▬▬▬▬▬\n"
+	msg+="▬▬▬▬▬🚀<b>LSVPN</b>🚀▬▬▬▬▬\n\n"
+        msg+="▬▬▬▬▬⭐ <b>BENEFICIOS</b> ⭐▬▬▬▬▬\n\n"
         msg+="✅ TESTE SEM COMPROMISSO \n"
         msg+="💸 ECONOMIZE \n"
         msg+="🥷 NAVEGUE ANONIMAMENTE \n"
@@ -33,7 +33,7 @@ menu() {
 	msg+="👨‍💻 SUPORTE 24H ESPECIALIZADO \n"
         msg+="📲 FUNCIONA COM APP PRÓPRIO \n"
         msg+="🚀 SERVIDORES DE ALTA VELOCIDADE\n"
-        msg+="♾️ <b>TRÁFEGO ILIMITADO</b>\n"
+        msg+="♾️ <b>TRÁFEGO ILIMITADO</b>\n\n"
         msg+="▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬\n"
         msg+="<b>🟣VIVO 🔵TIM</b>\n\n"
 	msg+="<b>Comando Principal:</b> /teste\n\n"
@@ -239,9 +239,9 @@ comprar() {
 
 lsandroid() {
 	local msg
-	msg="▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬\n"
+	msg="▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬\n"
 	msg+="       <b>💳 PAGAMENTO 💳</b>\n"
-	msg+="▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬\n\n"
+	msg+="▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬\n\n"
 	msg+="       <b>LS ANDROID MENSAL</b>\n"
 	msg+="       VALOR: 19,99 BRL\n"
 	msg+="       Período: 30 dias\n"
@@ -284,15 +284,13 @@ lsandroid() {
 lsandroidp() {
 	local msg
 	msg="▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬\n"
-	msg+="       <b>💳 PAGAMENTO 💳</b>\n"
+	msg+="<b>💳 PAGAMENTO 💳</b>\n"
 	msg+="▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬\n\n"
-	msg+="       <b>LS ANDROID MENSAL PREMIUM</b>\n"
-	msg+="       VALOR: 24,99 BRL\n"
-	msg+="       Período: 30 dias\n"
-	msg+="       <b>Chave PIX EMAIL:</b>\n"
-	msg+="\n"
-	msg+="<pre>       testenetssh@outlook.com</pre>\n"
-	msg+="\n"
+	msg+="<b>LS ANDROID MENSAL PREMIUM</b>\n"
+	msg+="VALOR: 24,99 BRL\n"
+	msg+="Período: 30 dias\n"
+	msg+="Chave PIX EMAIL:\n\n"
+	msg+="<pre>testenetssh@outlook.com</pre>\n\n"
 	msg+="Envie o comprovante:\n"
 	
 	# Envia uma notificação em resposta ao botão pressionado.
@@ -430,11 +428,11 @@ infouser () {
 #comandos
 comand () {
 	local msg
-	msg="▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬\n"
+	msg="▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬\n"
 	msg+="       <b>🔦 COMANDOS 🔦</b>\n"
-	msg+="▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬\n\n"
+	msg+="▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬\n\n"
 	msg+="/start - Boas Vindas!\n"
-	msg+="/menu ou /teste - Menu Principal\n"
+	msg+="/teste ou /menu - Menu Principal\n"
 	msg+="/info - Seu ID\n"
 	
 	if [[ -n ${callback_query_id[$id]} ]]; then
@@ -489,8 +487,6 @@ ShellBot.regHandleFunction --function lsandroidplusp --callback_data lsandplusp
 ShellBot.regHandleFunction --function teste --callback_data voltar1
 ShellBot.regHandleFunction --function comprar --callback_data voltar2
 
-
-
 unset keyboard1
 keyboard1="$(ShellBot.InlineKeyboardMarkup -b 'botao1')"
 
@@ -506,8 +502,8 @@ while :; do
     (
       ShellBot.watchHandle --callback_data ${callback_query_data[$id]}
       comando=(${message_text[$id]})
-      [[ "${comando[0]}" = "/menu"  || "${comando[0]}" = "/start" ]] && menu
-      [[ "${comando[0]}" = "/teste" ]] && teste
+      [[ "${comando[0]}" = "/start" ]] && menu
+      [[ "${comando[0]}" = "/teste" || "${comando[0]}" = "/menu" ]] ]] && teste
       [[ "${comando[0]}" = "/id"  ]] && infouser
     ) &
   done

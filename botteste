@@ -122,7 +122,7 @@ rm -rf /etc/SSHPlus/userteste/$usuario.sh" > /etc/SSHPlus/userteste/$usuario.sh
 testeadmin() {
 
 	ShellBot.sendMessage --chat_id ${callback_query_message_chat_id} \
-            --text "$(echo -e "Olá <b>ADMIN</b>!👨🏽‍💻\nEstou criando seu teste no servidor LS BR...\n") \
+            --text "$(echo -e "Olá <b>ADMIN</b>!👨🏽‍💻\nEstou criando seu teste no servidor LS BR...\n")" \
             --parse_mode html
 	    
         usuario=$(echo teste$(( RANDOM % 9999 )))
@@ -152,7 +152,6 @@ testeadmin() {
 			--parse_mode html
 		return 0
 	fi 
-    fi
 }
 
 criarteste2() {
@@ -188,12 +187,15 @@ criarteste2() {
 	rm /etc/SSHPlus/senha/$usuario > /dev/null 2>&1
 	rm -rf /etc/SSHPlus/userteste/$usuario.sh' > /etc/SSHPlus/userteste/$usuario.sh; chmod +x /etc/SSHPlus/userteste/$usuario.sh; at -f /etc/SSHPlus/userteste/$usuario.sh now + $tempo hour > /dev/null 2>&1"
 
-		echo "${callback_query_from_id} $(date +%s)" >> lista2
-
+		echo "${callback_query_from_id} $(date +%s)" >> lista
+		
 		# - ENVIA O SSH
 		ShellBot.sendMessage --chat_id ${callback_query_message_chat_id} \
-		    --text "$(echo -e "✅ <b>Criado com sucesso</b> ✅\n\nSERVIDOR LS BR 2 PREMIUM\nUSUARIO: <code>$usuario</code>\nSENHA: <code>$senha</code>\n\n⏳ Expira em: $tempo Horas")" \
+		    --text "$(echo -e "✅ <b>Criado com sucesso</b> ✅\n\nSERVIDOR LS BR\nUSUARIO: <code>$usuario</code>\nSENHA: <code>$senha</code>\n\n⏳ Expira em: $tempo Horas")" \
 		    --parse_mode html
+		# - ENVIA O msg pro ADM   
+		ShellBot.sendMessage --chat_id "$id" --text "Novo teste criado por um usuário comum!\nID do usuário: <code>${callback_query_from_id}</code>"
+
 		return 0
 	else
 		ShellBot.sendMessage --chat_id ${callback_query_message_chat_id} \
@@ -459,7 +461,7 @@ enviarapp() {
 #informacoes usuario
 infouser () {
 	ShellBot.sendMessage --chat_id ${message_chat_id[$id]} \
-	--text "$(echo -e "Nome:  ${message_from_first_name[$(ShellBot.ListUpdates)]}\nUser: @${message_from_username[$(ShellBot.ListUpdates)]:-null}")\nID: <pre>${message_from_id[$(ShellBot.ListUpdates)]}<\pre> " \
+	--text "$(echo -e "Nome:  ${message_from_first_name[$(ShellBot.ListUpdates)]}\nUser: @${message_from_username[$(ShellBot.ListUpdates)]:-null}")\nID: <code>${message_from_id[$(ShellBot.ListUpdates)]}</code> " \
 	--parse_mode html
 	return 0
 }
@@ -467,12 +469,12 @@ infouser () {
 #comandos
 comand () {
 	local msg
-	msg="▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬\n"
+	msg="▬▬▬▬▬▬▬▬▬▬▬▬▬▬\n"
 	msg+="       <b>🔦 COMANDOS 🔦</b>\n"
-	msg+="▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬\n\n"
+	msg+="▬▬▬▬▬▬▬▬▬▬▬▬▬▬\n\n"
 	msg+="/start - Boas Vindas!\n"
 	msg+="/teste ou /menu - Menu Principal\n"
-	msg+="/info - Seu ID\n"
+	msg+="/info ou /id - Seu ID\n"
 	
 	if [[ -n ${callback_query_id[$id]} ]]; then
 		[[ -n ${message_id[$id]} ]] && ShellBot.deleteMessage --chat_id ${callback_query_message_chat_id[$id]} --message_id ${message_id[$id]}
@@ -543,7 +545,7 @@ while :; do
       comando=(${message_text[$id]})
       [[ "${comando[0]}" = "/start" ]] && menu
       [[ "${comando[0]}" = "/teste" || "${comando[0]}" = "/menu" ]] && teste
-      [[ "${comando[0]}" = "/id" ]] && infouser
+      [[ "${comando[0]}" = "/id" || "${comando[0]}" = "/info" ]] ]] && infouser
     ) &
   done
 done

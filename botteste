@@ -5,8 +5,8 @@ clear
 source ShellBot2.sh
 
 # Admin
-id="SEU-ID"
-echo "$id" >> admin
+idadmin="SEU-ID"
+echo "$idadmin" >> admin
 # Informações Server 
 ip_server="SEU-IP-AQUI"
 senha_server="SUA-SENHA-AQUI"
@@ -194,7 +194,7 @@ criarteste2() {
 			--text "$(echo -e "✅ <b>Criado com sucesso</b> ✅\n\nSERVIDOR LS BR\nUSUARIO: <code>$usuario</code>\nSENHA: <code>$senha</code>\n\n⏳ Expira em: $tempo Horas")" \
 			--parse_mode html
 		# - ENVIA O msg pro ADM   
-		ShellBot.sendMessage --chat_id $id \
+		ShellBot.sendMessage --chat_id $idadmin \
 			--text "Novo teste criado por um usuário comum!\nID do usuário: <code>${callback_query_from_id}</code>" \
 			--parse_mode html
 

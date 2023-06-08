@@ -545,7 +545,7 @@ while :; do
       comando=(${message_text[$id]})
       [[ "${comando[0]}" = "/start" ]] && menu
       [[ "${comando[0]}" = "/teste" || "${comando[0]}" = "/menu" ]] && teste
-      [[ "${comando[0]}" = "/id" || "${comando[0]}" = "/info" ]] ]] && infouser
+      [[ "${comando[0]}" = "/id" || "${comando[0]}" = "/info" ]] && infouser
     ) &
   done
 done

@@ -122,7 +122,7 @@ rm -rf /etc/SSHPlus/userteste/$usuario.sh" > /etc/SSHPlus/userteste/$usuario.sh
 testeadmin() {
 
 	ShellBot.sendMessage --chat_id ${callback_query_message_chat_id} \
-            --text "$(echo -e "Olá <b>ADMIN</b>!👨🏽‍💻\nEstou criando seu teste no servidor LS BR...\n" \
+            --text "$(echo -e "Olá <b>ADMIN</b>!👨🏽‍💻\nEstou criando seu teste no servidor LS BR...\n") \
             --parse_mode html
 	    
         usuario=$(echo teste$(( RANDOM % 9999 )))

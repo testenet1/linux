@@ -164,7 +164,7 @@ criarteste2() {
             sed -i "/${callback_query_from_id}/d" lista
         else
             ShellBot.sendMessage --chat_id ${callback_query_message_chat_id} \
-                --text "🚫 Você já gerou um SSH recentemente no servidor LS BR 2 PREMIUM.\n📞 Entre em contato com o administrador ou adquira seu plano agora!"
+                --text "🚫 Você já gerou um SSH recentemente no servidor LS BR.\n📞 Entre em contato com o administrador ou adquira seu plano agora!"
             return 0
         fi
     fi
@@ -194,7 +194,7 @@ criarteste2() {
 		    --text "$(echo -e "✅ <b>Criado com sucesso</b> ✅\n\nSERVIDOR LS BR\nUSUARIO: <code>$usuario</code>\nSENHA: <code>$senha</code>\n\n⏳ Expira em: $tempo Horas")" \
 		    --parse_mode html
 		# - ENVIA O msg pro ADM   
-		ShellBot.sendMessage --chat_id "$id" --text "Novo teste criado por um usuário comum!\nID do usuário: <code>${callback_query_from_id}</code>"
+		ShellBot.sendMessage --chat_id $id --text "Novo teste criado por um usuário comum!\nID do usuário: <code>${callback_query_from_id}</code>"
 
 		return 0
 	else

@@ -143,13 +143,22 @@ criarteste2() {
         # Comandos executados no servidor remoto via SSH
 	if sshpass -p "$senha_server" ssh -o ConnectTimeout=2 -o StrictHostKeyChecking=no root@$ip_server true; then
 		echo "Conexão bem-sucedida"
-		sshpass -p "$senha_server" ssh -o ConnectTimeout=2 -o StrictHostKeyChecking=no root@$ip_server "/usr/sbin/useradd -M -N -s /bin/false $usuario -e $tuserdate > /dev/null 2>&1; (echo '$senha'; echo '$senha') | passwd $usuario > /dev/null 2>&1; echo '$senha' > /etc/SSHPlus/senha/$usuario; echo '$usuario $limite' >> /root/usuarios.db; echo '#!/bin/bash
+		sshpass -p "$senha_server" ssh -o ConnectTimeout=2 -o StrictHostKeyChecking=no root@$ip_server <<EOF
+		/usr/sbin/useradd -M -N -s /bin/false $usuario -e $tuserdate > /dev/null 2>&1
+		(echo '$senha'
+		echo '$senha') | passwd $usuario > /dev/null 2>&1
+		echo '$senha' > /etc/SSHPlus/senha/$usuario
+		echo '$usuario $limite' >> /root/usuarios.db
+		echo '#!/bin/bash
 	pkill -f $usuario
 	userdel --force $usuario
-	grep -v ^$usuario[[:space:]] /root/usuarios.db > /tmp/ph ; cat /tmp/ph > /root/usuarios.db
+	grep -v ^$usuario[[:space:]] /root/usuarios.db > /tmp/ph
+	cat /tmp/ph > /root/usuarios.db
 	rm /etc/SSHPlus/senha/$usuario > /dev/null 2>&1
-	rm -rf /etc/SSHPlus/userteste/$usuario.sh' > /etc/SSHPlus/userteste/$usuario.sh; chmod +x /etc/SSHPlus/userteste/$usuario.sh; at -f /etc/SSHPlus/userteste/$usuario.sh now + $tempo hour > /dev/null 2>&1"
-
+	rm -rf /etc/SSHPlus/userteste/$usuario.sh' > /etc/SSHPlus/userteste/$usuario.sh
+	chmod +x /etc/SSHPlus/userteste/$usuario.sh
+	at -f /etc/SSHPlus/userteste/$usuario.sh now + $tempo hour > /dev/null 2>&1
+	EOF
 		echo "${callback_query_from_id} $(date +%s)" >> lista
 
 		# - ENVIA O SSH

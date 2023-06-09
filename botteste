@@ -124,52 +124,6 @@ testeadmin() {
 	ShellBot.sendMessage --chat_id ${callback_query_message_chat_id} \
             --text "$(echo -e "Olá <b>ADMIN</b>!👨🏽‍💻\nEstou criando seu teste no servidor LS BR...\n")" \
             --parse_mode html
-	    
-        usuario=$(echo teste$(( RANDOM % 9999 )))
-        senha=$(( RANDOM % 9999 + 1000 ))
-        limite='1'
-        tempo='1'
-        tuserdate=$(date '+%C%y/%m/%d' -d " +2 days")
-
-        # Comandos executados no servidor remoto via SSH
-	if sshpass -p "$senha_server" ssh -o ConnectTimeout=2 -o StrictHostKeyChecking=no root@$ip_server true; then
-		echo "Conexão bem-sucedida"
-		sshpass -p "$senha_server" ssh -o ConnectTimeout=2 -o StrictHostKeyChecking=no root@$ip_server "/usr/sbin/useradd -M -N -s /bin/false $usuario -e $tuserdate > /dev/null 2>&1; (echo '$senha'; echo '$senha') | passwd $usuario > /dev/null 2>&1; echo '$senha' > /etc/SSHPlus/senha/$usuario; echo '$usuario $limite' >> /root/usuarios.db; echo '#!/bin/bash
-	pkill -f $usuario
-	userdel --force $usuario
-	grep -v ^$usuario[[:space:]] /root/usuarios.db > /tmp/ph ; cat /tmp/ph > /root/usuarios.db
-	rm /etc/SSHPlus/senha/$usuario > /dev/null 2>&1
-	rm -rf /etc/SSHPlus/userteste/$usuario.sh' > /etc/SSHPlus/userteste/$usuario.sh; chmod +x /etc/SSHPlus/userteste/$usuario.sh; at -f /etc/SSHPlus/userteste/$usuario.sh now + $tempo hour > /dev/null 2>&1"
-
-		# - ENVIA O SSH
-		ShellBot.sendMessage --chat_id ${callback_query_message_chat_id} \
-		    --text "$(echo -e "✅ <b>Criado com sucesso</b> ✅\n\nSERVIDOR LS BR\nUSUARIO: <code>$usuario</code>\nSENHA: <code>$senha</code>\n\n⏳ Expira em: $tempo Horas")" \
-		    --parse_mode html
-		return 0
-	else
-		ShellBot.sendMessage --chat_id ${callback_query_message_chat_id} \
-			--text "Desculpe <b>ADMIN</b>!😞/n ERRO ao criar usuário, tente novamente mais tarde!" \
-			--parse_mode html
-		return 0
-	fi 
-}
-
-criarteste2() {
-    if grep -q ${callback_query_from_id} admin; then
-    	testeadmin
-    elif grep -q ${callback_query_from_id} lista; then
-        created_date=$(grep -w ${callback_query_from_id} lista | cut -d ' ' -f 2)
-        current_date=$(date +%s)
-        if (( current_date - created_date > 3 * 24 * 60 * 60 )); then
-            sed -i "/${callback_query_from_id}/d" lista
-        else
-            ShellBot.sendMessage --chat_id ${callback_query_message_chat_id} \
-                --text "🚫 Você já gerou um SSH recentemente no servidor LS BR.\n📞 Entre em contato com o administrador ou adquira seu plano agora!"
-            return 0
-        fi
-    fi
-
-    if ! grep -q ${callback_query_from_id} lista && ! grep -q ${callback_query_from_id} admin; then
 
         usuario=$(echo teste$(( RANDOM % 9999 )))
         senha=$(( RANDOM % 9999 + 1000 ))
@@ -199,18 +153,95 @@ criarteste2() {
 		EOF
 		chmod +x /etc/SSHPlus/userteste/$usuario.sh
 		echo \"/etc/SSHPlus/userteste/$usuario.sh\" | at now + $tempo hour >/dev/null 2>&1"
-
-		echo "${callback_query_from_id} $(date +%s)" >> lista
 		
 		# - ENVIA O SSH
 		ShellBot.sendMessage --chat_id ${callback_query_message_chat_id} \
 			--text "$(echo -e "✅ <b>Criado com sucesso</b> ✅\n\nSERVIDOR LS BR\nUSUARIO: <code>$usuario</code>\nSENHA: <code>$senha</code>\n\n⏳ Expira em: $tempo Horas")" \
 			--parse_mode html
-		# - ENVIA O msg pro ADM   
-		ShellBot.sendMessage --chat_id $idadmin \
-			--text "Novo Teste gerado por um usuário comum!\nNome:  ${callback_query_from_first_name}\nUser: @${callback_query_from_username}:-null}\nID: <code>${callback_query_from_id}</code> " \
+		
+		return 0
+	else
+		ShellBot.sendMessage --chat_id ${callback_query_message_chat_id} \
+			--text "😞 Desculpe <b>ADMIN</b>! ERRO ao criar usuário, tente novamente mais tarde!" \
 			--parse_mode html
+		return 0
+	fi 
+}
 
+criartestebr() {
+    # Envia uma notificação em resposta ao botão pressionado.
+    ShellBot.answerCallbackQuery --callback_query_id ${callback_query_id[$id]} \
+							--text "TESTE SERVIDOR BR"
+							
+    if grep -q ${callback_query_from_id} lista; then
+        created_date=$(grep -w ${callback_query_from_id} lista | cut -d ' ' -f 2)
+        current_date=$(date +%s)
+        if (( current_date - created_date > 3 * 24 * 60 * 60 )); then
+            sed -i "/${callback_query_from_id}/d" lista
+        else
+            ShellBot.sendMessage --chat_id ${callback_query_message_chat_id} \
+                --text "🚫 Você já gerou um SSH recentemente no servidor LS BR.\n📞 Entre em contato com o administrador ou adquira seu plano agora!"
+            return 0
+        fi
+    fi
+
+    if ! grep -q ${callback_query_from_id} lista || grep -q ${callback_query_from_id} admin; then
+    	
+	if grep -q ${callback_query_from_id} admin; then
+		ShellBot.sendMessage --chat_id ${callback_query_message_chat_id} \
+				    --text "$(echo -e "Olá <b>ADMIN</b>!👨🏽‍💻\nEstou criando seu teste no servidor LS BR...\n")" \
+				    --parse_mode html
+	else
+		ShellBot.sendMessage --chat_id ${callback_query_message_chat_id} \
+				    --text "$(echo -e "Olá <b>${callback_query_from_first_name}</b>\nEstou criando seu teste no servidor LS BR...\n")" \
+				    --parse_mode html
+	fi
+
+        usuario=$(echo teste$(( RANDOM % 9999 )))
+        senha=$(( RANDOM % 9999 + 1000 ))
+        limite='1'
+        tempo='1'
+        tuserdate=$(date '+%C%y/%m/%d' -d " +2 days")
+
+        # Comandos executados no servidor remoto via SSH
+	if sshpass -p "$senha_server" ssh -o ConnectTimeout=2 -o StrictHostKeyChecking=no root@$ip_server true; then
+		echo "Conexão bem-sucedida"
+		sshpass -p "$senha_server" ssh -o ConnectTimeout=2 -o StrictHostKeyChecking=no root@$ip_server "
+		/usr/sbin/useradd -M -N -s /bin/false $usuario -e $tuserdate >/dev/null 2>&1
+		(
+		    echo \"$senha\"
+		    echo \"$senha\"
+		) | passwd $usuario >/dev/null 2>&1
+		echo \"$senha\" >/etc/SSHPlus/senha/$usuario
+		echo \"$usuario $limite\" >>/root/usuarios.db
+		cat <<-EOF >/etc/SSHPlus/userteste/$usuario.sh
+		#!/bin/bash
+		# USUARIO TESTE
+		[[ \$(ps -u \"$usuario\" | grep -c sshd) != '0' ]] && pkill -u $usuario
+		userdel --force $usuario
+		grep -v ^$usuario[[:space:]] /root/usuarios.db > /tmp/ph ; cat /tmp/ph > /root/usuarios.db
+		rm /etc/SSHPlus/senha/$usuario >/dev/null 2>&1
+		rm /etc/SSHPlus/userteste/$usuario.sh
+		EOF
+		chmod +x /etc/SSHPlus/userteste/$usuario.sh
+		echo \"/etc/SSHPlus/userteste/$usuario.sh\" | at now + $tempo hour >/dev/null 2>&1"
+		
+		# - ENVIA O ID PRA LISTA E ENVIA MSG PRO ADM
+		if ! grep -q ${callback_query_from_id} admin; then
+			echo "${callback_query_from_id} $(date +%s)" >> lista
+			ShellBot.sendMessage --chat_id $idadmin \
+				--text "Novo Teste gerado por um usuário comum no servidor LS BR!\nNome:  ${callback_query_from_first_name}\nUser: @${callback_query_from_username}\nID: <code>${callback_query_from_id}</code>" \
+				--parse_mode html
+			ShellBot.sendMessage --chat_id $idadmin \
+				--text "$(echo -e "Dados do teste gerado:\n✅ <b>Criado com sucesso</b> ✅\n\nSERVIDOR LS BR\nUSUARIO: <code>$usuario</code>\nSENHA: <code>$senha</code>\n\n⏳ Expira em: $tempo Horas")" \
+				--parse_mode html
+		fi
+		
+		# - ENVIA O SSH
+		ShellBot.sendMessage --chat_id ${callback_query_message_chat_id} \
+			--text "$(echo -e "✅ <b>Criado com sucesso</b> ✅\n\nSERVIDOR LS BR\nUSUARIO: <code>$usuario</code>\nSENHA: <code>$senha</code>\n\n⏳ Expira em: $tempo Horas")" \
+			--parse_mode html
+			
 		return 0
 	else
 		ShellBot.sendMessage --chat_id ${callback_query_message_chat_id} \
@@ -221,8 +252,13 @@ criarteste2() {
     fi
 }
 
-criarteste3() {
-    if grep -q ${callback_query_from_id} lista2; then
+criartestebr2() {
+    # Envia uma notificação em resposta ao botão pressionado.
+    ShellBot.answerCallbackQuery --callback_query_id ${callback_query_id[$id]} \
+							--text "TESTE SERVIDOR BR 2 PREMIUM"
+    if grep -q ${callback_query_from_id} admin; then
+    	testeadmin
+    elif grep -q ${callback_query_from_id} lista2; then
         created_date=$(grep -w ${callback_query_from_id} lista2 | cut -d ' ' -f 2)
         current_date=$(date +%s)
         if (( current_date - created_date > 3 * 24 * 60 * 60 )); then
@@ -234,10 +270,14 @@ criarteste3() {
         fi
     fi
 
-    if ! grep -q ${callback_query_from_id} lista2; then
+    if ! grep -q ${callback_query_from_id} lista2 && ! grep -q ${callback_query_from_id} admin; then
+    	
+	ShellBot.sendMessage --chat_id ${callback_query_message_chat_id} \
+            --text "$(echo -e "Olá <b>${callback_query_from_first_name}</b>\nEstou criando seu teste no servidor LS BR 2 PREMIUM...\n")" \
+            --parse_mode html
 
         usuario=$(echo teste$(( RANDOM % 9999 )))
-        senha=$(( RANDOM % 9999 ))
+        senha=$(( RANDOM % 9999 + 1000 ))
         limite='1'
         tempo='1'
         tuserdate=$(date '+%C%y/%m/%d' -d " +2 days")
@@ -245,19 +285,40 @@ criarteste3() {
         # Comandos executados no servidor remoto via SSH
 	if sshpass -p "$senha_server2" ssh -o ConnectTimeout=2 -o StrictHostKeyChecking=no root@$ip_server2 true; then
 		echo "Conexão bem-sucedida"
-		sshpass -p "$senha_server2" ssh -o ConnectTimeout=2 -o StrictHostKeyChecking=no root@$ip_server2 "/usr/sbin/useradd -M -N -s /bin/false $usuario -e $tuserdate > /dev/null 2>&1; (echo '$senha'; echo '$senha') | passwd $usuario > /dev/null 2>&1; echo '$senha' > /etc/SSHPlus/senha/$usuario; echo '$usuario $limite' >> /root/usuarios.db; echo '#!/bin/bash
-	pkill -f $usuario
-	userdel --force $usuario
-	grep -v ^$usuario[[:space:]] /root/usuarios.db > /tmp/ph ; cat /tmp/ph > /root/usuarios.db
-	rm /etc/SSHPlus/senha/$usuario > /dev/null 2>&1
-	rm -rf /etc/SSHPlus/userteste/$usuario.sh' > /etc/SSHPlus/userteste/$usuario.sh; chmod +x /etc/SSHPlus/userteste/$usuario.sh; at -f /etc/SSHPlus/userteste/$usuario.sh now + $tempo hour > /dev/null 2>&1"
+		sshpass -p "$senha_server2" ssh -o ConnectTimeout=2 -o StrictHostKeyChecking=no root@$ip_server2 "
+		/usr/sbin/useradd -M -N -s /bin/false $usuario -e $tuserdate >/dev/null 2>&1
+		(
+		    echo \"$senha\"
+		    echo \"$senha\"
+		) | passwd $usuario >/dev/null 2>&1
+		echo \"$senha\" >/etc/SSHPlus/senha/$usuario
+		echo \"$usuario $limite\" >>/root/usuarios.db
+		cat <<-EOF >/etc/SSHPlus/userteste/$usuario.sh
+		#!/bin/bash
+		# USUARIO TESTE
+		[[ \$(ps -u \"$usuario\" | grep -c sshd) != '0' ]] && pkill -u $usuario
+		userdel --force $usuario
+		grep -v ^$usuario[[:space:]] /root/usuarios.db > /tmp/ph ; cat /tmp/ph > /root/usuarios.db
+		rm /etc/SSHPlus/senha/$usuario >/dev/null 2>&1
+		rm /etc/SSHPlus/userteste/$usuario.sh
+		EOF
+		chmod +x /etc/SSHPlus/userteste/$usuario.sh
+		echo \"/etc/SSHPlus/userteste/$usuario.sh\" | at now + $tempo hour >/dev/null 2>&1"
 
 		echo "${callback_query_from_id} $(date +%s)" >> lista2
-
+		
 		# - ENVIA O SSH
 		ShellBot.sendMessage --chat_id ${callback_query_message_chat_id} \
-		    --text "$(echo -e "✅ <b>Criado com sucesso</b> ✅\n\nSERVIDOR LS BR 2 PREMIUM\nUSUARIO: <code>$usuario</code>\nSENHA: <code>$senha</code>\n\n⏳ Expira em: $tempo Horas")" \
-		    --parse_mode html
+			--text "$(echo -e "✅ <b>Criado com sucesso</b> ✅\n\nSERVIDOR LS BR PREMIUM\nUSUARIO: <code>$usuario</code>\nSENHA: <code>$senha</code>\n\n⏳ Expira em: $tempo Horas")" \
+			--parse_mode html
+		# - ENVIA O msg pro ADM   
+		ShellBot.sendMessage --chat_id $idadmin \
+			--text "Novo Teste gerado por um usuário comum no servidor LS BR 2 PREMIUM!\nNome:  ${callback_query_from_first_name}\nUser: @${callback_query_from_username}\nID: <code>${callback_query_from_id}</code>" \
+			--parse_mode html
+		ShellBot.sendMessage --chat_id $idadmin \
+			--text "$(echo -e "Dados do teste gerado:\n✅ <b>Criado com sucesso</b> ✅\n\nSERVIDOR LS BR\nUSUARIO: <code>$usuario</code>\nSENHA: <code>$senha</code>\n\n⏳ Expira em: $tempo Horas")" \
+			--parse_mode html
+
 		return 0
 	else
 		ShellBot.sendMessage --chat_id ${callback_query_message_chat_id} \
@@ -515,8 +576,8 @@ unset botao2
 botao2=''
 unset botao3
 botao3=''
-ShellBot.InlineKeyboardButton --button 'botao1' --line 1 --text '🟠 TESTE SERVIDOR BR 🟠' --callback_data 'gerarssh2'
-ShellBot.InlineKeyboardButton --button 'botao1' --line 2 --text '🟣 TESTE SERVIDOR BR 2 PREMIUM 🟣' --callback_data 'gerarssh3'
+ShellBot.InlineKeyboardButton --button 'botao1' --line 1 --text '🟠 TESTE SERVIDOR BR 🟠' --callback_data 'testebr'
+ShellBot.InlineKeyboardButton --button 'botao1' --line 2 --text '🟣 TESTE SERVIDOR BR 2 PREMIUM 🟣' --callback_data 'testebr2'
 ShellBot.InlineKeyboardButton --button 'botao1' --line 3 --text '📥 BAIXAR APLICATIVO 📥' --callback_data '3' --url 'http://bit.ly/LSVPN1054apk'
 ShellBot.InlineKeyboardButton --button 'botao1' --line 4 --text '💳 COMPRAR ACESSO 💳' --callback_data 'compra'
 ShellBot.InlineKeyboardButton --button 'botao1' --line 5 --text '🔦 COMANDOS 🔦' --callback_data 'comandos'
@@ -532,8 +593,8 @@ ShellBot.InlineKeyboardButton --button 'botao3' --line 1 --text '📄 ENVIAR COM
 ShellBot.InlineKeyboardButton --button 'botao3' --line 2 --text '↩️ VOLTAR ↩️' --callback_data 'voltar2'
 
 ShellBot.regHandleFunction --function criarteste --callback_data gerarssh
-ShellBot.regHandleFunction --function criarteste2 --callback_data gerarssh2
-ShellBot.regHandleFunction --function criarteste3 --callback_data gerarssh3
+ShellBot.regHandleFunction --function criartestebr --callback_data testebr
+ShellBot.regHandleFunction --function criartestebr2 --callback_data testebr2
 ShellBot.regHandleFunction --function comand --callback_data comandos
 ShellBot.regHandleFunction --function comprar --callback_data compra
 ShellBot.regHandleFunction --function lsandroid --callback_data lsand

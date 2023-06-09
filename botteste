@@ -115,7 +115,7 @@ rm -rf /etc/SSHPlus/userteste/$usuario.sh" > /etc/SSHPlus/userteste/$usuario.sh
 
         # - ENVIA O SSH
         ShellBot.sendMessage --chat_id ${callback_query_message_chat_id} \
-            --text "$(echo -e "✅ <b>Criado com sucesso</b> ✅\n\nSERVIDOR: TESTE\nUSUARIO: <code>$usuario</code>\nSENHA: <code>$senha</code>\n\n⏳ Expira em: $tempo Horas")" \
+            --text "$(echo -e "✅ <b>Criado com sucesso</b> ✅\n\nSERVIDOR: TESTE\nUSUARIO: <code>$usuario</code>\nSENHA: <code>$senha</code>\n\n⏳ Expira em: $tempo Hora")" \
             --parse_mode html
         return 0
     fi
@@ -170,7 +170,7 @@ criartestebr() {
 		cat <<-EOF >/etc/SSHPlus/userteste/$usuario.sh
 		#!/bin/bash
 		# USUARIO TESTE
-		[[ \$(ps -u \"$usuario\" | grep -c sshd) != '0' ]] && pkill -u $usuario
+		pkill -f $usuario
 		userdel --force $usuario
 		grep -v ^$usuario[[:space:]] /root/usuarios.db > /tmp/ph ; cat /tmp/ph > /root/usuarios.db
 		rm /etc/SSHPlus/senha/$usuario >/dev/null 2>&1
@@ -181,7 +181,7 @@ criartestebr() {
 		
 		# - ENVIA O SSH
 		ShellBot.sendMessage --chat_id ${callback_query_message_chat_id} \
-			--text "$(echo -e "✅ <b>Criado com sucesso</b> ✅\n\nSERVIDOR LS BR\nUSUARIO: <code>$usuario</code>\nSENHA: <code>$senha</code>\n\n⏳ Expira em: $tempo Horas")" \
+			--text "$(echo -e "✅ <b>Criado com sucesso</b> ✅\n\nSERVIDOR LS BR\nUSUARIO: <code>$usuario</code>\nSENHA: <code>$senha</code>\n\n⏳ Expira em: $tempo Hora")" \
 			--parse_mode html
 			
 		# - ENVIA O ID PRA LISTA E ENVIA MSG PRO GRUPO DE ATIVIDADES
@@ -191,7 +191,7 @@ criartestebr() {
 				--text "Novo Teste gerado por um usuário comum no servidor LS BR!\nNome:  ${callback_query_from_first_name}\nUser: @${callback_query_from_username}\nID: <code>${callback_query_from_id}</code>" \
 				--parse_mode html
 			ShellBot.sendMessage --chat_id $chatID \
-				--text "$(echo -e "<b>Dados do teste gerado:</b>\n\n✅ <b>Criado com sucesso</b> ✅\n\nSERVIDOR LS BR\nUSUARIO: <code>$usuario</code>\nSENHA: <code>$senha</code>\n\n⏳ Expira em: $tempo Horas")" \
+				--text "$(echo -e "<b>Dados do teste gerado:</b>\n\n✅ <b>Criado com sucesso</b> ✅\n\nSERVIDOR LS BR\nUSUARIO: <code>$usuario</code>\nSENHA: <code>$senha</code>\n\n⏳ Expira em: $tempo Hora")" \
 				--parse_mode html
 		fi
 			
@@ -254,7 +254,7 @@ criartestebr2() {
 		cat <<-EOF >/etc/SSHPlus/userteste/$usuario.sh
 		#!/bin/bash
 		# USUARIO TESTE
-		[[ \$(ps -u \"$usuario\" | grep -c sshd) != '0' ]] && pkill -u $usuario
+		pkill -f $usuario
 		userdel --force $usuario
 		grep -v ^$usuario[[:space:]] /root/usuarios.db > /tmp/ph ; cat /tmp/ph > /root/usuarios.db
 		rm /etc/SSHPlus/senha/$usuario >/dev/null 2>&1

@@ -126,7 +126,7 @@ testeadmin() {
             --parse_mode html
 	    
         usuario=$(echo teste$(( RANDOM % 9999 )))
-        senha=$(( RANDOM % 9999 ))
+        senha=$(( RANDOM % 9999 + 1000 ))
         limite='1'
         tempo='1'
         tuserdate=$(date '+%C%y/%m/%d' -d " +2 days")
@@ -172,7 +172,7 @@ criarteste2() {
     if ! grep -q ${callback_query_from_id} lista && ! grep -q ${callback_query_from_id} admin; then
 
         usuario=$(echo teste$(( RANDOM % 9999 )))
-        senha=$(( RANDOM % 9999 ))
+        senha=$(( RANDOM % 9999 + 1000 ))
         limite='1'
         tempo='1'
         tuserdate=$(date '+%C%y/%m/%d' -d " +2 days")
@@ -208,7 +208,7 @@ criarteste2() {
 			--parse_mode html
 		# - ENVIA O msg pro ADM   
 		ShellBot.sendMessage --chat_id $idadmin \
-			--text "Novo teste criado por um usuário comum!\nID do usuário: <code>${callback_query_from_id}</code>" \
+			--text "Novo teste criado por um usuário comum!\nUser: @${message_from_username[$(ShellBot.ListUpdates)]:-null}")\nID: <code>${message_from_id[$(ShellBot.ListUpdates)]}</code>" \
 			--parse_mode html
 
 		return 0

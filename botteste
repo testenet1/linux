@@ -188,10 +188,10 @@ criartestebr() {
 		if ! grep -q ${callback_query_from_id} admin; then
 			echo "${callback_query_from_id} $(date +%s)" >> lista
 			ShellBot.sendMessage --chat_id $chatID \
-				--text "Novo Teste gerado por um usuário comum no servidor LS BR!\nNome:  ${callback_query_from_first_name}\nUser: @${callback_query_from_username}\nID: <code>${callback_query_from_id}</code>" \
+				--text "▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬\nNovo Teste gerado por um usuário comum no servidor LS BR!\nNome:  ${callback_query_from_first_name}\nUser: @${callback_query_from_username}\nID: <code>${callback_query_from_id}</code>" \
 				--parse_mode html
 			ShellBot.sendMessage --chat_id $chatID \
-				--text "$(echo -e "<b>Dados do teste gerado:</b>\n\n✅ <b>Criado com sucesso</b> ✅\n\nSERVIDOR LS BR\nUSUARIO: <code>$usuario</code>\nSENHA: <code>$senha</code>\n\n⏳ Expira em: $tempo Hora")" \
+				--text "$(echo -e "<b>🕵 Dados do teste gerado:</b>\n\n✅ <b>Criado com sucesso</b> ✅\n\nSERVIDOR LS BR\nUSUARIO: <code>$usuario</code>\nSENHA: <code>$senha</code>\n\n⏳ Expira em: $tempo Hora")" \
 				--parse_mode html
 		fi
 			
@@ -210,7 +210,7 @@ criartestebr2() {
     ShellBot.answerCallbackQuery --callback_query_id ${callback_query_id[$id]} \
 							--text "TESTE SERVIDOR BR 2 PREMIUM"
 							
-    if grep -q ${callback_query_from_id} lista; then
+    if grep -q ${callback_query_from_id} lista2; then
         created_date=$(grep -w ${callback_query_from_id} lista2 | cut -d ' ' -f 2)
         current_date=$(date +%s)
         if (( current_date - created_date > 3 * 24 * 60 * 60 )); then
@@ -226,11 +226,11 @@ criartestebr2() {
     	
 	if grep -q ${callback_query_from_id} admin; then
 		ShellBot.sendMessage --chat_id ${callback_query_message_chat_id} \
-				    --text "$(echo -e "Olá <b>ADMIN</b>!👨🏽‍💻\nEstou criando seu teste no servidor LS BR...\n")" \
+				    --text "$(echo -e "Olá <b>ADMIN</b>!👨🏽‍💻\nEstou criando seu teste no servidor LS BR 2 PREMIUM...\n")" \
 				    --parse_mode html
 	else
 		ShellBot.sendMessage --chat_id ${callback_query_message_chat_id} \
-				    --text "$(echo -e "Olá <b>${callback_query_from_first_name}</b>\nEstou criando seu teste no servidor LS BR...\n")" \
+				    --text "$(echo -e "Olá <b>${callback_query_from_first_name}</b>\nEstou criando seu teste no servidor LS BR 2 PREMIUM...\n")" \
 				    --parse_mode html
 	fi
 
@@ -272,10 +272,10 @@ criartestebr2() {
 		if ! grep -q ${callback_query_from_id} admin; then
 			echo "${callback_query_from_id} $(date +%s)" >> lista2
 			ShellBot.sendMessage --chat_id $chatID \
-				--text "Novo Teste gerado por um usuário comum no servidor LS BR 2 PREMIUM!\nNome:  ${callback_query_from_first_name}\nUser: @${callback_query_from_username}\nID: <code>${callback_query_from_id}</code>" \
+				--text "▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬\nNovo Teste gerado por um usuário comum no servidor LS BR 2 PREMIUM!\nNome:  ${callback_query_from_first_name}\nUser: @${callback_query_from_username}\nID: <code>${callback_query_from_id}</code>" \
 				--parse_mode html
 			ShellBot.sendMessage --chat_id $chatID \
-				--text "$(echo -e "<b>Dados do teste gerado:</b>\n\n✅ <b>Criado com sucesso</b> ✅\n\nSERVIDOR LS BR 2 PREMIUM\nUSUARIO: <code>$usuario</code>\nSENHA: <code>$senha</code>\n\n⏳ Expira em: $tempo Horas")" \
+				--text "$(echo -e "<b> 🕵🏻‍♂️ Dados do teste gerado: </b>\n\n✅ <b>Criado com sucesso</b> ✅\n\nSERVIDOR LS BR 2 PREMIUM\nUSUARIO: <code>$usuario</code>\nSENHA: <code>$senha</code>\n\n⏳ Expira em: $tempo Horas")" \
 				--parse_mode html
 		fi	
 		return 0

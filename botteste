@@ -162,7 +162,7 @@ criartestebr() {
 			grep -v ^$usuario[[:space:]] /root/usuarios.db > /tmp/ph
 			cat /tmp/ph > /root/usuarios.db
 			rm /etc/SSHPlus/senha/$usuario > /dev/null 2>&1
-			rm -rf /etc/SSHPlus/userteste/$usuario.sh' > /etc/SSHPlus/userteste/$usuario.sh
+			rm -rf /etc/SSHPlus/userteste/$usuario.sh > /etc/SSHPlus/userteste/$usuario.sh
 		EOF
 		chmod +x /etc/SSHPlus/userteste/$usuario.sh;
 		at -f /etc/SSHPlus/userteste/$usuario.sh now + $tempo hour > /dev/null 2>&1"
@@ -244,7 +244,7 @@ criartestebr2() {
 			grep -v ^$usuario[[:space:]] /root/usuarios.db > /tmp/ph
 			cat /tmp/ph > /root/usuarios.db
 			rm /etc/SSHPlus/senha/$usuario > /dev/null 2>&1
-			rm -rf /etc/SSHPlus/userteste/$usuario.sh' > /etc/SSHPlus/userteste/$usuario.sh
+			rm -rf /etc/SSHPlus/userteste/$usuario.sh > /etc/SSHPlus/userteste/$usuario.sh
 		EOF
 		chmod +x /etc/SSHPlus/userteste/$usuario.sh;
 		at -f /etc/SSHPlus/userteste/$usuario.sh now + $tempo hour > /dev/null 2>&1"

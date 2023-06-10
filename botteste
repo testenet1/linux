@@ -160,7 +160,7 @@ criartestebr() {
 		cat <<-EOF >/etc/SSHPlus/userteste/$usuario.sh
 		#!/bin/bash
 		# USUARIO TESTE
-		pkill -f "$usuario"
+		pkill -f $usuario
 		userdel --force $usuario
 		grep -v ^$usuario[[:space:]] /root/usuarios.db > /tmp/ph ; cat /tmp/ph > /root/usuarios.db
 		rm /etc/SSHPlus/senha/$usuario > /dev/null 2>&1
@@ -244,7 +244,7 @@ criartestebr2() {
 		cat <<-EOF >/etc/SSHPlus/userteste/$usuario.sh
 		#!/bin/bash
 		# USUARIO TESTE
-		pkill -f "$usuario"
+		pkill -f $usuario
 		userdel --force $usuario
 		grep -v ^$usuario[[:space:]] /root/usuarios.db > /tmp/ph ; cat /tmp/ph > /root/usuarios.db
 		rm /etc/SSHPlus/senha/$usuario > /dev/null 2>&1
@@ -255,7 +255,7 @@ criartestebr2() {
 		
 		# - ENVIA O SSH
 		ShellBot.sendMessage --chat_id ${callback_query_message_chat_id} \
-			--text "$(echo -e "✅ <b>Criado com sucesso</b> ✅\n\nSERVIDOR LS BR 2 PREMIUM\nUSUARIO: <code>$usuario</code>\nSENHA: <code>$senha</code>\n\n⏳ Expira em: $tempo Horas")" \
+			--text "$(echo -e "✅ <b>Criado com sucesso</b> ✅\n\nSERVIDOR LS BR 2 PREMIUM\nUSUARIO: <code>$usuario</code>\nSENHA: <code>$senha</code>\n\n⏳ Expira em: $tempo Hora")" \
 			--parse_mode html
 		
 		# - ENVIA O ID PRA LISTA E ENVIA MSG PRO ADM
@@ -265,7 +265,7 @@ criartestebr2() {
 				--text "▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬\nNovo Teste gerado por um usuário comum no servidor LS BR 2 PREMIUM!\nNome:  ${callback_query_from_first_name}\nUser: @${callback_query_from_username}\nID: <code>${callback_query_from_id}</code>" \
 				--parse_mode html
 			ShellBot.sendMessage --chat_id $chatID \
-				--text "$(echo -e "<b> 🕵🏻‍♂️ Dados do teste gerado: </b>\n\n✅ <b>Criado com sucesso</b> ✅\n\nSERVIDOR LS BR 2 PREMIUM\nUSUARIO: <code>$usuario</code>\nSENHA: <code>$senha</code>\n\n⏳ Expira em: $tempo Horas")" \
+				--text "$(echo -e "<b> 🕵🏻‍♂️ Dados do teste gerado: </b>\n\n✅ <b>Criado com sucesso</b> ✅\n\nSERVIDOR LS BR 2 PREMIUM\nUSUARIO: <code>$usuario</code>\nSENHA: <code>$senha</code>\n\n⏳ Expira em: $tempo Hora")" \
 				--parse_mode html
 		fi	
 		return 0

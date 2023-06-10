@@ -160,7 +160,7 @@ criartestebr() {
 		cat <<-EOF >/etc/SSHPlus/userteste/$usuario.sh
 		#!/bin/bash
 		# USUARIO TESTE
-		[[ \$(ps -u "$usuario" | grep -c sshd) != '0' ]] && pkill -u $usuario
+		[[ $(ps -u "$usuario" | grep -c sshd) != '0' ]] && pkill -u $usuario
 		pkill -f $usuario
 		userdel --force $usuario
 		grep -v ^$usuario[[:space:]] /root/usuarios.db > /tmp/ph ; cat /tmp/ph > /root/usuarios.db
@@ -245,8 +245,7 @@ criartestebr2() {
 		cat <<-EOF >/etc/SSHPlus/userteste/$usuario.sh
 		#!/bin/bash
 		# USUARIO TESTE
-		usermod -L $usuario
-		[[ \$(ps -u "$usuario" | grep -c sshd) != '0' ]] && pkill -u $usuario
+		[[ $(ps -u "$usuario" | grep -c sshd) != '0' ]] && pkill -u $usuario
 		pkill -f $usuario
 		userdel --force $usuario
 		grep -v ^$usuario[[:space:]] /root/usuarios.db > /tmp/ph ; cat /tmp/ph > /root/usuarios.db

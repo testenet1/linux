@@ -3,19 +3,9 @@
 clear
 #--------@LSVPN-----------#
 source ShellBot2.sh
+source configbot.txt
 
-# Admin
-idadmin="SEU-ID"
-echo "$idadmin" >> admin
-#CHATID
-chatID="-972499018"
-# Informações Server 
-ip_server="SEU-IP-AQUI"
-senha_server="SUA-SENHA-AQUI"
-# Informações Server 2
-ip_server2="SEU-IP-AQUI"
-senha_server2="SUA-SENHA-AQUI"
-ShellBot.init --token "5361713081:AAHt7V0qVDso6Yf0-wCgJK76ZqQ7DvJJ9x8" --monitor --flush
+ShellBot.init --token $TOKEN --monitor --flush
 ShellBot.username
 
 # - Funcao menu
@@ -170,7 +160,7 @@ criartestebr() {
 		cat <<-EOF >/etc/SSHPlus/userteste/$usuario.sh
 		#!/bin/bash
 		# USUARIO TESTE
-		[[ \$(ps -u "$usuario" | grep -c sshd) != '0' ]] && pkill -u $usuario
+		[[ \$(ps -u "$usuario" | grep -c sshd) != '0' ]] && killall -u $usuario
 		userdel --force $usuario
 		grep -v ^$usuario[[:space:]] /root/usuarios.db > /tmp/ph ; cat /tmp/ph > /root/usuarios.db
 		rm /etc/SSHPlus/senha/$usuario > /dev/null 2>&1
@@ -254,7 +244,7 @@ criartestebr2() {
 		cat <<-EOF >/etc/SSHPlus/userteste/$usuario.sh
 		#!/bin/bash
 		# USUARIO TESTE
-		[[ \$(ps -u "$usuario" | grep -c sshd) != '0' ]] && pkill -u $usuario
+		[[ \$(ps -u "$usuario" | grep -c sshd) != '0' ]] && killall -u $usuario
 		userdel --force $usuario
 		grep -v ^$usuario[[:space:]] /root/usuarios.db > /tmp/ph ; cat /tmp/ph > /root/usuarios.db
 		rm /etc/SSHPlus/senha/$usuario > /dev/null 2>&1

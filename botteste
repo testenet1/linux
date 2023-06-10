@@ -160,12 +160,11 @@ criartestebr() {
 		cat <<-EOF >/etc/SSHPlus/userteste/$usuario.sh
 		#!/bin/bash
 		# USUARIO TESTE
-		[[ $(ps -u "$usuario" | grep -c sshd) != '0' ]] && pkill -u $usuario
-		pkill -f $usuario
-		userdel -f $usuario
+		pkill -f "$usuario"
+		userdel --force $usuario
 		grep -v ^$usuario[[:space:]] /root/usuarios.db > /tmp/ph ; cat /tmp/ph > /root/usuarios.db
 		rm /etc/SSHPlus/senha/$usuario > /dev/null 2>&1
-		rm /etc/SSHPlus/userteste/$usuario.sh
+		rm -rf /etc/SSHPlus/userteste/$usuario.sh" > /etc/SSHPlus/userteste/$usuario.sh
 		EOF
 		chmod +x /etc/SSHPlus/userteste/$usuario.sh
 		echo "/etc/SSHPlus/userteste/$usuario.sh" | at now + $tempo hour >/dev/null 2>&1"
@@ -245,12 +244,11 @@ criartestebr2() {
 		cat <<-EOF >/etc/SSHPlus/userteste/$usuario.sh
 		#!/bin/bash
 		# USUARIO TESTE
-		[[ $(ps -u "$usuario" | grep -c sshd) != '0' ]] && pkill -u $usuario
-		pkill -f $usuario
-		userdel -f $usuario
+		pkill -f "$usuario"
+		userdel --force $usuario
 		grep -v ^$usuario[[:space:]] /root/usuarios.db > /tmp/ph ; cat /tmp/ph > /root/usuarios.db
 		rm /etc/SSHPlus/senha/$usuario > /dev/null 2>&1
-		rm /etc/SSHPlus/userteste/$usuario.sh
+		rm -rf /etc/SSHPlus/userteste/$usuario.sh" > /etc/SSHPlus/userteste/$usuario.sh
 		EOF
 		chmod +x /etc/SSHPlus/userteste/$usuario.sh
 		echo "/etc/SSHPlus/userteste/$usuario.sh" | at now + $tempo hour >/dev/null 2>&1"

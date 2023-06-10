@@ -160,9 +160,8 @@ criartestebr() {
 		cat <<-EOF >/etc/SSHPlus/userteste/$usuario.sh
 		#!/bin/bash
 		# USUARIO TESTE
-		piduser=$(ps -u "$usuario" | grep sshd | cut -d? -f1)
-		kill -9 $piduser >/dev/null 2>&1
-		userdel --force "$usuario" 2>/dev/null
+		[[ \$(ps -u "$usuario" | grep -c sshd) != '0' ]] && pkill -u $usuario
+		userdel --force $usuario
 		grep -v ^$usuario[[:space:]] /root/usuarios.db > /tmp/ph ; cat /tmp/ph > /root/usuarios.db
 		rm /etc/SSHPlus/senha/$usuario > /dev/null 2>&1
 		rm /etc/SSHPlus/userteste/$usuario.sh
@@ -245,9 +244,8 @@ criartestebr2() {
 		cat <<-EOF >/etc/SSHPlus/userteste/$usuario.sh
 		#!/bin/bash
 		# USUARIO TESTE
-		piduser=$(ps -u "$usuario" | grep sshd | cut -d? -f1)
-		kill -9 $piduser >/dev/null 2>&1
-		userdel --force "$usuario" 2>/dev/null
+		[[ \$(ps -u "$usuario" | grep -c sshd) != '0' ]] && pkill -u $usuario
+		userdel --force $usuario
 		grep -v ^$usuario[[:space:]] /root/usuarios.db > /tmp/ph ; cat /tmp/ph > /root/usuarios.db
 		rm /etc/SSHPlus/senha/$usuario > /dev/null 2>&1
 		rm /etc/SSHPlus/userteste/$usuario.sh

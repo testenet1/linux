@@ -151,9 +151,9 @@ criartestebr() {
 		echo "Conexão bem-sucedida"
 		sshpass -p "$senha_server" ssh -o ConnectTimeout=2 -o StrictHostKeyChecking=no root@$ip_server sshpass -p "$senha_server2" ssh -o ConnectTimeout=2 -o StrictHostKeyChecking=no root@$ip_server2 
 		"/usr/sbin/useradd -M -N -s /bin/false $usuario -e $tuserdate > /dev/null 2>&1
-		(echo '$senha'; echo '$senha') | passwd $usuario > /dev/null 2>&1
-		echo '$senha' > /etc/SSHPlus/senha/$usuario
-		echo '$usuario $limite' >> /root/usuarios.db
+		(echo "$senha"; echo '$senha') | passwd $usuario > /dev/null 2>&1
+		echo "$senha" > /etc/SSHPlus/senha/$usuario
+		echo "$usuario $limite" >> /root/usuarios.db
 		cat <<-EOF > /etc/SSHPlus/userteste/$usuario.sh
 			#!/bin/bash
 			# USUARIO TESTE
@@ -233,9 +233,9 @@ criartestebr2() {
 		echo "Conexão bem-sucedida"
 		sshpass -p "$senha_server2" ssh -o ConnectTimeout=2 -o StrictHostKeyChecking=no root@$ip_server2
 		"/usr/sbin/useradd -M -N -s /bin/false $usuario -e $tuserdate > /dev/null 2>&1
-		(echo '$senha'; echo '$senha') | passwd $usuario > /dev/null 2>&1
-		echo '$senha' > /etc/SSHPlus/senha/$usuario
-		echo '$usuario $limite' >> /root/usuarios.db
+		(echo "$senha"; echo '$senha') | passwd $usuario > /dev/null 2>&1
+		echo "$senha" > /etc/SSHPlus/senha/$usuario
+		echo "$usuario $limite" >> /root/usuarios.db
 		cat <<-EOF > /etc/SSHPlus/userteste/$usuario.sh
 			#!/bin/bash
 			# USUARIO TESTE

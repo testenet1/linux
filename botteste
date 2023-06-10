@@ -170,14 +170,14 @@ criartestebr() {
 		cat <<-EOF >/etc/SSHPlus/userteste/$usuario.sh
 		#!/bin/bash
 		# USUARIO TESTE
-		pkill -f $usuario
+		[[ \$(ps -u "$usuario" | grep -c sshd) != '0' ]] && pkill -u $usuario
 		userdel --force $usuario
 		grep -v ^$usuario[[:space:]] /root/usuarios.db > /tmp/ph ; cat /tmp/ph > /root/usuarios.db
-		rm /etc/SSHPlus/senha/$usuario >/dev/null 2>&1
+		rm /etc/SSHPlus/senha/$usuario > /dev/null 2>&1
 		rm /etc/SSHPlus/userteste/$usuario.sh
 		EOF
 		chmod +x /etc/SSHPlus/userteste/$usuario.sh
-		echo \"/etc/SSHPlus/userteste/$usuario.sh\" | at now + $tempo hour >/dev/null 2>&1"
+		echo "/etc/SSHPlus/userteste/$usuario.sh" | at now + $tempo hour >/dev/null 2>&1"
 		
 		# - ENVIA O SSH
 		ShellBot.sendMessage --chat_id ${callback_query_message_chat_id} \
@@ -254,14 +254,14 @@ criartestebr2() {
 		cat <<-EOF >/etc/SSHPlus/userteste/$usuario.sh
 		#!/bin/bash
 		# USUARIO TESTE
-		pkill -f $usuario
+		[[ \$(ps -u "$usuario" | grep -c sshd) != '0' ]] && pkill -u $usuario
 		userdel --force $usuario
 		grep -v ^$usuario[[:space:]] /root/usuarios.db > /tmp/ph ; cat /tmp/ph > /root/usuarios.db
-		rm /etc/SSHPlus/senha/$usuario >/dev/null 2>&1
+		rm /etc/SSHPlus/senha/$usuario > /dev/null 2>&1
 		rm /etc/SSHPlus/userteste/$usuario.sh
 		EOF
 		chmod +x /etc/SSHPlus/userteste/$usuario.sh
-		echo \"/etc/SSHPlus/userteste/$usuario.sh\" | at now + $tempo hour >/dev/null 2>&1"
+		echo "/etc/SSHPlus/userteste/$usuario.sh" | at now + $tempo hour >/dev/null 2>&1"
 		
 		# - ENVIA O SSH
 		ShellBot.sendMessage --chat_id ${callback_query_message_chat_id} \

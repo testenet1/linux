@@ -694,6 +694,24 @@ comand () {
 	return 0
 }
 
+#DEFININDO BOTOES
+unset botao1
+botao1=''
+unset botao2
+botao2=''
+unset botao3
+botao1=''
+unset botao4
+botao4=''
+unset botao5
+botao5=''
+unset botao6
+botao6=''
+unset botao7
+botao7=''
+unset botao8
+botao8=''
+
 #BOTAO 1 (menu escolha)
 ShellBot.InlineKeyboardButton --button 'botao1' --line 1 --text 'ANDROID' --callback_data 'androidb'
 ShellBot.InlineKeyboardButton --button 'botao1' --line 1 --text 'IOS' --callback_data 'iosb'

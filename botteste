@@ -517,7 +517,7 @@ lsandroidplusp() {
 menu_ios() {
         local msg
         msg="▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬\n"
-	msg+="<b>📲 MENU IOS 📲</b>\n"
+	msg+="<b>▬▬▬📲 MENU IOS 📲▬▬▬</b>\n"
 	msg+="▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬\n\n"
         msg+="Gere seu teste agora mesmo!\n"
 
@@ -715,8 +715,8 @@ botao8=''
 #BOTAO 1 (menu escolha)
 ShellBot.InlineKeyboardButton --button 'botao1' --line 1 --text 'ANDROID' --callback_data 'androidb'
 ShellBot.InlineKeyboardButton --button 'botao1' --line 1 --text 'IOS' --callback_data 'iosb'
-ShellBot.InlineKeyboardButton --button 'botao2' --line 2 --text '🔦 COMANDOS 🔦' --callback_data 'comandosinit'
-ShellBot.InlineKeyboardButton --button 'botao2' --line 2 --text '🙋 SUPORTE 🙋' --callback_data '2' --url 'http://bit.ly/LSVPN'
+ShellBot.InlineKeyboardButton --button 'botao1' --line 2 --text '🔦 COMANDOS 🔦' --callback_data 'comandosinit'
+ShellBot.InlineKeyboardButton --button 'botao1' --line 2 --text '🙋 SUPORTE 🙋' --callback_data '2' --url 'http://bit.ly/LSVPN'
 
 #BOTAO 2 (menu android)
 ShellBot.InlineKeyboardButton --button 'botao2' --line 1 --text '🟠 TESTE SERVIDOR BR 🟠' --callback_data 'testebr'

@@ -726,11 +726,11 @@ ShellBot.InlineKeyboardButton --button 'botao2' --line 5 --text '🙋 SUPORTE �
 ShellBot.InlineKeyboardButton --button 'botao3' --line 6 --text '↩️ VOLTAR ' --callback_data 'voltarb2'
 
 #BOTAO 3 (menu ios)
-ShellBot.InlineKeyboardButton --button 'botao3' --line 1 --text '🟠 TESTE SERVIDOR BR 🟠' --callback_data 'testebrios'
-ShellBot.InlineKeyboardButton --button 'botao3' --line 2 --text '🟣 TESTE SERVIDOR BR 2 PREMIUM 🟣' --callback_data 'testebr2ios'
+ShellBot.InlineKeyboardButton --button 'botao3' --line 1 --text '🟠 TESTE SERVIDOR BR 🟠' --callback_data 'testeiosb'
+ShellBot.InlineKeyboardButton --button 'botao3' --line 2 --text '🟣 TESTE SERVIDOR BR 2 PREMIUM 🟣' --callback_data 'testeiospb'
 ShellBot.InlineKeyboardButton --button 'botao3' --line 3 --text '📥 BAIXAR APLICATIVO 📥' --callback_data '3' --url 'https://apps.apple.com/us/app/napsternetv/id1629465476'
-ShellBot.InlineKeyboardButton --button 'botao3' --line 4 --text '💳 COMPRAR ACESSO 💳' --callback_data 'compraios'
-ShellBot.InlineKeyboardButton --button 'botao3' --line 5 --text '🔦 COMANDOS 🔦' --callback_data 'comandos2'
+ShellBot.InlineKeyboardButton --button 'botao3' --line 4 --text '💳 COMPRAR ACESSO 💳' --callback_data 'comprariosb'
+ShellBot.InlineKeyboardButton --button 'botao3' --line 5 --text '🔦 COMANDOS 🔦' --callback_data 'comandosiosb'
 ShellBot.InlineKeyboardButton --button 'botao3' --line 5 --text '🙋 SUPORTE 🙋' --callback_data '3' --url 'http://bit.ly/LSVPN'
 ShellBot.InlineKeyboardButton --button 'botao3' --line 6 --text '↩️ VOLTAR ' --callback_data 'voltarb3'
 
@@ -774,8 +774,8 @@ ShellBot.regHandleFunction --function menu_escolha --callback_data voltarb2
 #BOTAO 3 FUNCTION(menu_ios)
 ShellBot.regHandleFunction --function teste_ios --callback_data testeiosb
 ShellBot.regHandleFunction --function teste_iosp --callback_data testeiospb
-ShellBot.regHandleFunction --function comprar_ios --callback_data compra2
-ShellBot.regHandleFunction --function comand --callback_data comandos2
+ShellBot.regHandleFunction --function comprar_ios --callback_data comprariosb
+ShellBot.regHandleFunction --function comand --callback_data comandosiosb
 ShellBot.regHandleFunction --function menu_escolha --callback_data voltarb3
 
 #BOTAO 4 FUNCTION(menu comprar_android)

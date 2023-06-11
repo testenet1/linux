@@ -742,8 +742,8 @@ ShellBot.InlineKeyboardButton --button 'botao4' --line 2 --text 'LS ANDROID PLUS
 ShellBot.InlineKeyboardButton --button 'botao4' --line 3 --text '↩️ VOLTAR ' --callback_data 'voltarb4'
 
 #BOTAO 5 (menu compra ios)
-ShellBot.InlineKeyboardButton --button 'botao5' --line 1 --text 'LS IOS' --callback_data 'lsios'
-ShellBot.InlineKeyboardButton --button 'botao5' --line 1 --text 'LS IOS PREMIUM --callback_data 'lsiosp'
+ShellBot.InlineKeyboardButton --button 'botao5' --line 1 --text 'LS IOS' --callback_data 'lsiosb'
+ShellBot.InlineKeyboardButton --button 'botao5' --line 1 --text 'LS IOS PREMIUM' --callback_data 'lsiospb'
 ShellBot.InlineKeyboardButton --button 'botao5' --line 2 --text '↩️ VOLTAR ' --callback_data 'voltarb5'
 
 #BOTAO 6 (menu comprovante)
@@ -787,8 +787,8 @@ ShellBot.regHandleFunction --function menu_android --callback_data voltarb4
 
 #BOTAO 5 FUNCTION(menu comprar_ios)
 
-ShellBot.regHandleFunction --function lsios --callback_data lsand
-ShellBot.regHandleFunction --function lsiosp --callback_data lsandp
+ShellBot.regHandleFunction --function lsios --callback_data lsiosb
+ShellBot.regHandleFunction --function lsiosp --callback_data lsiospb
 ShellBot.regHandleFunction --function menu_ios --callback_data voltarb5
 
 #BOTAO 6 FUNCTION(PAGAMENTO ANDROID)

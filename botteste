@@ -534,9 +534,13 @@ menu_ios() {
 }
 
 teste_ios() {
+	
 	# Envia uma notificação em resposta ao botão pressionado.
     	ShellBot.answerCallbackQuery --callback_query_id ${callback_query_id[$id]} \
 							--text "TESTE LS BR IOS"
+							
+	[[ -n ${message_id[$id]} ]] && ShellBot.deleteMessage --chat_id ${callback_query_message_chat_id[$id]} --message_id ${message_id[$id]}
+	[[ -n ${callback_query_message_message_id[$id]} ]] && ShellBot.deleteMessage --chat_id ${callback_query_message_chat_id[$id]} --message_id ${callback_query_message_message_id[$id]}
 
 	# Envia mensagem utilizando o callback_query_message_chat_id
 	ShellBot.sendMessage --chat_id ${callback_query_message_chat_id[$id]} \
@@ -551,6 +555,9 @@ teste_iosp() {
 	# Envia uma notificação em resposta ao botão pressionado.
     	ShellBot.answerCallbackQuery --callback_query_id ${callback_query_id[$id]} \
 							--text "TESTE LS BR 2 PREMIUM IOS"
+							
+	[[ -n ${message_id[$id]} ]] && ShellBot.deleteMessage --chat_id ${callback_query_message_chat_id[$id]} --message_id ${message_id[$id]}
+	[[ -n ${callback_query_message_message_id[$id]} ]] && ShellBot.deleteMessage --chat_id ${callback_query_message_chat_id[$id]} --message_id ${callback_query_message_message_id[$id]}
 
 	# Envia mensagem utilizando o callback_query_message_chat_id
 	ShellBot.sendMessage --chat_id ${callback_query_message_chat_id[$id]} \

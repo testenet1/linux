@@ -722,8 +722,8 @@ ShellBot.InlineKeyboardButton --button 'botao2' --line 2 --text '🟣 TESTE SERV
 ShellBot.InlineKeyboardButton --button 'botao2' --line 3 --text '📥 BAIXAR APLICATIVO 📥' --callback_data '3' --url 'http://bit.ly/LSVPN1054apk'
 ShellBot.InlineKeyboardButton --button 'botao2' --line 4 --text '💳 COMPRAR ACESSO 💳' --callback_data 'compra'
 ShellBot.InlineKeyboardButton --button 'botao2' --line 5 --text '🔦 COMANDOS 🔦' --callback_data 'comandos'
-ShellBot.InlineKeyboardButton --button 'botao2' --line 5 --text '🙋 SUPORTE 🙋' --callback_data '3' --url 'http://bit.ly/LSVPN'ShellBot.InlineKeyboardButton --button 'botao3' --line 4 --text '↩️ VOLTAR ' --callback_data 'voltar1'
-ShellBot.InlineKeyboardButton --button 'botao3' --line 6 --text '↩️ VOLTAR ' --callback_data 'voltarb2'
+ShellBot.InlineKeyboardButton --button 'botao2' --line 5 --text '🙋 SUPORTE 🙋' --callback_data '5' --url 'http://bit.ly/LSVPN'ShellBot.InlineKeyboardButton --button 'botao3' --line 4 --text '↩️ VOLTAR ' --callback_data 'voltar1'
+ShellBot.InlineKeyboardButton --button 'botao2' --line 6 --text '↩️ VOLTAR ' --callback_data 'voltarb2'
 
 #BOTAO 3 (menu ios)
 ShellBot.InlineKeyboardButton --button 'botao3' --line 1 --text '🟠 TESTE SERVIDOR BR 🟠' --callback_data 'testeiosb'
@@ -731,7 +731,7 @@ ShellBot.InlineKeyboardButton --button 'botao3' --line 2 --text '🟣 TESTE SERV
 ShellBot.InlineKeyboardButton --button 'botao3' --line 3 --text '📥 BAIXAR APLICATIVO 📥' --callback_data '3' --url 'https://apps.apple.com/us/app/napsternetv/id1629465476'
 ShellBot.InlineKeyboardButton --button 'botao3' --line 4 --text '💳 COMPRAR ACESSO 💳' --callback_data 'comprariosb'
 ShellBot.InlineKeyboardButton --button 'botao3' --line 5 --text '🔦 COMANDOS 🔦' --callback_data 'comandosiosb'
-ShellBot.InlineKeyboardButton --button 'botao3' --line 5 --text '🙋 SUPORTE 🙋' --callback_data '3' --url 'http://bit.ly/LSVPN'
+ShellBot.InlineKeyboardButton --button 'botao3' --line 5 --text '🙋 SUPORTE 🙋' --callback_data '5' --url 'http://bit.ly/LSVPN'
 ShellBot.InlineKeyboardButton --button 'botao3' --line 6 --text '↩️ VOLTAR ' --callback_data 'voltarb3'
 
 #BOTAO 4 (menu compra android)

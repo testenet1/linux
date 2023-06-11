@@ -69,7 +69,7 @@ menu_escolha() {
 menu_android() {
         local msg
         msg="▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬\n"
-	msg+="<b>📱 MENU ANDROID 📱</b>\n"
+	msg+="<b>▬▬▬📱 MENU ANDROID 📱▬▬▬</b>\n"
 	msg+="▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬\n\n"
         msg+="Gere seu teste agora mesmo!\n"
 
@@ -715,6 +715,8 @@ botao8=''
 #BOTAO 1 (menu escolha)
 ShellBot.InlineKeyboardButton --button 'botao1' --line 1 --text 'ANDROID' --callback_data 'androidb'
 ShellBot.InlineKeyboardButton --button 'botao1' --line 1 --text 'IOS' --callback_data 'iosb'
+ShellBot.InlineKeyboardButton --button 'botao2' --line 2 --text '🔦 COMANDOS 🔦' --callback_data 'comandosinit'
+ShellBot.InlineKeyboardButton --button 'botao2' --line 2 --text '🙋 SUPORTE 🙋' --callback_data '2' --url 'http://bit.ly/LSVPN'
 
 #BOTAO 2 (menu android)
 ShellBot.InlineKeyboardButton --button 'botao2' --line 1 --text '🟠 TESTE SERVIDOR BR 🟠' --callback_data 'testebr'
@@ -722,7 +724,7 @@ ShellBot.InlineKeyboardButton --button 'botao2' --line 2 --text '🟣 TESTE SERV
 ShellBot.InlineKeyboardButton --button 'botao2' --line 3 --text '📥 BAIXAR APLICATIVO 📥' --callback_data '3' --url 'http://bit.ly/LSVPN1054apk'
 ShellBot.InlineKeyboardButton --button 'botao2' --line 4 --text '💳 COMPRAR ACESSO 💳' --callback_data 'compra'
 ShellBot.InlineKeyboardButton --button 'botao2' --line 5 --text '🔦 COMANDOS 🔦' --callback_data 'comandos'
-ShellBot.InlineKeyboardButton --button 'botao2' --line 5 --text '🙋 SUPORTE 🙋' --callback_data '5' --url 'http://bit.ly/LSVPN'ShellBot.InlineKeyboardButton --button 'botao3' --line 4 --text '↩️ VOLTAR ' --callback_data 'voltar1'
+ShellBot.InlineKeyboardButton --button 'botao2' --line 5 --text '🙋 SUPORTE 🙋' --callback_data '5' --url 'http://bit.ly/LSVPN' 
 ShellBot.InlineKeyboardButton --button 'botao2' --line 6 --text '↩️ VOLTAR ' --callback_data 'voltarb2'
 
 #BOTAO 3 (menu ios)
@@ -762,6 +764,7 @@ ShellBot.InlineKeyboardButton --button 'botao8' --line 2 --text '↩️ VOLTAR '
 #BOTAO 1 FUNCTION(menu_escolha)
 ShellBot.regHandleFunction --function menu_android --callback_data androidb
 ShellBot.regHandleFunction --function menu_ios --callback_data iosb
+ShellBot.regHandleFunction --function comand --callback_data comandosinit
 
 #BOTAO 2 FUNCTION(menu_android)
 ShellBot.regHandleFunction --function criarteste --callback_data gerarssh

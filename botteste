@@ -816,16 +816,16 @@ unset keyboard4
 keyboard4="$(ShellBot.InlineKeyboardMarkup -b 'botao4')"
 
 unset keyboard5
-keyboard4="$(ShellBot.InlineKeyboardMarkup -b 'botao5')"
+keyboard5="$(ShellBot.InlineKeyboardMarkup -b 'botao5')"
 
 unset keyboard6
-keyboard4="$(ShellBot.InlineKeyboardMarkup -b 'botao6')"
+keyboard6="$(ShellBot.InlineKeyboardMarkup -b 'botao6')"
 
 unset keyboard7
-keyboard4="$(ShellBot.InlineKeyboardMarkup -b 'botao7')"
+keyboard7="$(ShellBot.InlineKeyboardMarkup -b 'botao7')"
 
 unset keyboard8
-keyboard4="$(ShellBot.InlineKeyboardMarkup -b 'botao8')"
+keyboard8="$(ShellBot.InlineKeyboardMarkup -b 'botao8')"
 
 while :; do
   ShellBot.getUpdates --limit 100 --offset $(ShellBot.OffsetNext) --timeout 30

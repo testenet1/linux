@@ -39,12 +39,13 @@ menu() {
 	
         return 0
 }
-teste() {
+
+menu_escolha() {
         local msg
         msg="▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬\n"
 	msg+="<b>🤖 SEJA BEM VINDO AO LSVPNBOT! 🤖</b>\n"
 	msg+="▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬\n\n"
-        msg+="Gere seu teste agora mesmo!\n"
+        msg+="Escolha o sistema do seu celular:\n"
 
 	if [[ -n ${callback_query_id[$id]} ]]; then
 		[[ -n ${message_id[$id]} ]] && ShellBot.deleteMessage --chat_id ${callback_query_message_chat_id[$id]} --message_id ${message_id[$id]}
@@ -65,7 +66,25 @@ teste() {
 	return 0
 }
 
+menu_android() {
+        local msg
+        msg="▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬\n"
+	msg+="<b>📱 MENU ANDROID 📱</b>\n"
+	msg+="▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬\n\n"
+        msg+="Gere seu teste agora mesmo!\n"
 
+	
+	[[ -n ${message_id[$id]} ]] && ShellBot.deleteMessage --chat_id ${callback_query_message_chat_id[$id]} --message_id ${message_id[$id]}
+	[[ -n ${callback_query_message_message_id[$id]} ]] && ShellBot.deleteMessage --chat_id ${callback_query_message_chat_id[$id]} --message_id ${callback_query_message_message_id[$id]}
+
+	# Envia mensagem utilizando o callback_query_message_chat_id
+	ShellBot.sendMessage --chat_id ${callback_query_message_chat_id[$id]} \
+	    --text "$(echo -e $msg)" \
+	    --reply_markup "$keyboard2" \
+	    --parse_mode html
+	
+	return 0
+}
 
 # - funcao criar ssh
 criarteste() {
@@ -274,16 +293,16 @@ criartestebr2() {
     fi
 }
 
-comprar() {
+comprar_android() {
 	local msg
 	msg="▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬\n"
-	msg+="   <b>💲💳 MENU DE COMPRA 💳💲</b>\n"
+	msg+="   <b>💲💳 MENU DE COMPRA ANDROID 💳💲</b>\n"
 	msg+="▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬\n\n"
 	msg+="<b>Escolha o plano:</b>\n"
 
 	# Envia uma notificação em resposta ao botão pressionado.
 	ShellBot.answerCallbackQuery --callback_query_id ${callback_query_id[$id]} \
-							--text "Comprar Acesso"
+							--text "Comprar Acesso ANDROID"
 	
 	[[ -n ${message_id[$id]} ]] && ShellBot.deleteMessage --chat_id ${callback_query_message_chat_id[$id]} --message_id ${message_id[$id]}
 	[[ -n ${callback_query_message_message_id[$id]} ]] && ShellBot.deleteMessage --chat_id ${callback_query_message_chat_id[$id]} --message_id ${callback_query_message_message_id[$id]}
@@ -292,7 +311,32 @@ comprar() {
 	# Envia mensagem
 	ShellBot.sendMessage --chat_id ${callback_query_message_chat_id[$id]} \
 							--text "$(echo -e $msg)" \
-							--reply_markup "$keyboard2" \
+							--reply_markup "$keyboard4" \
+							--parse_mode html
+							
+	# retorno
+	return 0
+}
+
+comprar_ios() {
+	local msg
+	msg="▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬\n"
+	msg+="   <b>💲💳 MENU DE COMPRA IOS 💳💲</b>\n"
+	msg+="▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬\n\n"
+	msg+="<b>Escolha o plano:</b>\n"
+
+	# Envia uma notificação em resposta ao botão pressionado.
+	ShellBot.answerCallbackQuery --callback_query_id ${callback_query_id[$id]} \
+							--text "Comprar Acesso IOS"
+	
+	[[ -n ${message_id[$id]} ]] && ShellBot.deleteMessage --chat_id ${callback_query_message_chat_id[$id]} --message_id ${message_id[$id]}
+	[[ -n ${callback_query_message_message_id[$id]} ]] && ShellBot.deleteMessage --chat_id ${callback_query_message_chat_id[$id]} --message_id ${callback_query_message_message_id[$id]}
+
+							
+	# Envia mensagem
+	ShellBot.sendMessage --chat_id ${callback_query_message_chat_id[$id]} \
+							--text "$(echo -e $msg)" \
+							--reply_markup "$keyboard5" \
 							--parse_mode html
 							
 	# retorno
@@ -336,7 +380,7 @@ lsandroid() {
 	# Envia mensagem
 	ShellBot.sendMessage --chat_id ${callback_query_message_chat_id[$id]} \
 							--text "$(echo -e $msg)" \
-							--reply_markup "$keyboard3" \
+							--reply_markup "$keyboard7" \
 							--parse_mode html
 						
 	# retorno
@@ -376,7 +420,7 @@ lsandroidp() {
 	# Envia mensagem
 	ShellBot.sendMessage --chat_id ${callback_query_message_chat_id[$id]} \
 							--text "$(echo -e $msg)" \
-							--reply_markup "$keyboard3" \
+							--reply_markup "$keyboard7" \
 							--parse_mode html
 						
 	# retorno
@@ -419,7 +463,7 @@ lsandroidplus() {
 	# Envia mensagem
 	ShellBot.sendMessage --chat_id ${callback_query_message_chat_id[$id]} \
 							--text "$(echo -e $msg)" \
-							--reply_markup "$keyboard3" \
+							--reply_markup "$keyboard7" \
 							--parse_mode html
 						
 	# retorno
@@ -463,12 +507,147 @@ lsandroidplusp() {
 	# Envia mensagem
 	ShellBot.sendMessage --chat_id ${callback_query_message_chat_id[$id]} \
 							--text "$(echo -e $msg)" \
-							--reply_markup "$keyboard3" \
+							--reply_markup "$keyboard7" \
 							--parse_mode html
 						
 	# retorno
 	return 0
 }
+
+menu_ios() {
+        local msg
+        msg="▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬\n"
+	msg+="<b>📲 MENU IOS 📲</b>\n"
+	msg+="▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬\n\n"
+        msg+="Gere seu teste agora mesmo!\n"
+
+	[[ -n ${message_id[$id]} ]] && ShellBot.deleteMessage --chat_id ${callback_query_message_chat_id[$id]} --message_id ${message_id[$id]}
+	[[ -n ${callback_query_message_message_id[$id]} ]] && ShellBot.deleteMessage --chat_id ${callback_query_message_chat_id[$id]} --message_id ${callback_query_message_message_id[$id]}
+
+	# Envia mensagem utilizando o callback_query_message_chat_id
+	ShellBot.sendMessage --chat_id ${callback_query_message_chat_id[$id]} \
+	    --text "$(echo -e $msg)" \
+	    --reply_markup "$keyboard3" \
+	    --parse_mode html
+	
+	return 0
+}
+
+teste_ios() {
+	# Envia uma notificação em resposta ao botão pressionado.
+    	ShellBot.answerCallbackQuery --callback_query_id ${callback_query_id[$id]} \
+							--text "TESTE LS BR IOS"
+
+	# Envia mensagem utilizando o callback_query_message_chat_id
+	ShellBot.sendMessage --chat_id ${callback_query_message_chat_id[$id]} \
+	    --text "$(echo -e "Olá <b>${callback_query_from_first_name}</b>\nEntre em contato com nossa equipe para gerar seu arquivo no servidor LS BR!\nInforme sua operadora, informe o servidor desejado e esteja com o app baixado...")" \
+	    --reply_markup "$keyboard8" \
+	    --parse_mode html
+	
+	return 0
+}
+
+teste_iosp() {
+	# Envia uma notificação em resposta ao botão pressionado.
+    	ShellBot.answerCallbackQuery --callback_query_id ${callback_query_id[$id]} \
+							--text "TESTE LS BR 2 PREMIUM IOS"
+
+	# Envia mensagem utilizando o callback_query_message_chat_id
+	ShellBot.sendMessage --chat_id ${callback_query_message_chat_id[$id]} \
+	    --text "$(echo -e "Olá <b>${callback_query_from_first_name}</b>\nEntre em contato com nossa equipe para gerar seu arquivo no servidor LS BR 2 PREMIUM!\nInforme sua operadora, informe o servidor desejado e esteja com o app baixado...")" \
+	    --reply_markup "$keyboard8" \
+	    --parse_mode html
+	
+	return 0
+}
+
+
+
+lsios() {
+	local msg
+	msg="▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬\n"
+	msg+="       <b>💳 PAGAMENTO 💳</b>\n"
+	msg+="▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬\n\n"
+	msg+="       <b>LS IOS</b>\n"
+	msg+="       VALOR: 24,99 BRL\n"
+	msg+="       Período: 30 dias\n"
+	msg+="       <b>Chave PIX EMAIL:</b>\n"
+	msg+="\n"
+	msg+="<pre>       testenetssh@outlook.com</pre>\n"
+	msg+="\n"
+	msg+="Envie o comprovante:\n"
+	
+	# Envia uma notificação em resposta ao botão pressionado.
+	ShellBot.answerCallbackQuery --callback_query_id ${callback_query_id[$id]} \
+							--text "LS IOS"
+							
+	[[ -n ${message_id[$id]} ]] && ShellBot.deleteMessage --chat_id ${callback_query_message_chat_id[$id]} --message_id ${message_id[$id]}
+	[[ -n ${callback_query_message_message_id[$id]} ]] && ShellBot.deleteMessage --chat_id ${callback_query_message_chat_id[$id]} --message_id ${callback_query_message_message_id[$id]}
+	
+	
+	# Envia mensagem
+	ShellBot.sendMessage --chat_id ${callback_query_message_chat_id[$id]} \
+							--text "<b>🟠 LS IOS 🟠</b>\n" \
+							--parse_mode html
+	
+	# Envia foto
+	ShellBot.sendPhoto --chat_id ${callback_query_message_chat_id[$id]} \
+							--photo @/etc/pics/lsios.png \
+							--parse_mode html
+	
+	# Envia mensagem
+	ShellBot.sendMessage --chat_id ${callback_query_message_chat_id[$id]} \
+							--text "$(echo -e $msg)" \
+							--reply_markup "$keyboard6" \
+							--parse_mode html
+						
+	# retorno
+	return 0
+}
+
+lsiosp() {
+	local msg
+	msg="▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬\n"
+	msg+="       <b>💳 PAGAMENTO 💳</b>\n"
+	msg+="▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬\n\n"
+	msg+="       <b>LS IOS</b>\n"
+	msg+="       VALOR: 29,99 BRL\n"
+	msg+="       Período: 30 dias\n"
+	msg+="       <b>Chave PIX EMAIL:</b>\n"
+	msg+="\n"
+	msg+="<pre>       testenetssh@outlook.com</pre>\n"
+	msg+="\n"
+	msg+="Envie o comprovante:\n"
+	
+	# Envia uma notificação em resposta ao botão pressionado.
+	ShellBot.answerCallbackQuery --callback_query_id ${callback_query_id[$id]} \
+							--text " LS IOS PREMIUM "
+							
+	[[ -n ${message_id[$id]} ]] && ShellBot.deleteMessage --chat_id ${callback_query_message_chat_id[$id]} --message_id ${message_id[$id]}
+	[[ -n ${callback_query_message_message_id[$id]} ]] && ShellBot.deleteMessage --chat_id ${callback_query_message_chat_id[$id]} --message_id ${callback_query_message_message_id[$id]}
+	
+	
+	# Envia mensagem
+	ShellBot.sendMessage --chat_id ${callback_query_message_chat_id[$id]} \
+							--text "<b>🟣 LS IOS PREMIUM 🟣</b>\n" \
+							--parse_mode html
+	
+	# Envia foto
+	ShellBot.sendPhoto --chat_id ${callback_query_message_chat_id[$id]} \
+							--photo @/etc/pics/lsiospremium.png \
+							--parse_mode html
+	
+	# Envia mensagem
+	ShellBot.sendMessage --chat_id ${callback_query_message_chat_id[$id]} \
+							--text "$(echo -e $msg)" \
+							--reply_markup "$keyboard6" \
+							--parse_mode html
+						
+	# retorno
+	return 0
+}
+
+
 
 #enviar app
 enviarapp() {
@@ -521,33 +700,99 @@ unset botao2
 botao2=''
 unset botao3
 botao3=''
-ShellBot.InlineKeyboardButton --button 'botao1' --line 1 --text '🟠 TESTE SERVIDOR BR 🟠' --callback_data 'testebr'
-ShellBot.InlineKeyboardButton --button 'botao1' --line 2 --text '🟣 TESTE SERVIDOR BR 2 PREMIUM 🟣' --callback_data 'testebr2'
-ShellBot.InlineKeyboardButton --button 'botao1' --line 3 --text '📥 BAIXAR APLICATIVO 📥' --callback_data '3' --url 'http://bit.ly/LSVPN1054apk'
-ShellBot.InlineKeyboardButton --button 'botao1' --line 4 --text '💳 COMPRAR ACESSO 💳' --callback_data 'compra'
-ShellBot.InlineKeyboardButton --button 'botao1' --line 5 --text '🔦 COMANDOS 🔦' --callback_data 'comandos'
-ShellBot.InlineKeyboardButton --button 'botao1' --line 5 --text '🙋 SUPORTE 🙋' --callback_data '3' --url 'http://bit.ly/LSVPN'
+unset botao4
+botao3=''
 
-ShellBot.InlineKeyboardButton --button 'botao2' --line 1 --text 'LS ANDROID' --callback_data 'lsand'
-ShellBot.InlineKeyboardButton --button 'botao2' --line 1 --text 'LS ANDROID PREMIUM' --callback_data 'lsandp'
-ShellBot.InlineKeyboardButton --button 'botao2' --line 2 --text 'LS ANDROID PLUS' --callback_data 'lsandplus'
-ShellBot.InlineKeyboardButton --button 'botao2' --line 2 --text 'LS ANDROID PLUS PREMIUM' --callback_data 'lsandplusp'
-ShellBot.InlineKeyboardButton --button 'botao2' --line 3 --text '↩️ VOLTAR ' --callback_data 'voltar1'
+#BOTAO 1 (menu escolha)
+ShellBot.InlineKeyboardButton --button 'botao1' --line 1 --text 'ANDROID' --callback_data 'androidb'
+ShellBot.InlineKeyboardButton --button 'botao1' --line 1 --text 'IOS' --callback_data 'iosb'
 
-ShellBot.InlineKeyboardButton --button 'botao3' --line 1 --text '📄 ENVIAR COMPROVANTE 📄' --callback_data '1' --url 'http://bit.ly/LSVPN'
-ShellBot.InlineKeyboardButton --button 'botao3' --line 2 --text '↩️ VOLTAR ↩️' --callback_data 'voltar2'
+#BOTAO 2 (menu android)
+ShellBot.InlineKeyboardButton --button 'botao2' --line 1 --text '🟠 TESTE SERVIDOR BR 🟠' --callback_data 'testebr'
+ShellBot.InlineKeyboardButton --button 'botao2' --line 2 --text '🟣 TESTE SERVIDOR BR 2 PREMIUM 🟣' --callback_data 'testebr2'
+ShellBot.InlineKeyboardButton --button 'botao2' --line 3 --text '📥 BAIXAR APLICATIVO 📥' --callback_data '3' --url 'http://bit.ly/LSVPN1054apk'
+ShellBot.InlineKeyboardButton --button 'botao2' --line 4 --text '💳 COMPRAR ACESSO 💳' --callback_data 'compra'
+ShellBot.InlineKeyboardButton --button 'botao2' --line 5 --text '🔦 COMANDOS 🔦' --callback_data 'comandos'
+ShellBot.InlineKeyboardButton --button 'botao2' --line 5 --text '🙋 SUPORTE 🙋' --callback_data '3' --url 'http://bit.ly/LSVPN'ShellBot.InlineKeyboardButton --button 'botao3' --line 4 --text '↩️ VOLTAR ' --callback_data 'voltar1'
+ShellBot.InlineKeyboardButton --button 'botao3' --line 6 --text '↩️ VOLTAR ' --callback_data 'voltarb2'
 
+#BOTAO 3 (menu ios)
+ShellBot.InlineKeyboardButton --button 'botao3' --line 1 --text '🟠 TESTE SERVIDOR BR 🟠' --callback_data 'testebrios'
+ShellBot.InlineKeyboardButton --button 'botao3' --line 2 --text '🟣 TESTE SERVIDOR BR 2 PREMIUM 🟣' --callback_data 'testebr2ios'
+ShellBot.InlineKeyboardButton --button 'botao3' --line 3 --text '📥 BAIXAR APLICATIVO 📥' --callback_data '3' --url 'https://apps.apple.com/us/app/napsternetv/id1629465476'
+ShellBot.InlineKeyboardButton --button 'botao3' --line 4 --text '💳 COMPRAR ACESSO 💳' --callback_data 'compraios'
+ShellBot.InlineKeyboardButton --button 'botao3' --line 5 --text '🔦 COMANDOS 🔦' --callback_data 'comandos2'
+ShellBot.InlineKeyboardButton --button 'botao3' --line 5 --text '🙋 SUPORTE 🙋' --callback_data '3' --url 'http://bit.ly/LSVPN'
+ShellBot.InlineKeyboardButton --button 'botao3' --line 6 --text '↩️ VOLTAR ' --callback_data 'voltarb3'
+
+#BOTAO 4 (menu compra android)
+ShellBot.InlineKeyboardButton --button 'botao4' --line 1 --text 'LS ANDROID' --callback_data 'lsand'
+ShellBot.InlineKeyboardButton --button 'botao4' --line 1 --text 'LS ANDROID PREMIUM' --callback_data 'lsandp'
+ShellBot.InlineKeyboardButton --button 'botao4' --line 2 --text 'LS ANDROID PLUS' --callback_data 'lsandplus'
+ShellBot.InlineKeyboardButton --button 'botao4' --line 2 --text 'LS ANDROID PLUS PREMIUM' --callback_data 'lsandplusp'
+ShellBot.InlineKeyboardButton --button 'botao4' --line 3 --text '↩️ VOLTAR ' --callback_data 'voltarb4'
+
+#BOTAO 5 (menu compra ios)
+ShellBot.InlineKeyboardButton --button 'botao5' --line 1 --text 'LS IOS' --callback_data 'lsios'
+ShellBot.InlineKeyboardButton --button 'botao5' --line 1 --text 'LS IOS PREMIUM --callback_data 'lsiosp'
+ShellBot.InlineKeyboardButton --button 'botao5' --line 2 --text '↩️ VOLTAR ' --callback_data 'voltarb5'
+
+#BOTAO 6 (menu comprovante)
+ShellBot.InlineKeyboardButton --button 'botao6' --line 1 --text '📄 ENVIAR COMPROVANTE 📄' --callback_data '1' --url 'http://bit.ly/LSVPN'
+ShellBot.InlineKeyboardButton --button 'botao6' --line 2 --text '↩️ VOLTAR ' --callback_data 'voltarb6'
+
+#BOTAO 7 (menu comprovanteios)
+ShellBot.InlineKeyboardButton --button 'botao7' --line 1 --text '📄 ENVIAR COMPROVANTE 📄' --callback_data '1' --url 'http://bit.ly/LSVPN'
+ShellBot.InlineKeyboardButton --button 'botao7' --line 2 --text '↩️ VOLTAR ' --callback_data 'voltarb7'
+
+#BOTAO 8 (menu arquivo ios)
+ShellBot.InlineKeyboardButton --button 'botao8' --line 1 --text '🗃️ SOLICITAR ARQUIVO 🗃️' --callback_data '1' --url 'http://bit.ly/LSVPN'
+ShellBot.InlineKeyboardButton --button 'botao8' --line 2 --text '↩️ VOLTAR ' --callback_data 'voltarb8'
+
+
+#BOTAO 1 FUNCTION(menu_escolha)
+ShellBot.regHandleFunction --function menu_android --callback_data androidb
+ShellBot.regHandleFunction --function menu_ios --callback_data iosb
+
+#BOTAO 2 FUNCTION(menu_android)
 ShellBot.regHandleFunction --function criarteste --callback_data gerarssh
 ShellBot.regHandleFunction --function criartestebr --callback_data testebr
 ShellBot.regHandleFunction --function criartestebr2 --callback_data testebr2
+ShellBot.regHandleFunction --function comprar_android --callback_data compra
 ShellBot.regHandleFunction --function comand --callback_data comandos
-ShellBot.regHandleFunction --function comprar --callback_data compra
+ShellBot.regHandleFunction --function menu_escolha --callback_data voltarb2
+
+#BOTAO 3 FUNCTION(menu_ios)
+ShellBot.regHandleFunction --function teste_ios --callback_data testeiosb
+ShellBot.regHandleFunction --function teste_iosp --callback_data testeiospb
+ShellBot.regHandleFunction --function comprar_ios --callback_data compra2
+ShellBot.regHandleFunction --function comand --callback_data comandos2
+ShellBot.regHandleFunction --function menu_escolha --callback_data voltarb3
+
+#BOTAO 4 FUNCTION(menu comprar_android)
 ShellBot.regHandleFunction --function lsandroid --callback_data lsand
 ShellBot.regHandleFunction --function lsandroidp --callback_data lsandp
 ShellBot.regHandleFunction --function lsandroidplus --callback_data lsandplus
 ShellBot.regHandleFunction --function lsandroidplusp --callback_data lsandplusp
-ShellBot.regHandleFunction --function teste --callback_data voltar1
-ShellBot.regHandleFunction --function comprar --callback_data voltar2
+ShellBot.regHandleFunction --function menu_android --callback_data voltarb4
+
+#BOTAO 5 FUNCTION(menu comprar_ios)
+
+ShellBot.regHandleFunction --function lsios --callback_data lsand
+ShellBot.regHandleFunction --function lsiosp --callback_data lsandp
+ShellBot.regHandleFunction --function menu_ios --callback_data voltarb5
+
+#BOTAO 6 FUNCTION(PAGAMENTO ANDROID)
+
+ShellBot.regHandleFunction --function comprar_android --callback_data voltarb6
+
+#BOTAO 7 FUNCTION(PAGAMENTO IOS)
+
+ShellBot.regHandleFunction --function comprar_ios --callback_data voltarb7
+
+#BOTAO 8 FUNCTION(ENVIAR ARQUIVO IOS)
+
+ShellBot.regHandleFunction --function menu_ios --callback_data voltarb8
 
 unset keyboard1
 keyboard1="$(ShellBot.InlineKeyboardMarkup -b 'botao1')"
@@ -558,6 +803,21 @@ keyboard2="$(ShellBot.InlineKeyboardMarkup -b 'botao2')"
 unset keyboard3
 keyboard3="$(ShellBot.InlineKeyboardMarkup -b 'botao3')"
 
+unset keyboard4
+keyboard4="$(ShellBot.InlineKeyboardMarkup -b 'botao4')"
+
+unset keyboard5
+keyboard4="$(ShellBot.InlineKeyboardMarkup -b 'botao5')"
+
+unset keyboard6
+keyboard4="$(ShellBot.InlineKeyboardMarkup -b 'botao6')"
+
+unset keyboard7
+keyboard4="$(ShellBot.InlineKeyboardMarkup -b 'botao7')"
+
+unset keyboard8
+keyboard4="$(ShellBot.InlineKeyboardMarkup -b 'botao8')"
+
 while :; do
   ShellBot.getUpdates --limit 100 --offset $(ShellBot.OffsetNext) --timeout 30
   for id in $(ShellBot.ListUpdates); do
@@ -565,7 +825,7 @@ while :; do
       ShellBot.watchHandle --callback_data ${callback_query_data[$id]}
       comando=(${message_text[$id]})
       [[ "${comando[0]}" = "/start" ]] && menu
-      [[ "${comando[0]}" = "/teste" || "${comando[0]}" = "/menu" ]] && teste
+      [[ "${comando[0]}" = "/teste" || "${comando[0]}" = "/menu" ]] && menu_escolha
       [[ "${comando[0]}" = "/id" || "${comando[0]}" = "/info" ]] && infouser
     ) &
   done

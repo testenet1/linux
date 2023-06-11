@@ -50,13 +50,23 @@ menu_escolha() {
 	if [[ -n ${callback_query_id[$id]} ]]; then
 		[[ -n ${message_id[$id]} ]] && ShellBot.deleteMessage --chat_id ${callback_query_message_chat_id[$id]} --message_id ${message_id[$id]}
 		[[ -n ${callback_query_message_message_id[$id]} ]] && ShellBot.deleteMessage --chat_id ${callback_query_message_chat_id[$id]} --message_id ${callback_query_message_message_id[$id]}
-
+		
+		[[ -n ${message_id[$id]} ]] && ShellBot.deleteMessage --chat_id ${message_chat_id[$id]} --message_id ${message_id[$id]}
+		[[ -n ${callback_query_message_message_id[$id]} ]] && ShellBot.deleteMessage --chat_id ${message_chat_id[$id]} --message_id ${message_id[$id]}
+		
         	# Envia mensagem utilizando o callback_query_message_chat_id
 		ShellBot.sendMessage --chat_id ${callback_query_message_chat_id[$id]} \
 		    --text "$(echo -e $msg)" \
 		    --reply_markup "$keyboard1" \
 		    --parse_mode html
 	else
+	
+		[[ -n ${message_id[$id]} ]] && ShellBot.deleteMessage --chat_id ${callback_query_message_chat_id[$id]} --message_id ${message_id[$id]}
+		[[ -n ${callback_query_message_message_id[$id]} ]] && ShellBot.deleteMessage --chat_id ${callback_query_message_chat_id[$id]} --message_id ${callback_query_message_message_id[$id]}
+		
+		[[ -n ${message_id[$id]} ]] && ShellBot.deleteMessage --chat_id ${message_chat_id[$id]} --message_id ${message_id[$id]}
+		[[ -n ${callback_query_message_message_id[$id]} ]] && ShellBot.deleteMessage --chat_id ${message_chat_id[$id]} --message_id ${message_id[$id]}
+		
 		# Envia mensagem utilizando o chat_id
 		ShellBot.sendMessage --chat_id ${message_chat_id[$id]} \
 		    --text "$(echo -e $msg)" \
@@ -76,6 +86,9 @@ menu_android() {
 	
 	[[ -n ${message_id[$id]} ]] && ShellBot.deleteMessage --chat_id ${callback_query_message_chat_id[$id]} --message_id ${message_id[$id]}
 	[[ -n ${callback_query_message_message_id[$id]} ]] && ShellBot.deleteMessage --chat_id ${callback_query_message_chat_id[$id]} --message_id ${callback_query_message_message_id[$id]}
+	
+	[[ -n ${message_id[$id]} ]] && ShellBot.deleteMessage --chat_id ${message_chat_id[$id]} --message_id ${message_id[$id]}
+	[[ -n ${callback_query_message_message_id[$id]} ]] && ShellBot.deleteMessage --chat_id ${message_chat_id[$id]} --message_id ${message_id[$id]}
 
 	# Envia mensagem utilizando o callback_query_message_chat_id
 	ShellBot.sendMessage --chat_id ${callback_query_message_chat_id[$id]} \
@@ -306,7 +319,9 @@ comprar_android() {
 	
 	[[ -n ${message_id[$id]} ]] && ShellBot.deleteMessage --chat_id ${callback_query_message_chat_id[$id]} --message_id ${message_id[$id]}
 	[[ -n ${callback_query_message_message_id[$id]} ]] && ShellBot.deleteMessage --chat_id ${callback_query_message_chat_id[$id]} --message_id ${callback_query_message_message_id[$id]}
-
+	
+	[[ -n ${message_id[$id]} ]] && ShellBot.deleteMessage --chat_id ${message_chat_id[$id]} --message_id ${message_id[$id]}
+	[[ -n ${callback_query_message_message_id[$id]} ]] && ShellBot.deleteMessage --chat_id ${message_chat_id[$id]} --message_id ${message_id[$id]}
 							
 	# Envia mensagem
 	ShellBot.sendMessage --chat_id ${callback_query_message_chat_id[$id]} \
@@ -331,7 +346,9 @@ comprar_ios() {
 	
 	[[ -n ${message_id[$id]} ]] && ShellBot.deleteMessage --chat_id ${callback_query_message_chat_id[$id]} --message_id ${message_id[$id]}
 	[[ -n ${callback_query_message_message_id[$id]} ]] && ShellBot.deleteMessage --chat_id ${callback_query_message_chat_id[$id]} --message_id ${callback_query_message_message_id[$id]}
-
+	
+	[[ -n ${message_id[$id]} ]] && ShellBot.deleteMessage --chat_id ${message_chat_id[$id]} --message_id ${message_id[$id]}
+	[[ -n ${callback_query_message_message_id[$id]} ]] && ShellBot.deleteMessage --chat_id ${message_chat_id[$id]} --message_id ${message_id[$id]}
 							
 	# Envia mensagem
 	ShellBot.sendMessage --chat_id ${callback_query_message_chat_id[$id]} \
@@ -365,6 +382,8 @@ lsandroid() {
 	[[ -n ${message_id[$id]} ]] && ShellBot.deleteMessage --chat_id ${callback_query_message_chat_id[$id]} --message_id ${message_id[$id]}
 	[[ -n ${callback_query_message_message_id[$id]} ]] && ShellBot.deleteMessage --chat_id ${callback_query_message_chat_id[$id]} --message_id ${callback_query_message_message_id[$id]}
 
+	[[ -n ${message_id[$id]} ]] && ShellBot.deleteMessage --chat_id ${message_chat_id[$id]} --message_id ${message_id[$id]}
+	[[ -n ${callback_query_message_message_id[$id]} ]] && ShellBot.deleteMessage --chat_id ${message_chat_id[$id]} --message_id ${message_id[$id]}
 
 							
 	# Envia mensagem
@@ -380,7 +399,7 @@ lsandroid() {
 	# Envia mensagem
 	ShellBot.sendMessage --chat_id ${callback_query_message_chat_id[$id]} \
 							--text "$(echo -e $msg)" \
-							--reply_markup "$keyboard7" \
+							--reply_markup "$keyboard6" \
 							--parse_mode html
 						
 	# retorno
@@ -405,7 +424,9 @@ lsandroidp() {
 	
 	[[ -n ${message_id[$id]} ]] && ShellBot.deleteMessage --chat_id ${callback_query_message_chat_id[$id]} --message_id ${message_id[$id]}
 	[[ -n ${callback_query_message_message_id[$id]} ]] && ShellBot.deleteMessage --chat_id ${callback_query_message_chat_id[$id]} --message_id ${callback_query_message_message_id[$id]}
-
+	
+	[[ -n ${message_id[$id]} ]] && ShellBot.deleteMessage --chat_id ${message_chat_id[$id]} --message_id ${message_id[$id]}
+	[[ -n ${callback_query_message_message_id[$id]} ]] && ShellBot.deleteMessage --chat_id ${message_chat_id[$id]} --message_id ${message_id[$id]}
 
 	# Envia mensagem
 	ShellBot.sendMessage --chat_id ${callback_query_message_chat_id[$id]} \
@@ -420,7 +441,7 @@ lsandroidp() {
 	# Envia mensagem
 	ShellBot.sendMessage --chat_id ${callback_query_message_chat_id[$id]} \
 							--text "$(echo -e $msg)" \
-							--reply_markup "$keyboard7" \
+							--reply_markup "$keyboard6" \
 							--parse_mode html
 						
 	# retorno
@@ -449,6 +470,8 @@ lsandroidplus() {
 	[[ -n ${message_id[$id]} ]] && ShellBot.deleteMessage --chat_id ${callback_query_message_chat_id[$id]} --message_id ${message_id[$id]}
 	[[ -n ${callback_query_message_message_id[$id]} ]] && ShellBot.deleteMessage --chat_id ${callback_query_message_chat_id[$id]} --message_id ${callback_query_message_message_id[$id]}
 
+	[[ -n ${message_id[$id]} ]] && ShellBot.deleteMessage --chat_id ${message_chat_id[$id]} --message_id ${message_id[$id]}
+	[[ -n ${callback_query_message_message_id[$id]} ]] && ShellBot.deleteMessage --chat_id ${message_chat_id[$id]} --message_id ${message_id[$id]}
 	
 	# Envia mensagem
 	ShellBot.sendMessage --chat_id ${callback_query_message_chat_id[$id]} \
@@ -463,7 +486,7 @@ lsandroidplus() {
 	# Envia mensagem
 	ShellBot.sendMessage --chat_id ${callback_query_message_chat_id[$id]} \
 							--text "$(echo -e $msg)" \
-							--reply_markup "$keyboard7" \
+							--reply_markup "$keyboard6" \
 							--parse_mode html
 						
 	# retorno
@@ -493,6 +516,8 @@ lsandroidplusp() {
 	[[ -n ${message_id[$id]} ]] && ShellBot.deleteMessage --chat_id ${callback_query_message_chat_id[$id]} --message_id ${message_id[$id]}
 	[[ -n ${callback_query_message_message_id[$id]} ]] && ShellBot.deleteMessage --chat_id ${callback_query_message_chat_id[$id]} --message_id ${callback_query_message_message_id[$id]}
 	
+	[[ -n ${message_id[$id]} ]] && ShellBot.deleteMessage --chat_id ${message_chat_id[$id]} --message_id ${message_id[$id]}
+	[[ -n ${callback_query_message_message_id[$id]} ]] && ShellBot.deleteMessage --chat_id ${message_chat_id[$id]} --message_id ${message_id[$id]}
 	
 	# Envia mensagem
 	ShellBot.sendMessage --chat_id ${callback_query_message_chat_id[$id]} \
@@ -507,7 +532,7 @@ lsandroidplusp() {
 	# Envia mensagem
 	ShellBot.sendMessage --chat_id ${callback_query_message_chat_id[$id]} \
 							--text "$(echo -e $msg)" \
-							--reply_markup "$keyboard7" \
+							--reply_markup "$keyboard6" \
 							--parse_mode html
 						
 	# retorno
@@ -524,6 +549,9 @@ menu_ios() {
 	[[ -n ${message_id[$id]} ]] && ShellBot.deleteMessage --chat_id ${callback_query_message_chat_id[$id]} --message_id ${message_id[$id]}
 	[[ -n ${callback_query_message_message_id[$id]} ]] && ShellBot.deleteMessage --chat_id ${callback_query_message_chat_id[$id]} --message_id ${callback_query_message_message_id[$id]}
 
+	[[ -n ${message_id[$id]} ]] && ShellBot.deleteMessage --chat_id ${message_chat_id[$id]} --message_id ${message_id[$id]}
+	[[ -n ${callback_query_message_message_id[$id]} ]] && ShellBot.deleteMessage --chat_id ${message_chat_id[$id]} --message_id ${message_id[$id]}
+	
 	# Envia mensagem utilizando o callback_query_message_chat_id
 	ShellBot.sendMessage --chat_id ${callback_query_message_chat_id[$id]} \
 	    --text "$(echo -e $msg)" \
@@ -541,7 +569,10 @@ teste_ios() {
 							
 	[[ -n ${message_id[$id]} ]] && ShellBot.deleteMessage --chat_id ${callback_query_message_chat_id[$id]} --message_id ${message_id[$id]}
 	[[ -n ${callback_query_message_message_id[$id]} ]] && ShellBot.deleteMessage --chat_id ${callback_query_message_chat_id[$id]} --message_id ${callback_query_message_message_id[$id]}
-
+	
+	[[ -n ${message_id[$id]} ]] && ShellBot.deleteMessage --chat_id ${message_chat_id[$id]} --message_id ${message_id[$id]}
+	[[ -n ${callback_query_message_message_id[$id]} ]] && ShellBot.deleteMessage --chat_id ${message_chat_id[$id]} --message_id ${message_id[$id]}
+	
 	# Envia mensagem utilizando o callback_query_message_chat_id
 	ShellBot.sendMessage --chat_id ${callback_query_message_chat_id[$id]} \
 	    --text "$(echo -e "Olá <b>${callback_query_from_first_name}</b>\nEntre em contato com nossa equipe para gerar seu arquivo no servidor LS BR!\nInforme sua operadora, informe o servidor desejado e esteja com o app baixado...")" \
@@ -558,7 +589,10 @@ teste_iosp() {
 							
 	[[ -n ${message_id[$id]} ]] && ShellBot.deleteMessage --chat_id ${callback_query_message_chat_id[$id]} --message_id ${message_id[$id]}
 	[[ -n ${callback_query_message_message_id[$id]} ]] && ShellBot.deleteMessage --chat_id ${callback_query_message_chat_id[$id]} --message_id ${callback_query_message_message_id[$id]}
-
+	
+	[[ -n ${message_id[$id]} ]] && ShellBot.deleteMessage --chat_id ${message_chat_id[$id]} --message_id ${message_id[$id]}
+	[[ -n ${callback_query_message_message_id[$id]} ]] && ShellBot.deleteMessage --chat_id ${message_chat_id[$id]} --message_id ${message_id[$id]}
+	
 	# Envia mensagem utilizando o callback_query_message_chat_id
 	ShellBot.sendMessage --chat_id ${callback_query_message_chat_id[$id]} \
 	    --text "$(echo -e "Olá <b>${callback_query_from_first_name}</b>\nEntre em contato com nossa equipe para gerar seu arquivo no servidor LS BR 2 PREMIUM!\nInforme sua operadora, informe o servidor desejado e esteja com o app baixado...")" \
@@ -591,6 +625,8 @@ lsios() {
 	[[ -n ${message_id[$id]} ]] && ShellBot.deleteMessage --chat_id ${callback_query_message_chat_id[$id]} --message_id ${message_id[$id]}
 	[[ -n ${callback_query_message_message_id[$id]} ]] && ShellBot.deleteMessage --chat_id ${callback_query_message_chat_id[$id]} --message_id ${callback_query_message_message_id[$id]}
 	
+	[[ -n ${message_id[$id]} ]] && ShellBot.deleteMessage --chat_id ${message_chat_id[$id]} --message_id ${message_id[$id]}
+	[[ -n ${callback_query_message_message_id[$id]} ]] && ShellBot.deleteMessage --chat_id ${message_chat_id[$id]} --message_id ${message_id[$id]}
 	
 	# Envia mensagem
 	ShellBot.sendMessage --chat_id ${callback_query_message_chat_id[$id]} \
@@ -605,7 +641,7 @@ lsios() {
 	# Envia mensagem
 	ShellBot.sendMessage --chat_id ${callback_query_message_chat_id[$id]} \
 							--text "$(echo -e $msg)" \
-							--reply_markup "$keyboard6" \
+							--reply_markup "$keyboard7" \
 							--parse_mode html
 						
 	# retorno
@@ -633,6 +669,8 @@ lsiosp() {
 	[[ -n ${message_id[$id]} ]] && ShellBot.deleteMessage --chat_id ${callback_query_message_chat_id[$id]} --message_id ${message_id[$id]}
 	[[ -n ${callback_query_message_message_id[$id]} ]] && ShellBot.deleteMessage --chat_id ${callback_query_message_chat_id[$id]} --message_id ${callback_query_message_message_id[$id]}
 	
+	[[ -n ${message_id[$id]} ]] && ShellBot.deleteMessage --chat_id ${message_chat_id[$id]} --message_id ${message_id[$id]}
+	[[ -n ${callback_query_message_message_id[$id]} ]] && ShellBot.deleteMessage --chat_id ${message_chat_id[$id]} --message_id ${message_id[$id]}
 	
 	# Envia mensagem
 	ShellBot.sendMessage --chat_id ${callback_query_message_chat_id[$id]} \
@@ -647,7 +685,7 @@ lsiosp() {
 	# Envia mensagem
 	ShellBot.sendMessage --chat_id ${callback_query_message_chat_id[$id]} \
 							--text "$(echo -e $msg)" \
-							--reply_markup "$keyboard6" \
+							--reply_markup "$keyboard7" \
 							--parse_mode html
 						
 	# retorno
@@ -686,12 +724,22 @@ comand () {
 	if [[ -n ${callback_query_id[$id]} ]]; then
 		[[ -n ${message_id[$id]} ]] && ShellBot.deleteMessage --chat_id ${callback_query_message_chat_id[$id]} --message_id ${message_id[$id]}
 		[[ -n ${callback_query_message_message_id[$id]} ]] && ShellBot.deleteMessage --chat_id ${callback_query_message_chat_id[$id]} --message_id ${callback_query_message_message_id[$id]}
-
+		
+		[[ -n ${message_id[$id]} ]] && ShellBot.deleteMessage --chat_id ${message_chat_id[$id]} --message_id ${message_id[$id]}
+		[[ -n ${callback_query_message_message_id[$id]} ]] && ShellBot.deleteMessage --chat_id ${message_chat_id[$id]} --message_id ${message_id[$id]}
+		
         	# Envia mensagem utilizando o callback_query_message_chat_id
 		ShellBot.sendMessage --chat_id ${callback_query_message_chat_id[$id]} \
 		    --text "$(echo -e $msg)" \
 		    --parse_mode html
 	else
+	
+		[[ -n ${message_id[$id]} ]] && ShellBot.deleteMessage --chat_id ${callback_query_message_chat_id[$id]} --message_id ${message_id[$id]}
+		[[ -n ${callback_query_message_message_id[$id]} ]] && ShellBot.deleteMessage --chat_id ${callback_query_message_chat_id[$id]} --message_id ${callback_query_message_message_id[$id]}
+		
+		[[ -n ${message_id[$id]} ]] && ShellBot.deleteMessage --chat_id ${message_chat_id[$id]} --message_id ${message_id[$id]}
+		[[ -n ${callback_query_message_message_id[$id]} ]] && ShellBot.deleteMessage --chat_id ${message_chat_id[$id]} --message_id ${message_id[$id]}
+		
 		# Envia mensagem utilizando o chat_id
 		ShellBot.sendMessage --chat_id ${message_chat_id[$id]} \
 		    --text "$(echo -e $msg)" \
